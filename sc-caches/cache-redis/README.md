@@ -108,6 +108,10 @@ gem install --local $Ruby_Home/redis-3.2.2.gem
 
 https://raw.githubusercontent.com/MSOpenTech/redis/3.0/src/redis-trib.rb
 
+Download and put redis-trib.rb into  C:/DEVELOPERS/Redis/ 
+
+Make sure  it can runnable as Ruby app.
+
 ## Cluster operations
 
 cd  C:/DEVELOPERS/Redis/ 
@@ -137,6 +141,3 @@ cluster info
 
 https://www.cnblogs.com/tommy-huang/p/6240083.html
 
-Download and put redis-trib.rb into  C:/DEVELOPERS/Redis/ 
-
-Make sure  it can runnable as Ruby app.
