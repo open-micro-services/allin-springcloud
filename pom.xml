@@ -17,6 +17,7 @@
         <module>sc-api-gateway</module>
         <module>sc-eureka</module>
         <module>sc-hystrix</module>
+        <module>sc-caches</module>
         <module>sc-mqs</module>
     </modules>
 
