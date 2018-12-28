@@ -1,4 +1,4 @@
-package com.boonya.springcloud.messages.rabbitmq.mqrabbitmq;
+package com.boonya.springcloud.messages.rabbitmq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

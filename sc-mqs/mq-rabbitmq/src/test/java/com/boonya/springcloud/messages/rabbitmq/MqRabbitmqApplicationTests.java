@@ -1,4 +1,4 @@
-package com.boonya.springcloud.messages.rabbitmq.mqrabbitmq;
+package com.boonya.springcloud.messages.rabbitmq;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

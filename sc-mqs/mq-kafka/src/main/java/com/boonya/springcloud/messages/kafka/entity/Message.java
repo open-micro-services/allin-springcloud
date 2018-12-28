@@ -1,5 +1,6 @@
 package com.boonya.springcloud.messages.kafka.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,7 +14,10 @@ import java.util.Date;
 public class Message implements Serializable{
 
     private String id;
+
     private String message;
+
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date sendTime;
 
     public Message(String id, String message, Date sendTime) {
