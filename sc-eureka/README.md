@@ -8,9 +8,12 @@
 
 C:\Windows\System32\drivers\etc 编辑hosts
 ```
-127.0.0.1 node1
-127.0.0.1 node2
+127.0.0.1 peer1
+127.0.0.1 peer2
 ```
 # Eureka运行多个服务注册发现示例
-
+```
+java -jar sc-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer1 --server.port=2001
+java -jar sc-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2 --server.port=2002
+```
 
