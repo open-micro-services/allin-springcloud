@@ -1,4 +1,0 @@
-com\boonya\springcloud\beans\base\BaseBean.class
-com\boonya\springcloud\beans\base\BaseMapper.class
-com\boonya\springcloud\beans\permission\entity\EsUser.class
-com\boonya\springcloud\beans\permission\service\EsUserService.class
