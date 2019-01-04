@@ -19,6 +19,7 @@
 	</properties>
 
 	<dependencies>
+
         <dependency>
             <groupId>com.boonya.springcloud</groupId>
             <artifactId>sc-common-utils</artifactId>
@@ -36,12 +37,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>
 		</dependency>
 
 		<dependency>
