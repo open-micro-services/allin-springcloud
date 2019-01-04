@@ -1,5 +1,7 @@
 package com.boonya.springcloud.beans.permission.service;
 
+import com.boonya.springcloud.beans.permission.entity.EsUser;
+
 /**
  * @ClassName: EsUserService
  * @Description: TODO(功能描述)
@@ -8,4 +10,6 @@ package com.boonya.springcloud.beans.permission.service;
  * @date 2018-12-27 15:07
  */
 public interface EsUserService {
+
+    EsUser findById(Integer id);
 }

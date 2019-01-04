@@ -1,4 +1,4 @@
-package com.boonya.springcloud.permission.user.customer.main;
+package com.boonya.springcloud.permission.user.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan("com.boonya.springcloud.permission.user.customer.controller")
 public class UserServiceCustomerApplication {
 
     //@Bean 应用在方法上，用来将方法返回值设为为bean

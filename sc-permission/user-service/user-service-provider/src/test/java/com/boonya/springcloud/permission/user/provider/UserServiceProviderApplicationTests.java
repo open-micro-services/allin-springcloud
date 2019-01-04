@@ -1,4 +1,4 @@
-package com.boonya.springcloud.permission.user.customer.main;
+package com.boonya.springcloud.permission.user.provider;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserServiceCustomerApplicationTests {
+public class UserServiceProviderApplicationTests {
 
 	@Test
 	public void contextLoads() {

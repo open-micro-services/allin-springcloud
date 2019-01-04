@@ -1,6 +1,9 @@
 package com.boonya.springcloud.permission.user.provider.serice.impl;
 
+import com.boonya.springcloud.beans.permission.entity.EsUser;
 import com.boonya.springcloud.beans.permission.service.EsUserService;
+import com.boonya.springcloud.permission.user.provider.mapper.EsUserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,4 +16,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EsUserServiceImpl implements EsUserService{
 
+    @Autowired
+    EsUserMapper esUserMapper;
+
+    @Override
+    public EsUser findById(Integer id) {
+       return  esUserMapper.selectByPrimaryKey(id) ;
+    }
 }

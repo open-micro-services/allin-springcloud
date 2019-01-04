@@ -3,18 +3,20 @@ package com.boonya.springcloud.permission.user.provider.mapper;
 
 import com.boonya.springcloud.beans.base.BaseMapper;
 import com.boonya.springcloud.beans.permission.entity.EsUser;
+import org.springframework.stereotype.Repository;
 
-public interface EsUserMapper extends BaseMapper {
+@Repository("esUserMapper")
+public interface EsUserMapper extends BaseMapper<EsUser,Integer> {
 
-    int deleteByPrimaryKey(Integer esId);
+    Integer deleteByPrimaryKey(Integer esId);
 
-    int insert(EsUser record);
+    Integer insert(EsUser record);
 
-    int insertSelective(EsUser record);
+    Integer insertSelective(EsUser record);
 
     EsUser selectByPrimaryKey(Integer esId);
 
-    int updateByPrimaryKeySelective(EsUser record);
+    Integer updateByPrimaryKeySelective(EsUser record);
 
-    int updateByPrimaryKey(EsUser record);
+    Integer updateByPrimaryKey(EsUser record);
 }
