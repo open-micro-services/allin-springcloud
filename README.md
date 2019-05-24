@@ -1,2 +1,39 @@
-# springcloud
-springcloud for micro services.
+# Projects describe
+
+spring cloud is aim to support micro-services practice.
+
+# sc-api-gateway
+
+For applications API gateway.
+
+# sc-beans
+
+For entities of projects.
+
+# sc-caches
+
+For cache applications ,such as memcached,redis,MongoDB.
+
+# sc-common-utils
+
+For utils in common.
+
+# sc-demo-projects
+
+For demo projects to fast to test your environment.
+
+# sc-eureaka
+
+For  micro-services discovery!
+
+# sc-hystrix
+
+For  micro-services to cut network request risky of your applications.
+
+# sc-mqs
+
+For project which needs MQ services.
+
+# sc-permission
+
+For your applications security.
