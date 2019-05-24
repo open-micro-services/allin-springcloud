@@ -19,6 +19,7 @@
         <module>sc-hystrix</module>
         <module>sc-caches</module>
         <module>sc-mqs</module>
+        <module>sc-demo-projects</module>
     </modules>
 
     <dependencies>
