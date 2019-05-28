@@ -1,5 +1,7 @@
+# 服务器配置
 server:
     port: 8092
+# logback日志配置
 logging:
     config: classpath:log/logback-spring.xml
     path: D:/websocket/
@@ -7,10 +9,13 @@ logging:
         root: INFO
         org.springframework.web: INFO
         org.springframework.security: INFO
+# Spring配置
 spring:
+    # 多环境配置
     profiles:
         # 如不指定默认application.yml节点，指定后运行指定配置文件配置
-        active: prod
+        active:
+    # 数据源配置
     datasource:
         username: dlwy
         password: DlwyZmn2017
