@@ -7,34 +7,34 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
-@ServerEndpoint("/websocket/{server_uuid}")
+@ServerEndpoint("/websocket/{uuid}")
 @Component
 public class WebSocketServer {
 
-    //定义一个全局的记录器，通过LoggerFactory获取
     private final static Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
+
     //concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
-    private static CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<WebSocketServer>();
+    private static ConcurrentHashMap<String ,WebSocketServer> webSocketSet = new ConcurrentHashMap<String,WebSocketServer>();
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
 
-    //接收server_uuid
-    private String server_uuid="";
+    //接收uuid
+    private String uuid="";
     /**
      * 连接建立成功调用的方法*/
     @OnOpen
-    public void onOpen(Session session,@PathParam("server_uuid") String server_uuid) {
+    public void onOpen(Session session,@PathParam("uuid") String uuid) {
         this.session = session;
-        webSocketSet.add(this);     //加入set中
+        webSocketSet.put(uuid,this);     //加入set中
         addOnlineCount();           //在线数加1
-        logger.info("有新窗口开始监听:"+server_uuid+",当前在线人数为" + getOnlineCount());
-        this.server_uuid=server_uuid;
+        logger.info("有新窗口开始监听:"+uuid+",当前在线人数为" + getOnlineCount());
+        this.uuid=uuid;
         try {
             sendMessage("连接成功");
         } catch (IOException e) {
@@ -47,7 +47,7 @@ public class WebSocketServer {
      */
     @OnClose
     public void onClose() {
-        webSocketSet.remove(this);  //从set中删除
+        webSocketSet.remove(this.uuid);  //从set中删除
         subOnlineCount();           //在线数减1
         logger.info("有一连接关闭！当前在线人数为" + getOnlineCount());
     }
@@ -58,14 +58,13 @@ public class WebSocketServer {
      * @param message 客户端发送过来的消息*/
     @OnMessage
     public void onMessage(String message, Session session) {
-        logger.info("收到来自窗口"+server_uuid+"的信息:"+message);
-        //群发消息
-        for (WebSocketServer item : webSocketSet) {
-            try {
-                item.sendMessage(message);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        logger.info("收到来自窗口"+uuid+"的信息:"+message);
+        try{
+            // 收到消息指令应该对应做处理，然后发送响应消息给客户端
+            broadcastOne("服务端已收到页面发送的消息："+message,this.uuid);
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -85,22 +84,33 @@ public class WebSocketServer {
     public void sendMessage(String message) throws IOException {
         this.session.getBasicRemote().sendText(message);
     }
-
     /**
-     * 广播自定义消息
+     * 单播
      * */
-    public static void broadcast(String message,@PathParam("server_uuid") String server_uuid) throws IOException {
-        logger.info("推送消息到窗口"+server_uuid+"，推送内容:"+message);
-        for (WebSocketServer item : webSocketSet) {
+    public static void broadcastOne(String message,@PathParam("uuid") String uuid) throws IOException {
+        logger.info("推送消息到窗口"+uuid+"，推送内容:"+message);
+        for (WebSocketServer item : webSocketSet.values()) {
             try {
-                //这里可以设定只推送给这个sid的，为null则全部推送
-                if(server_uuid==null) {
-                    item.sendMessage(message);
-                }else if(item.server_uuid.equals(server_uuid)){
+                if(item.uuid.equals(uuid)){
                     item.sendMessage(message);
                 }
             } catch (IOException e) {
                 continue;
+            }
+        }
+    }
+
+    /**
+     * 广播
+     * */
+    public static void broadcastAll(String message) throws IOException {
+        logger.info("推送消息到所有打开窗口，推送内容:"+message);
+        //群发消息
+        for (WebSocketServer item : webSocketSet.values()) {
+            try {
+                item.sendMessage(message);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

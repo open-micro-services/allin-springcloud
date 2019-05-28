@@ -11,19 +11,20 @@ import java.util.Map;
 public class WebSocketController {
 
     //页面请求
-    @RequestMapping(value = "/socket/{clientId}",method = RequestMethod.POST)
+    @RequestMapping(value = "/socket/{clientId}")
     public ModelAndView socket(@PathVariable("clientId") String clientId) {
         ModelAndView mav=new ModelAndView("/socket");
         mav.addObject("clientId", clientId);
         return mav;
     }
+
     //推送数据接口
-    @RequestMapping("/socket/push/{clientId}")
+    @RequestMapping(value = "/socket/push/{clientId}")
     @ResponseBody
     public Map<String,Object> pushMessageToPage(@PathVariable("clientId") String clientId, String message) {
         Map<String,Object> map=new HashMap<String,Object>();
         try {
-            WebSocketServer.broadcast(message,clientId);
+            WebSocketServer.broadcastOne(message,clientId);
             map.put("status",1);
             map.put("msg","消息发送成功!");
             map.put("data",message);

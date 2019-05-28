@@ -3,33 +3,45 @@ package com.boonya.springboot.websocket.sbwebsocket.controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class MainController {
 
     @RequestMapping("/")
-    public String root() {
-        return "redirect:/index";
+    public ModelAndView root() {
+        ModelAndView mv=new ModelAndView("redirect:/index");
+        return mv;
     }
 
     @RequestMapping("/index")
-    public String index() {
-        return "index";
+    public ModelAndView index() {
+        ModelAndView mv=new ModelAndView("index");
+        return mv;
     }
 
     @RequestMapping("/user/index")
-    public String userIndex() {
-        return "user/index";
+    public ModelAndView userIndex() {
+        ModelAndView mv=new ModelAndView("user/index");
+        return mv;
+    }
+
+    @RequestMapping("/websocket/socket")
+    public ModelAndView websocket() {
+        ModelAndView mv=new ModelAndView("websocket/socket");
+        return mv;
     }
 
     @RequestMapping("/login")
-    public String login() {
-        return "login";
+    public ModelAndView login() {
+        ModelAndView mv=new ModelAndView("login");
+        return mv;
     }
 
     @RequestMapping("/login-error")
-    public String loginError(Model model) {
+    public ModelAndView loginError(Model model) {
         model.addAttribute("loginError", true);
-        return "login";
+        ModelAndView mv=new ModelAndView("login");
+        return mv;
     }
 }

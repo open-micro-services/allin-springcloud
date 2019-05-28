@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.boonya.springboot.mybatis.sbmybatis.mapper.UserMapper" >
-    <resultMap id="BaseResultMap" type="com.boonya.springboot.mybatis.sbmybatis.entity.User" >
+<mapper namespace="com.boonya.springboot.websocket.sbwebsocket.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.boonya.springboot.websocket.sbwebsocket.entity.User" >
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
@@ -20,13 +20,13 @@
         delete from user_tb
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.boonya.springboot.mybatis.sbmybatis.entity.User" >
+    <insert id="insert" parameterType="com.boonya.springboot.websocket.sbwebsocket.entity.User" >
         insert into user_tb (id, user_name, password,
         age)
         values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
         #{age,jdbcType=INTEGER})
     </insert>
-    <insert id="insertSelective" parameterType="com.boonya.springboot.mybatis.sbmybatis.entity.User" >
+    <insert id="insertSelective" parameterType="com.boonya.springboot.websocket.sbwebsocket.entity.User" >
         insert into user_tb
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -57,7 +57,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.boonya.springboot.mybatis.sbmybatis.entity.User" >
+    <update id="updateByPrimaryKeySelective" parameterType="com.boonya.springboot.websocket.sbwebsocket.entity.User" >
         update user_tb
         <set >
             <if test="userName != null" >
@@ -72,7 +72,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.boonya.springboot.mybatis.sbmybatis.entity.User" >
+    <update id="updateByPrimaryKey" parameterType="com.boonya.springboot.websocket.sbwebsocket.entity.User" >
         update user_tb
         set user_name = #{userName,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},
