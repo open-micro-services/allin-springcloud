@@ -23,6 +23,21 @@ spring:
         #driver-class-name: com.mysql.jdbc.Driver
     # 模板引擎
     freemarker:
-        charset: UTF-8
+        #内容格式
+        content-type: text/html
+        #缓存配置
         cache: false
-        prefix: classpath:/templates/
+        #模板路径
+        template-loader-path: classpath:/templates
+        #编码格式
+        charset: UTF-8
+        #是否启用
+        enabled: true
+        #请求内容属性
+        request-context-attribute: request
+        expose-request-attributes: true
+        expose-session-attributes: true
+        #检查模板路径
+        check-template-location: true
+        #文件后缀
+        suffix: .ftl
