@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class PropertiesUtil {
 
-    public static String getConfig(String key){
+    public static String getConfig(String key) {
         String config = new String();
         //该方法读取文件会有缓存问题,开发时建议别使用，部署的时候再使用
         InputStream is = Utils.class.getResourceAsStream("/redis.properties");

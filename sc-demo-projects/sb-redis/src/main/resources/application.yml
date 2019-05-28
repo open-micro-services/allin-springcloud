@@ -1,12 +1,15 @@
 # 服务配置
 server:
     port: 8090
-# 数据源配置
+# Spring配置
 spring:
+    #多环境配置
     profiles:
-        active: prod
+        # 如不指定默认application.yml节点，指定后运行指定配置文件配置
+        active:
+    #数据源配置
     datasource:
         username: dlwy
         password: DlwyZmn2017
         url: jdbc:mysql://192.168.1.111:3306/xht_ywp
-        driver-class-name: com.mysql.jdbc.Driver
+        #driver-class-name: com.mysql.jdbc.Driver

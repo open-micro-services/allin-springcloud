@@ -7,16 +7,16 @@ import java.io.Serializable;
  */
 public class WebSocketMessage implements Serializable {
 
-    public int status=0;
+    public int status = 0;
 
-    private String message="";
+    private String message = "";
 
-    private Object data=new Object();
+    private Object data = new Object();
 
     public WebSocketMessage(int status, String message, Object data) {
         this.status = status;
         this.message = message;
-        if(data!=null){
+        if (data != null) {
             this.data = data;
         }
     }

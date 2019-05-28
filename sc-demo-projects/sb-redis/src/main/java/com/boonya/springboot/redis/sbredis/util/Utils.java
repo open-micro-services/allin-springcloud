@@ -17,18 +17,19 @@ public class Utils {
     }
 
     public static String DateToString() throws ParseException {
-        SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return formatter.format(new Date());
     }
 
-    public static String nullToString(String column){
-        if(null == column || "null".equals(column))
+    public static String nullToString(String column) {
+        if (null == column || "null".equals(column))
             return "";
         else
             return column;
     }
-    public static String objectToString(Object obj){
-        if(obj == null || "null".equals(obj))
+
+    public static String objectToString(Object obj) {
+        if (obj == null || "null".equals(obj))
             return "";
         else
             return obj.toString();
@@ -45,8 +46,8 @@ public class Utils {
 
     public static boolean IsNullOrEmpty(String value) {
         if ((value == null) || ("".equals(value))) {
-             return true;
+            return true;
         }
         return false;
-        }
+    }
 }

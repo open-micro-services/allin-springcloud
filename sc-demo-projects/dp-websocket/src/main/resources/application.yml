@@ -1,0 +1,23 @@
+server:
+    port: 8090
+logging:
+    config: classpath:log/logback-spring.xml
+    path: D:/websocket/
+    level:
+        root: INFO
+        org.springframework.web: INFO
+        org.springframework.security: INFO
+spring:
+    profiles:
+        # 如不指定默认application.yml节点，指定后运行指定配置文件配置
+        active: dev
+    datasource:
+        username: dlwy
+        password: DlwyZmn2017
+        url: jdbc:mysql://192.168.1.111:3306/xht_ywp
+        #driver-class-name: com.mysql.jdbc.Driver
+    # 模板引擎
+    freemarker:
+        charset: UTF-8
+        cache: false
+        prefix: classpath:/templates/

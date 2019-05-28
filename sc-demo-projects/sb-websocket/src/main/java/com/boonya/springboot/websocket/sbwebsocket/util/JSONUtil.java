@@ -13,11 +13,11 @@ public class JSONUtil {
      * @param obj
      * @return
      */
-    public static String getJsonFromObject(Object obj){
+    public static String getJsonFromObject(Object obj) {
         ObjectMapper mapper = new ObjectMapper();
-        try{
-            return  mapper.writeValueAsString(obj);
-        }catch (Exception e){
+        try {
+            return mapper.writeValueAsString(obj);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "{}";

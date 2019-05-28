@@ -1,0 +1,31 @@
+#服务器配置
+server:
+    port: 8092
+#logback日志配置
+logging:
+    config: classpath:log/logback-spring.xml
+    path: D:/websocket/
+    level:
+        root: INFO
+        org.springframework.web: INFO
+        org.springframework.security: INFO
+# Spring配置
+spring:
+    # 多环境配置
+    profiles:
+        # 如不指定默认application.yml节点，指定后运行指定配置文件配置
+        active: prod
+    # 数据源配置
+    datasource:
+        url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+        username: root
+        password: root
+        #driver-class-name: com.mysql.jdbc.Driver
+    #模板引擎
+    thymeleaf:
+        cache: false
+        prefix: classpath:/templates/
+#公共配置与profiles选择无关 mapperLocations指的路径是src/main/resources
+mybatis:
+    typeAliasesPackage: com.boonya.springboot.mybatis.sbmybatis.entity
+    mapperLocations: classpath:mapper/*.xml
