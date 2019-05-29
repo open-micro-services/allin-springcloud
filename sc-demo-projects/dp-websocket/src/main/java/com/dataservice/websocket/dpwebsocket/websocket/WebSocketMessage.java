@@ -11,13 +11,15 @@ public class WebSocketMessage implements Serializable {
 
     private String message = "";
 
-    private Object data = new Object();
+    private Object data = null;
 
     public WebSocketMessage(int status, String message, Object data) {
         this.status = status;
         this.message = message;
         if (data != null) {
             this.data = data;
+        }else{
+            this.data= new Object();
         }
     }
 
