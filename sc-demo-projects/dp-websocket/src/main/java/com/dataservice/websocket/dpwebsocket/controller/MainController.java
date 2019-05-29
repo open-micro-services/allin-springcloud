@@ -1,24 +1,24 @@
 package com.dataservice.websocket.dpwebsocket.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class MainController {
 
     @RequestMapping("/")
-    public ModelAndView root(){
-        return new ModelAndView("index");
+    public String root(){
+        return "redirect:/index";
     }
 
     @RequestMapping("/index")
-    public ModelAndView index(){
-        return new ModelAndView("index");
+    public String index(){
+        return "index";
     }
 
     @RequestMapping("/websocket")
-    public ModelAndView websocket(){
-        return new ModelAndView("websocket");
+    public String websocket(){
+        return "websocket";
     }
 }

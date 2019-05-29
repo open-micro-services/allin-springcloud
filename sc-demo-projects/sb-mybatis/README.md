@@ -1,9 +1,9 @@
 # Technologies
 
-SpringBoot+ Web + Freemarker+JDBC(Mysql)+ Redis+ WebSocket
+SpringBoot+ Web + Thymeleaf+JDBC(Mysql)+ Redis
 
 # Features
 
-## WebSocket communication
+## Redis for cache 
 
-## Redis publish/submit
+Single node and Multi nodes management with Jedis.

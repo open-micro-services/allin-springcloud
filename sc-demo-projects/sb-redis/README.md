@@ -4,10 +4,6 @@ SpringBoot+ Web +JDBC(Mysql)+ Redis
 
 # Features
 
-## Redis SingleNode
+## Redis SingleNode and multiNode for cache
 
-Single Redis node manager utils and JedisPool operations.
-
-## Redis multiNode
-
-Multi Redis node manager utils and JedisPool operations.
+Single redis node and Multi redis nodes manager utils and JedisPool operations.
