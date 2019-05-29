@@ -39,7 +39,6 @@
 
     function onOpen(evt) {
         writeToScreen("CONNECTED");
-        doSend("WebSocket rocks");
     }
 
     function onClose(evt) {
