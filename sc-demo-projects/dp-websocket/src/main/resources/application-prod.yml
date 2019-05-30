@@ -41,3 +41,16 @@ spring:
         check-template-location: true
         #文件后缀
         suffix: .ftl
+    # Redis配置
+    redis:
+        database: 0
+        host: 192.168.1.111
+        port: 6379
+        password: dlwy@2019
+        jedis:
+            pool:
+                max-active: 8
+                max-idle: 8
+                max-wait: -1ms
+                min-idle: 0
+        timeout: 600

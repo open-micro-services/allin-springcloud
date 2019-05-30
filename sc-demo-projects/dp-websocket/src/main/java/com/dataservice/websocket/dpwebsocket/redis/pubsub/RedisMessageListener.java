@@ -1,8 +1,12 @@
 package com.dataservice.websocket.dpwebsocket.redis.pubsub;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 public class RedisMessageListener implements MessageListener {
+
+    private final static Logger logger = LoggerFactory.getLogger(RedisMessageListener.class);
 
     /**
      * 订阅接收发布者的消息
@@ -13,6 +17,6 @@ public class RedisMessageListener implements MessageListener {
         byte[] body = message.getBody();
         String msg = new String(body);
         String topic = new String(channel);
-        System.out.println("发布订阅监听channel="+topic+",收到消息："+msg);
+        logger.info("RedisMessageListener:onMessage 发布订阅监听,channel="+topic+",收到消息："+msg);
     }
 }
