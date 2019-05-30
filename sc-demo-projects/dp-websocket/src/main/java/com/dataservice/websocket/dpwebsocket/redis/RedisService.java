@@ -7,15 +7,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 /**
- * RedisUtil 工具类
- *
+ * Redis工具服务
  */
 @Service
 public class RedisService {
