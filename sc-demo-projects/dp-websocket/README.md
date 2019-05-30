@@ -29,6 +29,8 @@ product settings:
 java -jar dp-websocket-0.0.1-SNAPSHOT.jar  --spring.profiles.active=prod
 `
 
+and you can put more adtional parameters  like change the port with `--server.port=9999 `
+
 # Features
 
 ## WebSocket communication
@@ -41,7 +43,7 @@ Redis publisher and subscriber to implement Pub/Sub mode.
 
 ## Redis MQ producer/consumer
 
-Redis use list to implement Queue.push message add to list left and poll message from right,so it's still obey the FIFO rules of queue.
+Redis use list to implement Queue. Pushing new message will add to the head of list from left side , getting message from the end of list from the right size, it's still obey the FIFO rule of queues.
 
 
 # References
