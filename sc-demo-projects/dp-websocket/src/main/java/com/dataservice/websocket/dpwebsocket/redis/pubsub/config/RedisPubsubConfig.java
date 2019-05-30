@@ -16,7 +16,7 @@ public class RedisPubsubConfig {
     private JedisConnectionFactory jedisConnectionFactory;
 
     /**
-     * @author 七脉 描述：需要手动定义RedisMessageListenerContainer加入IOC容器
+     * 描述：需要手动定义RedisMessageListenerContainer加入IOC容器
      * @return
      */
     @Bean
