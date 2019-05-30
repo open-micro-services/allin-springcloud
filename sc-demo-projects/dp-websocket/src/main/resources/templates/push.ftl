@@ -80,7 +80,7 @@
 </script>
 
 <h2>WebSocket Test</h2>
-<input id="msg" type="text" value=""/> <input type="button" value="SendMessage" onclick="sendMessage()"/>
+<input id="msg" type="text" value=""/> <input type="button" value="SendMessage" onclick="sendMessage()"/>  For example: {"service":"statistics_events"}
 <div id="output"></div>
 
 </html>
