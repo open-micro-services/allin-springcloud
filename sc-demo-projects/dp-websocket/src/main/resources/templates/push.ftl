@@ -7,7 +7,7 @@
     //https://www.tutorialspoint.com/websockets/websockets_send_receive_messages.htm
     var clientId = Utils.uuid.guid();
 
-    // Freemarker 传递主机地址和端口
+    // Freemarker 传递主机地址和端口--适用于本机多环境测试，如果是其他服务器地址需要重新配置
     var wsUri = "ws://${host_port}/websocket/" + clientId;
 
     console.info("WS服务请求地址:" + wsUri);
