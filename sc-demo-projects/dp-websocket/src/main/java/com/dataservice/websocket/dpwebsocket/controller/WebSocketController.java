@@ -80,7 +80,6 @@ public class WebSocketController {
     @RequestMapping(value = "hlyInfo.do")
     @ResponseBody
     public  String getHlyInfo(@RequestParam("hlyId") String hlyId){
-        Map<String,Object> result=new HashMap<String,Object>();
         String sql="SELECT c.id,c.`name`,d.C_DESCRIBE nation,c.companycode,c.company from "
             +"(SELECT a.HLY_ID id,a.USER_XM name,a.USER_MZ nation,a.DW_CODE companycode,b.ZC_NAME company "
             + "FROM xh_hly_tb_zb a,xh_zc_tb b WHERE a.DW_CODE=b.DW_CODE AND a.HLY_ID="

@@ -1,4 +1,4 @@
-package com.dataservice.websocket.dpwebsocket.config;
+package com.dataservice.websocket.dpwebsocket.websocket;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
