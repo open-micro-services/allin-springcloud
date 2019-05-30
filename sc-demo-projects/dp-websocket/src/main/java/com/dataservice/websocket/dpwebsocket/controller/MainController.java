@@ -7,6 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 视图配置及服务器参数控制器
@@ -30,15 +31,33 @@ public class MainController {
         return "index";
     }
 
+    /**
+     * 获取主机和端口设置
+     * @param host
+     * @param port
+     * @return
+     */
+    private String getHostPort(String host,String port){
+        if(host==null||"".equals(host)){
+            host=serverIP();
+        }
+        if(port==null||"".equals(port)){
+            port=environmentPort2();
+        }
+        return host+":"+port;
+    }
+
     @RequestMapping("/websocket")
-    public String websocket(ModelMap map){
-        map.put("host_port",serverIP()+":"+environmentPort2());
+    public String websocket(ModelMap map, @RequestParam("host") String host, @RequestParam("port") String port){
+        String host_port=getHostPort(host,port);
+        map.put("host_port",host_port);
         return "websocket";
     }
 
     @RequestMapping("/push")
-    public String push(ModelMap map){
-        map.put("host_port",serverIP()+":"+environmentPort2());
+    public String push(ModelMap map, @RequestParam("host") String host, @RequestParam("port") String port){
+        String host_port=getHostPort(host,port);
+        map.put("host_port",host_port);
         return "push";
     }
 
