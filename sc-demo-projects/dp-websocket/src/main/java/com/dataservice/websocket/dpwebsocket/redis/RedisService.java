@@ -1,11 +1,14 @@
 package com.dataservice.websocket.dpwebsocket.redis;
 
+import com.dataservice.websocket.dpwebsocket.redis.mq.MQProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
@@ -36,7 +39,8 @@ public class RedisService {
     /**
      * 初始化redis队列对象
      */
-    public void initRedisMq(){
+    @PostConstruct
+    private void initRedisMQList(){
         if(redisList==null){
             redisList=redisTemplate.opsForList();
         }
@@ -157,13 +161,40 @@ public class RedisService {
     }
 
     /**
-     * 发布主题
+     * 发布主题消息
      * @param channel
      * @param message
      */
     public  void publish(String channel,String message) {
         try {
             redisTemplate.convertAndSend(channel,message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 发布队列消息
+     * @param message
+     */
+    public  void produce(String message) {
+        try {
+            // 将消息放入队列
+            MQProducer.produce(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 发布队列消息
+     * @param channel
+     * @param message
+     */
+    public  void produce(String channel,String message) {
+        try {
+            // 将消息放入队列
+            MQProducer.produce(channel,message);
         } catch (Exception e) {
             e.printStackTrace();
         }

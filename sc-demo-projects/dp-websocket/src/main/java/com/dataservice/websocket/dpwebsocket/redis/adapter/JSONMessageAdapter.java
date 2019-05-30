@@ -10,6 +10,6 @@ public class JSONMessageAdapter {
     private final static Logger logger = LoggerFactory.getLogger(JSONMessageAdapter.class);
 
     public void   handle(String message){
-        logger.info("StringMessageAdapter:handle(message)");
+        logger.info("JSONMessageAdapter:handle(message):"+message);
     }
 }

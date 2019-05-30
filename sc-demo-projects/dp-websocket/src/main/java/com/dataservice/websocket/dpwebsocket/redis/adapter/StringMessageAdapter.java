@@ -10,6 +10,6 @@ public class StringMessageAdapter {
     private final static Logger logger = LoggerFactory.getLogger(StringMessageAdapter.class);
 
     public void   handle(String message){
-       logger.info("StringMessageAdapter:handle(message)");
+        logger.info("StringMessageAdapter:handle(message):"+message);
     }
 }
