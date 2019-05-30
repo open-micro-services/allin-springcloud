@@ -29,7 +29,7 @@ product settings:
 java -jar dp-websocket-0.0.1-SNAPSHOT.jar  --spring.profiles.active=prod
 `
 
-and you can put more adtional parameters  like change the port with `--server.port=9999 `
+and you can put more additional parameters  like change the port with `--server.port=9999 `
 
 # Features
 
