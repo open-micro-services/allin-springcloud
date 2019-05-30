@@ -2,6 +2,33 @@
 
 SpringBoot+ Web + Freemarker+JDBC(Mysql)+ Redis+ WebSocket
 
+# Quick Statrt
+
+##  maven build and package
+
+`mvn clean package -DskipTests=true `
+
+## Run jar
+
+default settings:
+
+`
+java -jar dp-websocket-0.0.1-SNAPSHOT.jar  
+`
+
+development settings:
+
+
+`
+java -jar dp-websocket-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev
+`
+
+product settings:
+
+`
+java -jar dp-websocket-0.0.1-SNAPSHOT.jar  --spring.profiles.active=prod
+`
+
 # Features
 
 ## WebSocket communication
