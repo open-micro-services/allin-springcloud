@@ -4,11 +4,11 @@ SpringBoot+ Web + Freemarker+JDBC(Mysql)+ Redis+ WebSocket
 
 # Quick Statrt
 
-##  maven build and package
+## Maven build and package
 
 `mvn clean package -DskipTests=true `
 
-## Run jar
+## Run application jar
 
 default settings:
 
