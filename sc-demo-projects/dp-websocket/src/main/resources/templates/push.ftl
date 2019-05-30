@@ -6,7 +6,9 @@
 <script language="javascript" type="text/javascript">
     //https://www.tutorialspoint.com/websockets/websockets_send_receive_messages.htm
     var clientId = Utils.uuid.guid();
-    var wsUri = "ws://localhost:8090/websocket/" + clientId;
+
+    // Freemarker 传递主机地址和端口
+    var wsUri = "ws://${host_port}/websocket/" + clientId;
 
     console.info("WS服务请求地址:" + wsUri);
 
