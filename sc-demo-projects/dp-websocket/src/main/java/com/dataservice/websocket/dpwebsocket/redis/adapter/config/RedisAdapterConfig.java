@@ -6,6 +6,7 @@ import com.dataservice.websocket.dpwebsocket.redis.adapter.StringMessageAdapter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -19,9 +20,12 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  * Redis配置
  */
 @Configuration
-public class RedisConfig {
+public class RedisAdapterConfig {
 
-   /* @Bean
+    @Autowired
+    private JedisConnectionFactory jedisConnectionFactory;
+
+    @Bean
     public RedisTemplate<String,Object> redisTemplate(JedisConnectionFactory redisConnectionFactory){
 
         RedisTemplate<String,Object> redisTemplate = new RedisTemplate<String,Object>();
@@ -39,21 +43,20 @@ public class RedisConfig {
         redisTemplate.setHashKeySerializer(jackson2JsonRedisSerializer);
         redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.afterPropertiesSet();
-
         return redisTemplate;
     }
 
-    *//**
+    /**
      * redis消息监听器容器
      * 可以添加多个监听不同话题的redis监听器，只需要把消息监听器和相应的消息订阅处理器绑定，该消息监听器
      * 通过反射技术调用消息订阅处理器的相关方法进行一些业务处理
      * @param connectionFactory
      * @param listenerAdapter
      * @return
-     *//*
+     */
      //MessageListenerAdapter 表示监听频道的不同订阅者
     @Bean
-    RedisMessageListenerContainer container2(RedisConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter2, MessageListenerAdapter listenerAdapter){
+    RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter2, MessageListenerAdapter listenerAdapter){
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         //订阅多个频道
@@ -82,5 +85,5 @@ public class RedisConfig {
     MessageListenerAdapter listenerAdapter2(JSONMessageAdapter receiver){
         //这个地方 是给messageListenerAdapter 传入一个消息接受的处理器，利用反射的方法调用“JSONMessageAdapter ”
         return new MessageListenerAdapter(receiver,"handle");
-    }*/
+    }
 }

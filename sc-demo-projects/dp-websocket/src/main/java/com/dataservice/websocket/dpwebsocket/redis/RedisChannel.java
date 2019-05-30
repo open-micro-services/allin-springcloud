@@ -11,7 +11,11 @@ public enum RedisChannel {
     /**
      * 事件通道
      */
-    EVENT_CHANNEL("events_channel");
+    EVENT_CHANNEL("event_channel"),
+    /**
+     * 测试通道
+     */
+    TEST_CHANNEL("test_channel");
 
     RedisChannel(String value){
         this.value = value;

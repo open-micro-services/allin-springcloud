@@ -17,7 +17,16 @@ public class MQProducer {
      */
     public  static void produce(String message) {
         //从左边向堆栈顺序存放消息
-        RedisService.getRedisMQ().leftPush("mq", message);
+        RedisService.getRedisMQ().leftPush("", message);
+    }
+
+    /**
+     * 队列发送消息
+     * @param message
+     */
+    public  static void produce(String channel,String message) {
+        //从左边向堆栈顺序存放消息
+        RedisService.getRedisMQ().leftPush(channel, message);
     }
 
 }

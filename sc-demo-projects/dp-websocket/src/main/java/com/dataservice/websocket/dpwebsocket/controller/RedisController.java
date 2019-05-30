@@ -15,14 +15,14 @@ public class RedisController {
     @Autowired
     RedisService redisService;
 
-    @RequestMapping("/publish/userChannel/{message}")
+    @RequestMapping("/pubsub/userChannel/{message}")
     @ResponseBody
     public String publishUserMessage(@PathVariable("message") String message){
         redisService.publish(RedisChannel.USER_CHANNEL.getValue(),message);
         return "success";
     }
 
-    @RequestMapping("/publish/eventChannel/{message}")
+    @RequestMapping("/pubsub/eventChannel/{message}")
     @ResponseBody
     public String publishEventMessage(@PathVariable("message") String message){
         redisService.publish(RedisChannel.EVENT_CHANNEL.getValue(),message);
@@ -37,6 +37,16 @@ public class RedisController {
         redisService.initRedisMq();
         // 将消息放入队列
         MQProducer.produce(message);
+        return "success";
+    }
+
+    @RequestMapping("/redismq/publish/channel/{message}")
+    @ResponseBody
+    public String publishMQWithChannelMessage(@PathVariable("message") String message){
+        // 未初始化初始化队列
+        redisService.initRedisMq();
+        // 将消息放入队列
+        MQProducer.produce(RedisChannel.TEST_CHANNEL.getValue(),message);
         return "success";
     }
 }
