@@ -12,7 +12,7 @@ import java.util.List;
  * @ClassName: Tools
  * @Description: TODO(功能描述)
  * @author: pengjunlin
- * @company: 上海势航网络科技有限公司
+ * @motto: 学习需要毅力，那就秀毅力
  * @date 2018-12-14
  */
 public class Tools {
