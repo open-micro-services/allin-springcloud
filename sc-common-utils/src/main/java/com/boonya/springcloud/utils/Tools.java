@@ -3,6 +3,7 @@ package com.boonya.springcloud.utils;
 import net.sf.json.JSONArray;
 import org.codehaus.jackson.map.ObjectMapper;
 import com.alibaba.fastjson.JSON;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -81,7 +82,6 @@ public class Tools {
             return null;
         }
     }
-
 
 
 }

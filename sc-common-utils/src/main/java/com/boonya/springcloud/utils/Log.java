@@ -2,6 +2,7 @@ package com.boonya.springcloud.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * @ClassName: Log
  * @Description: TODO(Logback日志)
@@ -13,10 +14,11 @@ public class Log {
 
     /**
      * 获取日志对象
+     *
      * @param clazz
      * @return
      */
-    public Logger getLogger(Class clazz){
+    public Logger getLogger(Class clazz) {
         return LoggerFactory.getLogger(clazz);
     }
 }

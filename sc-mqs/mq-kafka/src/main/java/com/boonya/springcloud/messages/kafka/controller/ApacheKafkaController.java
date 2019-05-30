@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -24,8 +25,8 @@ public class ApacheKafkaController {
     Producer producer;
 
     @RequestMapping("/send/{msg}")
-    public String sendMsg(@PathVariable("msg") String msg){
-        Message message = new Message(UUID.randomUUID().toString(),msg,new Date());
+    public String sendMsg(@PathVariable("msg") String msg) {
+        Message message = new Message(UUID.randomUUID().toString(), msg, new Date());
         producer.sendMessage(message);
         return "send message success!";
     }

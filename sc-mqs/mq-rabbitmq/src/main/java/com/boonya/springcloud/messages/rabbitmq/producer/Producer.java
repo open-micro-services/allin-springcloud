@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Producer {
 
-    private  final Logger logger = LoggerFactory.getLogger(Producer.class);
+    private final Logger logger = LoggerFactory.getLogger(Producer.class);
 
     @Autowired
     private AmqpTemplate rabbitTemplate;
@@ -33,7 +33,7 @@ public class Producer {
         rabbitTemplate.convertSendAndReceive("topicExchange", "key.order", msg);
         System.out.println("结束发送消息 : " + msg);
         System.out.println("消费者响应 : 消息处理完成");
-        logger.info("sendPayMessage exception:{}",msg);
+        logger.info("sendPayMessage exception:{}", msg);
     }
 
     public void sendPayMessage(String msg) {
@@ -48,7 +48,7 @@ public class Producer {
         rabbitTemplate.convertSendAndReceive("topicExchange", "key.pay", msg);
         System.out.println("结束发送消息 : " + msg);
         System.out.println("消费者响应 :消息处理完成");
-        logger.info("sendPayMessage exception:{}",msg);
+        logger.info("sendPayMessage exception:{}", msg);
     }
 
 }

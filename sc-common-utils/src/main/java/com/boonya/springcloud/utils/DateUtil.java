@@ -1,6 +1,7 @@
 package com.boonya.springcloud.utils;
 
 import org.springframework.util.Assert;
+
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -29,10 +30,10 @@ public class DateUtil {
     /**
      * 转换时间 格式： yyyy-MM-dd HH:mm:ss
      *
-     * @MethodName: getDateFormat
-     * @Description:
      * @param date
      * @return
+     * @MethodName: getDateFormat
+     * @Description:
      */
 
     public static String getDateFormat(Date date) {
@@ -46,10 +47,10 @@ public class DateUtil {
     /**
      * 转换日期 格式： yyyy-MM-dd
      *
-     * @MethodName: getDateFormat
-     * @Description:
      * @param date
      * @return
+     * @MethodName: getDateFormat
+     * @Description:
      */
     public static String getDateTooFormat(Date date) {
         Assert.notNull(date, "日期不能为空");
@@ -62,17 +63,17 @@ public class DateUtil {
     /**
      * timestamp格式化时间串
      *
-     * @MethodName: timestamp2String
-     * @Description:
      * @param timestamp
      * @param pattern
      * @return
      * @throws
+     * @MethodName: timestamp2String
+     * @Description:
      */
     public static String timestamp2String(Timestamp timestamp, String pattern) {
         if (timestamp == null) {
             throw new java.lang.IllegalArgumentException(
-                    "timestamp null illegal");
+                "timestamp null illegal");
         }
         if (pattern == null || pattern.equals("")) {
             pattern = PATTERN_STANDARD;
@@ -84,17 +85,17 @@ public class DateUtil {
     /**
      * 时间类型转字符串类型
      *
-     * @MethodName: date2String
-     * @Description:
      * @param date
      * @param pattern
      * @return
      * @throws
+     * @MethodName: date2String
+     * @Description:
      */
     public static String date2String(java.util.Date date, String pattern) {
         if (date == null) {
             throw new java.lang.IllegalArgumentException(
-                    "timestamp null illegal");
+                "timestamp null illegal");
         }
         if (pattern == null || pattern.equals("")) {
             pattern = PATTERN_STANDARD;
@@ -106,11 +107,11 @@ public class DateUtil {
     /**
      * Date tostring方法
      *
-     * @MethodName: date2String
-     * @Description:
      * @param date
      * @return
      * @throws
+     * @MethodName: date2String
+     * @Description:
      */
     public static String date2String(java.util.Date date) {
         return date2String(date, null);
@@ -119,10 +120,10 @@ public class DateUtil {
     /**
      * 获取当前时间的Timestamp
      *
-     * @MethodName: currentTimestamp
-     * @Description:
      * @return
      * @throws
+     * @MethodName: currentTimestamp
+     * @Description:
      */
     public static Timestamp currentTimestamp() {
         return new Timestamp(new Date().getTime());
@@ -131,11 +132,11 @@ public class DateUtil {
     /**
      * 获取当前时间的Timestamp转为字符串格式
      *
-     * @MethodName: currentTimestamp2String
-     * @Description:
      * @param pattern
      * @return
      * @throws
+     * @MethodName: currentTimestamp2String
+     * @Description:
      */
     public static String currentTimestamp2String(String pattern) {
         return timestamp2String(currentTimestamp(), pattern);
@@ -144,17 +145,17 @@ public class DateUtil {
     /**
      * 字符串类型转Timestamp
      *
-     * @MethodName: string2Timestamp
-     * @Description:
      * @param strDateTime
      * @param pattern
      * @return
      * @throws
+     * @MethodName: string2Timestamp
+     * @Description:
      */
     public static Timestamp string2Timestamp(String strDateTime, String pattern) {
         if (strDateTime == null || strDateTime.equals("")) {
             throw new java.lang.IllegalArgumentException(
-                    "Date Time Null Illegal");
+                "Date Time Null Illegal");
         }
         if (pattern == null || pattern.equals("")) {
             pattern = PATTERN_STANDARD;
@@ -173,12 +174,12 @@ public class DateUtil {
     /**
      * 字符串类型转Date
      *
-     * @MethodName: string2Date
-     * @Description:
      * @param strDate
      * @param pattern
      * @return
      * @throws
+     * @MethodName: string2Date
+     * @Description:
      */
     public static Date string2Date(String strDate, String pattern) {
         if (strDate == null || strDate.equals("")) {
@@ -201,11 +202,11 @@ public class DateUtil {
     /**
      * 获取字符串时间中的年
      *
-     * @MethodName: stringToYear
-     * @Description:
      * @param strDest
      * @return
      * @throws
+     * @MethodName: stringToYear
+     * @Description:
      */
     public static String stringToYear(String strDest) {
         if (strDest == null || strDest.equals("")) {
@@ -221,11 +222,11 @@ public class DateUtil {
     /**
      * 获取字符串时间中的月
      *
-     * @MethodName: stringToMonth
-     * @Description:
      * @param strDest
      * @return
      * @throws
+     * @MethodName: stringToMonth
+     * @Description:
      */
     public static String stringToMonth(String strDest) {
         if (strDest == null || strDest.equals("")) {
@@ -246,11 +247,11 @@ public class DateUtil {
     /**
      * 获取字符串时间中的日
      *
-     * @MethodName: stringToDay
-     * @Description:
      * @param strDest
      * @return
      * @throws
+     * @MethodName: stringToDay
+     * @Description:
      */
     public static String stringToDay(String strDest) {
         if (strDest == null || strDest.equals("")) {
@@ -271,11 +272,11 @@ public class DateUtil {
     /**
      * 获取日历中当前年月的第一天
      *
-     * @MethodName: getFirstDayOfMonth
-     * @Description:
      * @param c
      * @return
      * @throws
+     * @MethodName: getFirstDayOfMonth
+     * @Description:
      */
     public static Date getFirstDayOfMonth(Calendar c) {
         int year = c.get(Calendar.YEAR);
@@ -288,11 +289,11 @@ public class DateUtil {
     /**
      * 获取日历中当前年月的最后一天
      *
-     * @MethodName: getLastDayOfMonth
-     * @Description:
      * @param c
      * @return
      * @throws
+     * @MethodName: getLastDayOfMonth
+     * @Description:
      */
     public static Date getLastDayOfMonth(Calendar c) {
         int year = c.get(Calendar.YEAR);
@@ -309,11 +310,11 @@ public class DateUtil {
     /**
      * Date转XMLGregorianCalendar字符串
      *
-     * @MethodName: date2GregorianCalendarString
-     * @Description:
      * @param date
      * @return
      * @throws
+     * @MethodName: date2GregorianCalendarString
+     * @Description:
      */
     public static String date2GregorianCalendarString(Date date) {
         if (date == null) {
@@ -324,7 +325,7 @@ public class DateUtil {
         ca.setTimeInMillis(tmp);
         try {
             XMLGregorianCalendar t_XMLGregorianCalendar = DatatypeFactory
-                    .newInstance().newXMLGregorianCalendar(ca);
+                .newInstance().newXMLGregorianCalendar(ca);
             return t_XMLGregorianCalendar.normalize().toString();
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
@@ -336,12 +337,12 @@ public class DateUtil {
     /**
      * 比较两个时间的日期是否相等
      *
-     * @MethodName: compareDate
-     * @Description:
      * @param firstDate
      * @param secondDate
      * @return
      * @throws
+     * @MethodName: compareDate
+     * @Description:
      */
     public static boolean compareDate(Date firstDate, Date secondDate) {
         if (firstDate == null || secondDate == null) {
@@ -359,42 +360,42 @@ public class DateUtil {
     /**
      * 获取日期Date的每日开始时间（00:00:00）
      *
-     * @MethodName: getStartTimeOfDate
-     * @Description:
      * @param currentDate
      * @return
      * @throws
+     * @MethodName: getStartTimeOfDate
+     * @Description:
      */
     public static Date getStartTimeOfDate(Date currentDate) {
         Assert.notNull(currentDate);
         String strDateTime = date2String(currentDate, "yyyy-MM-dd")
-                + " 00:00:00";
+            + " 00:00:00";
         return string2Date(strDateTime, "yyyy-MM-dd HH:mm:ss");
     }
 
     /**
      * 获取日期Date的每日结束时间（ 59:59:59）
      *
-     * @MethodName: getEndTimeOfDate
-     * @Description:
      * @param currentDate
      * @return
      * @throws
+     * @MethodName: getEndTimeOfDate
+     * @Description:
      */
     public static Date getEndTimeOfDate(Date currentDate) {
         Assert.notNull(currentDate);
         String strDateTime = date2String(currentDate, "yyyy-MM-dd")
-                + " 59:59:59";
+            + " 59:59:59";
         return string2Date(strDateTime, "yyyy-MM-dd HH:mm:ss");
     }
 
     /**
      * 得到今日的起始时间
      *
-     * @MethodName: getTodayStartEnd
-     * @Description:
      * @return
      * @throws
+     * @MethodName: getTodayStartEnd
+     * @Description:
      */
     public static String[] getTodayStartEnd() {
         Calendar todayStart = Calendar.getInstance();
@@ -403,19 +404,19 @@ public class DateUtil {
         todayStart.set(Calendar.SECOND, 0);
         Calendar todayEnd = Calendar.getInstance();
         String _todayStart = DateUtil.date2String(todayStart.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
+            "yyyy-MM-dd HH:mm:ss");
         String _todayEnd = DateUtil.date2String(todayEnd.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
-        return new String[] { _todayStart, _todayEnd };
+            "yyyy-MM-dd HH:mm:ss");
+        return new String[]{_todayStart, _todayEnd};
     }
 
     /**
      * 得到昨日的起始时间
      *
-     * @MethodName: getYesterdayStartEnd
-     * @Description:
      * @return
      * @throws
+     * @MethodName: getYesterdayStartEnd
+     * @Description:
      */
     public static String[] getYesterdayStartEnd() {
         Calendar yesterdayStart = Calendar.getInstance();
@@ -431,19 +432,19 @@ public class DateUtil {
         yesterdayEnd.set(Calendar.SECOND, 59);
 
         String _todayStart = DateUtil.date2String(yesterdayStart.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
+            "yyyy-MM-dd HH:mm:ss");
         String _todayEnd = DateUtil.date2String(yesterdayEnd.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
-        return new String[] { _todayStart, _todayEnd };
+            "yyyy-MM-dd HH:mm:ss");
+        return new String[]{_todayStart, _todayEnd};
     }
 
     /**
      * 得到本周的起始时间(上周六到本周六)
      *
-     * @MethodName: getCurrWeekStartEnd
-     * @Description:
      * @return
      * @throws
+     * @MethodName: getCurrWeekStartEnd
+     * @Description:
      */
     public static String[] getCurrWeekStartEnd() {
         Calendar currWeekStart = Calendar.getInstance();
@@ -460,19 +461,19 @@ public class DateUtil {
         currWeekEnd.set(Calendar.SECOND, 59);
 
         String _currWeekStart = DateUtil.date2String(currWeekStart.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
+            "yyyy-MM-dd HH:mm:ss");
         String _currWeekEnd = DateUtil.date2String(currWeekEnd.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
-        return new String[] { _currWeekStart, _currWeekEnd };
+            "yyyy-MM-dd HH:mm:ss");
+        return new String[]{_currWeekStart, _currWeekEnd};
     }
 
     /**
      * 得到上周的起始时间(上上周六到上周六)
      *
-     * @MethodName: getLastWeekStartEnd
-     * @Description:
      * @return
      * @throws
+     * @MethodName: getLastWeekStartEnd
+     * @Description:
      */
     public static String[] getLastWeekStartEnd() {
         Calendar lastWeekStart = Calendar.getInstance();
@@ -490,19 +491,19 @@ public class DateUtil {
         lastWeekEnd.set(Calendar.SECOND, 59);
 
         String _lastWeekStart = DateUtil.date2String(lastWeekStart.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
+            "yyyy-MM-dd HH:mm:ss");
         String _lastWeekEnd = DateUtil.date2String(lastWeekEnd.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
-        return new String[] { _lastWeekStart, _lastWeekEnd };
+            "yyyy-MM-dd HH:mm:ss");
+        return new String[]{_lastWeekStart, _lastWeekEnd};
     }
 
     /**
      * 得到本月的起始时间(当月1号到本月最后一天)
      *
-     * @MethodName: getCurrMonthStartEnd
-     * @Description:
      * @return
      * @throws
+     * @MethodName: getCurrMonthStartEnd
+     * @Description:
      */
     public static String[] getCurrMonthStartEnd() {
         Calendar currMonthStart = Calendar.getInstance();
@@ -519,24 +520,24 @@ public class DateUtil {
         currMonthEnd.set(Calendar.SECOND, 59);
 
         String _currMonthStart = DateUtil.date2String(currMonthStart.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
+            "yyyy-MM-dd HH:mm:ss");
         String _currMonthEnd = DateUtil.date2String(currMonthEnd.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
-        return new String[] { _currMonthStart, _currMonthEnd };
+            "yyyy-MM-dd HH:mm:ss");
+        return new String[]{_currMonthStart, _currMonthEnd};
     }
 
     /**
      * 得到上月的起始时间(上月1号到上月最后一天)
      *
-     * @MethodName: getLastMonthStartEnd
-     * @Description:
      * @return
      * @throws
+     * @MethodName: getLastMonthStartEnd
+     * @Description:
      */
     public static String[] getLastMonthStartEnd() {
         Calendar lastMonthStart = Calendar.getInstance();
         lastMonthStart.set(Calendar.MONTH,
-                lastMonthStart.get(Calendar.MONTH) - 1);
+            lastMonthStart.get(Calendar.MONTH) - 1);
         lastMonthStart.set(Calendar.DATE, 1);
         lastMonthStart.set(Calendar.HOUR_OF_DAY, 0);
         lastMonthStart.set(Calendar.MINUTE, 0);
@@ -551,20 +552,20 @@ public class DateUtil {
         lastMonthEnd.set(Calendar.SECOND, 59);
 
         String _lastMonthStart = DateUtil.date2String(lastMonthStart.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
+            "yyyy-MM-dd HH:mm:ss");
         String _lastMonthEnd = DateUtil.date2String(lastMonthEnd.getTime(),
-                "yyyy-MM-dd HH:mm:ss");
-        return new String[] { _lastMonthStart, _lastMonthEnd };
+            "yyyy-MM-dd HH:mm:ss");
+        return new String[]{_lastMonthStart, _lastMonthEnd};
     }
 
     /**
      * 获取几天之后的日期字符串 ：yyyy-MM-dd
      *
-     * @MethodName: getDateAfterSomeDays
-     * @Description:
      * @param days
      * @return
      * @throws
+     * @MethodName: getDateAfterSomeDays
+     * @Description:
      */
     public static String getDateAfterSomeDays(int days) {
         GregorianCalendar worldTour = new GregorianCalendar();

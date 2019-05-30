@@ -10,8 +10,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Date;
 import java.util.UUID;
+
 /**
  * @ClassName: MessageController
  * @Description: TODO(Redis消息存储接口)
@@ -52,18 +54,18 @@ public class RedisController {
 //    }
 
     @RequestMapping("/cluster/{title}/{content}/{from}/{to}")
-    public Message storeMessageByCluster(@PathVariable("title") String title,@PathVariable("content") String content,@PathVariable("from") String from,@PathVariable("to") String to){
-        RedisUtil util=cluster.redisUtil(redisTemplate);
-        String key=UUID.randomUUID().toString();
-        Message message=new Message(key,title, content, "cluster", from, to,new Date());
-        util.set(key,message,6000);
+    public Message storeMessageByCluster(@PathVariable("title") String title, @PathVariable("content") String content, @PathVariable("from") String from, @PathVariable("to") String to) {
+        RedisUtil util = cluster.redisUtil(redisTemplate);
+        String key = UUID.randomUUID().toString();
+        Message message = new Message(key, title, content, "cluster", from, to, new Date());
+        util.set(key, message, 6000);
         return message;
     }
 
     @RequestMapping("/cluster/{key}")
-    public Message storeMessageByCluster(@PathVariable("key") String key){
-        RedisUtil util=cluster.redisUtil(redisTemplate);
-        Message message= (Message) util.get(key);
+    public Message storeMessageByCluster(@PathVariable("key") String key) {
+        RedisUtil util = cluster.redisUtil(redisTemplate);
+        Message message = (Message) util.get(key);
         return message;
     }
 

@@ -506,6 +506,27 @@ public class RedisNodeManagerUtil {
         return null;
     }
 
+    /**
+     * 发布主题方法
+     *
+     * @param channel
+     * @param message
+     * @return
+     */
+    public static Long publish(String node, String channel, String message) {
+        Jedis jedis = null;
+        try {
+            jedis = RedisNodeManger.getJedis(node);
+            return jedis.publish(channel,message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (null != jedis)
+                jedis.close();
+        }
+        return null;
+    }
+
     @SuppressWarnings("unused")
     public static void main(String[] args) {
         String node = "";

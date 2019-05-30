@@ -21,13 +21,13 @@ public class Consumer {
     private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     @JmsListener(destination = "serviceQueue")
-    public void receiveMessage(String text){
-        System.out.println("Listener....receive serviceQueue msg....."+text);
+    public void receiveMessage(String text) {
+        System.out.println("Listener....receive serviceQueue msg....." + text);
     }
 
     @JmsListener(destination = "serviceTopic")
-    public void receiveTopicMessage(String text){
-        System.out.println("Listener....receive serviceTopic msg....."+text);
+    public void receiveTopicMessage(String text) {
+        System.out.println("Listener....receive serviceTopic msg....." + text);
     }
 
 }

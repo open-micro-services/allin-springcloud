@@ -18,15 +18,15 @@ import java.util.Optional;
 @Component
 public class Consumer {
 
-    private  final Logger logger = LoggerFactory.getLogger(Consumer.class);
+    private final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     @KafkaListener(topics = {"serviceTopic"})
-    public void receive(ConsumerRecord<?,?> record){
+    public void receive(ConsumerRecord<?, ?> record) {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
-        if (kafkaMessage.isPresent()){
+        if (kafkaMessage.isPresent()) {
             Object message = kafkaMessage.get();
-            logger.info("===========record:{}",record);
-            logger.info("===========message:{}",message);
+            logger.info("===========record:{}", record);
+            logger.info("===========message:{}", message);
         }
     }
 }

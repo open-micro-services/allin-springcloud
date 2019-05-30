@@ -1,6 +1,7 @@
 package com.boonya.springcloud.cache.redis.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import java.util.Date;
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2018-12-28 17:57
  */
-public class Message implements Serializable{
+public class Message implements Serializable {
 
     private String id;
 
@@ -25,7 +26,7 @@ public class Message implements Serializable{
 
     private String to;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date date;
 
     public Message() {

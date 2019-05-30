@@ -480,6 +480,27 @@ public class RedisUtil {
         return null;
     }
 
+    /**
+     * 发布主题方法
+     *
+     * @param channel
+     * @param message
+     * @return
+     */
+    public static Long publish(String channel, String message) {
+        Jedis jedis = null;
+        try {
+            jedis = RedisPool.getJedis();
+            return jedis.publish(channel,message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (null != jedis)
+                jedis.close();
+        }
+        return null;
+    }
+
     @SuppressWarnings("unused")
     public static void main(String[] args) {
         final Jedis jedis = RedisUtil.getJedisFromPool();

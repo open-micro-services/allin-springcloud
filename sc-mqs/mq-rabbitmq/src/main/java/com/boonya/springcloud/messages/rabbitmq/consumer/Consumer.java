@@ -16,17 +16,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class Consumer {
 
-    private  final Logger logger = LoggerFactory.getLogger(Consumer.class);
+    private final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     @RabbitListener(queues = {"order.queue"})
     public void receiveOrderMessage(String msg) {
         System.out.println("received order msg: " + msg);
-        logger.info("order msg:{}",msg);
+        logger.info("order msg:{}", msg);
     }
 
     @RabbitListener(queues = {"pay.queue"})
     public void receivePayMessage(String msg) {
         System.out.println("received pay msg: " + msg);
-        logger.info("pay msg:{}",msg);
+        logger.info("pay msg:{}", msg);
     }
 }

@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MqKafkaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MqKafkaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MqKafkaApplication.class, args);
+    }
 
 }
 

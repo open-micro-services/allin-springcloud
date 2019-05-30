@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
  * @date 2018-12-14
  */
 @Service
-public class EsUserServiceImpl implements EsUserService{
+public class EsUserServiceImpl implements EsUserService {
 
     @Autowired
     EsUserMapper esUserMapper;
 
     @Override
     public EsUser findById(Integer id) {
-       return  esUserMapper.selectByPrimaryKey(id) ;
+        return esUserMapper.selectByPrimaryKey(id);
     }
 }

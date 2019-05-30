@@ -24,7 +24,7 @@ public class EsUserController {
     Logger logger = LoggerFactory.getLogger(EsUserController.class);
 
     @Autowired
-    EsUserService  esUserService;
+    EsUserService esUserService;
 
     @Autowired
     private Registration registration; // 服务注册
@@ -34,11 +34,11 @@ public class EsUserController {
         String serviceId = registration.getServiceId();
         //打印服务的服务id
         logger.info("*********" + serviceId);
-        return "user-service:"+serviceId;
+        return "user-service:" + serviceId;
     }
 
     @RequestMapping("/{id}")
-    public EsUser findById(@PathVariable("id") Integer id){
+    public EsUser findById(@PathVariable("id") Integer id) {
         return esUserService.findById(id);
     }
 

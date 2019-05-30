@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -21,16 +22,16 @@ import java.util.UUID;
 @Component
 public class Producer {
 
-    private  final Logger logger = LoggerFactory.getLogger(Consumer.class);
+    private final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     @Autowired
-    private KafkaTemplate<String,String> kafkaTemplate;
+    private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(Message message){
-        String msg=Tools.toJson(message);
+    public void sendMessage(Message message) {
+        String msg = Tools.toJson(message);
         //Message message = new Message(UUID.randomUUID().toString(),"",new Date());
         logger.info("message:{}", msg);
-        kafkaTemplate.send("serviceTopic",msg);
+        kafkaTemplate.send("serviceTopic", msg);
     }
 
 }

@@ -7,6 +7,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
+
 /**
  * @EnableDiscoveryClient Eureka服务注册和发现
  */
@@ -21,7 +22,7 @@ public class UserServiceCustomerApplication {
         return new RestTemplate();
     }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         SpringApplication.run(UserServiceCustomerApplication.class, args);
     }
 

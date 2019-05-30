@@ -3,6 +3,7 @@ package com.boonya.springcloud.beans.base;
 import com.boonya.springcloud.beans.permission.entity.EsUser;
 import com.boonya.springcloud.utils.DateUtil;
 import com.boonya.springcloud.utils.Tools;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,7 +14,7 @@ import java.util.Date;
  * @company: 上海势航网络科技有限公司
  * @date 2018-12-14
  */
-public class BaseBean  implements Serializable {
+public class BaseBean implements Serializable {
     /**
      *
      */
@@ -102,7 +103,7 @@ public class BaseBean  implements Serializable {
         }
         if (createDate.endsWith(".0")) {
             return Tools.isEmpty(createDate) ? "" : createDate.substring(0,
-                    createDate.length() - 2);
+                createDate.length() - 2);
         }
         return createDate;
     }
@@ -117,7 +118,7 @@ public class BaseBean  implements Serializable {
         }
         if (updateDate.endsWith(".0")) {
             return Tools.isEmpty(updateDate) ? "" : updateDate.substring(0,
-                    updateDate.length() - 2);
+                updateDate.length() - 2);
         }
         return updateDate;
     }

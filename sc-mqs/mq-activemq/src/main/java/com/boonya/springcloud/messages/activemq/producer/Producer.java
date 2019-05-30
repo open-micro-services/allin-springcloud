@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Component;
+
 import javax.jms.Destination;
 
 /**
@@ -22,7 +23,7 @@ public class Producer {
     @Autowired
     private JmsMessagingTemplate messagingTemplate;
 
-    public void sendMessage(Destination destination, String text){
-        messagingTemplate.convertAndSend(destination,text);
+    public void sendMessage(Destination destination, String text) {
+        messagingTemplate.convertAndSend(destination, text);
     }
 }

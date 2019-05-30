@@ -29,20 +29,22 @@ public class EsUserController {
 
     /**
      * 微服务消费者调用微服务提供者
+     *
      * @return
      */
     @RequestMapping("/info")
     public String info() {
-        return restTemplate.getForObject("http://localhost:9090/user/info",String.class);
+        return restTemplate.getForObject("http://localhost:9090/user/info", String.class);
     }
 
     /**
      * 微服务消费者调用微服务提供者
+     *
      * @return
      */
     @RequestMapping("/{id}")
-    public EsUser findById(@PathVariable("id") Integer id){
-        return restTemplate.getForObject("http://localhost:9090/user/"+id,EsUser.class);
+    public EsUser findById(@PathVariable("id") Integer id) {
+        return restTemplate.getForObject("http://localhost:9090/user/" + id, EsUser.class);
     }
 
 

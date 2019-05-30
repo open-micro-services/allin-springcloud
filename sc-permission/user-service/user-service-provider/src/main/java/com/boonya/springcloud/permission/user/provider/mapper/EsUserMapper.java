@@ -6,7 +6,7 @@ import com.boonya.springcloud.beans.permission.entity.EsUser;
 import org.springframework.stereotype.Repository;
 
 @Repository("esUserMapper")
-public interface EsUserMapper extends BaseMapper<EsUser,Integer> {
+public interface EsUserMapper extends BaseMapper<EsUser, Integer> {
 
     Integer deleteByPrimaryKey(Integer esId);
 

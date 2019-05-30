@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.jms.Destination;
 
 /**
@@ -28,19 +29,19 @@ public class ActiveMQController {
     private Producer producer;
 
     @RequestMapping("/queue/{msg}")
-    public String sendQueueMsg(@PathVariable("msg") String msg){
-        Destination destination=new ActiveMQQueue("serviceQueue");
-        for (int i=0;i<6;i++){
-            producer.sendMessage(destination,msg);
+    public String sendQueueMsg(@PathVariable("msg") String msg) {
+        Destination destination = new ActiveMQQueue("serviceQueue");
+        for (int i = 0; i < 6; i++) {
+            producer.sendMessage(destination, msg);
         }
         return "send message to queue success!";
     }
 
     @RequestMapping("/topic/{msg}")
-    public String sendTopicMsg(@PathVariable("msg") String msg){
-        Destination destination=new ActiveMQTopic("serviceTopic");
-        for (int i=0;i<6;i++){
-            producer.sendMessage(destination,msg);
+    public String sendTopicMsg(@PathVariable("msg") String msg) {
+        Destination destination = new ActiveMQTopic("serviceTopic");
+        for (int i = 0; i < 6; i++) {
+            producer.sendMessage(destination, msg);
         }
         return "send topic success!";
     }

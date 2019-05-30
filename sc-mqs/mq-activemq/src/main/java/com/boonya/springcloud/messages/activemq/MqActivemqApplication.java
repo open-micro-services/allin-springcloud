@@ -16,8 +16,8 @@ import javax.jms.ConnectionFactory;
 public class MqActivemqApplication {
 
     public static void main(String[] args) {
-		SpringApplication.run(MqActivemqApplication.class, args);
-	}
+        SpringApplication.run(MqActivemqApplication.class, args);
+    }
 
 }
 
