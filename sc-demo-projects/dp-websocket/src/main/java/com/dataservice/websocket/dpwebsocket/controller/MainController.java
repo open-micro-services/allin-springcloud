@@ -48,14 +48,14 @@ public class MainController {
     }
 
     @RequestMapping("/websocket")
-    public String websocket(ModelMap map, @RequestParam("host") String host, @RequestParam("port") String port){
+    public String websocket(ModelMap map, /*@RequestParam("host")*/ String host,/* @RequestParam("port")*/ String port){
         String host_port=getHostPort(host,port);
         map.put("host_port",host_port);
         return "websocket";
     }
 
     @RequestMapping("/push")
-    public String push(ModelMap map, @RequestParam("host") String host, @RequestParam("port") String port){
+    public String push(ModelMap map, /*@RequestParam("host")*/ String host, /*@RequestParam("port")*/ String port){
         String host_port=getHostPort(host,port);
         map.put("host_port",host_port);
         return "push";
