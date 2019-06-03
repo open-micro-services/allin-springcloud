@@ -2,6 +2,7 @@ package com.boonya.springboot.redis.sbredis.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 public class PropertiesUtil {
@@ -15,7 +16,7 @@ public class PropertiesUtil {
         Properties p = new Properties();
         try {
 //			is = new FileInputStream(new File(path));
-            p.load(is);
+            p.load(new InputStreamReader(is,"UTF-8"));
             config = p.getProperty(key);
         } catch (IOException e) {
             e.printStackTrace();
