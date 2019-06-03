@@ -1,5 +1,6 @@
 package com.dataservice.websocket.dpwebsocket.websocket;
 
+import com.dataservice.websocket.dpwebsocket.redis.RedisService;
 import com.dataservice.websocket.dpwebsocket.util.JSONUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ServerEndpoint("/websocket/{uuid}")
 @Component
 public class WebSocketServer {
+
+    /**
+     * Spring只注入一次，所以建立连接的地方不会再次注入此对象
+     */
+    private static RedisService redisService;
+
+    @Autowired
+    public  void setRedisService(RedisService redisService) {
+        WebSocketServer.redisService = redisService;
+    }
 
     private final static Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
@@ -86,6 +97,13 @@ public class WebSocketServer {
         }
 
         try {
+            if(redisService==null){
+                logger.error("redisService注入失败!");
+                throw new  Exception("redisService注入失败,Spring默认管理的对象都是单例模式,请将要注入的属性设为static");
+            }else{
+                logger.info("redisService注入成功!");
+            }
+
             //解析参数服务类型
             String service= (String) param.get("service");
             if(WebSocketEnum.STATISTICS_USER.getValue().equals(service)){
