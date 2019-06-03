@@ -72,6 +72,11 @@ public class RedisController {
         return "success";
     }
 
+    /**
+     * Redis事务操作
+     * @param value
+     * @return
+     */
     @RequestMapping("/redis/transaction/userCount")
     @ResponseBody
     public String redisTransaction(int value){
@@ -87,7 +92,13 @@ public class RedisController {
             redisTemplate.opsForSet().add(key,value);
             // 执行事务处理
             redisTemplate.exec();
+            // 事务成功取消监视
+            redisTemplate.unwatch();
         }catch(Exception e){
+            // 事务回滚
+            redisTemplate.discard();
+            // 解除监视
+            redisTemplate.unwatch();
             e.printStackTrace();
             return "failed";
         }
