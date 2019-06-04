@@ -2,7 +2,7 @@
 
 SpringBoot+ Web + security(OAth2)+ Thymeleaf+JDBC(Mysql)+ Redis+ RabbitMQ
 
-# Quick Statrt
+# Quick Start
 
 ## Maven build and package
 
