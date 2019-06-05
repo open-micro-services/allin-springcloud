@@ -2,7 +2,7 @@
 
 SpringBoot+ Web + Freemarker+JDBC(Mysql)+ Redis+ WebSocket
 
-# Quick Statrt
+# Quick Start
 
 ## Maven build and package
 
