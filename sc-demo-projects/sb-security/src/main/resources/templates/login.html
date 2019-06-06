@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>登录页面</title>
+<body>
+<form th:action="@{login}" method="post" id="loginForm">
+    <span th:if="${param.error}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+    用户名：<input type="text" name="username" class="username" id="username" placeholder="用户名" autocomplete="off"/> <br>
+    密　码：<input type="password" name="password" class="password" id="password" placeholder="密码"
+               oncontextmenu="return false"
+               onpaste="return false"/> <br>
+    <input type="checkbox" name="remember-me"/>记住我 <br>
+    <input id="submit" type="submit" value="登录"/>
+</form>
+</body>
+</html>

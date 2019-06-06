@@ -11,6 +11,18 @@ import java.util.Map;
 public class DataServiceController {
 
     /**
+     * 获取单位人员树(是否根据权限过滤)
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/getTree.do")
+    @ResponseBody
+    public Map<String,Object> getTree(HttpServletRequest request, HttpServletResponse response){
+        return null;
+    }
+
+    /**
      * 获取轨迹里程统计
      * @param request
      * @param response

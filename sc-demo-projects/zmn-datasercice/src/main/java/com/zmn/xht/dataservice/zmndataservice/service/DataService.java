@@ -6,11 +6,25 @@ import java.util.Date;
  */
 public interface DataService {
     /**
-     * 根据单位编号获取内设机构树
+     * 根据单位编号获取单位内设机构人员树
      * @param dwCode
      * @return
      */
     String getNSJGTreeByDwCode(String dwCode);
+
+    /**
+     * 根据单位编号获取内设机构
+     * @param dwCode
+     * @return
+     */
+    String getNSJGByDwCode(String dwCode);
+
+    /**
+     * 根据单位编号获护林员
+     * @param dwCode
+     * @return
+     */
+    String getHlyByDwCode(String dwCode);
 
     /**
      * 根据单位编码和时间获取护林员轨迹统计数据

@@ -1,5 +1,7 @@
 package com.zmn.xht.dataservice.zmndataservice;
 
+import com.zmn.xht.dataservice.zmndataservice.service.DataService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,37 @@ import org.springframework.util.MultiValueMap;
 //@SpringBootTest
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ZmnDataServiceApplicationTests {
+
+    @Autowired
+    DataService dataService;
+
+    @Test
+    public void nsjg_test(){
+        long start=System.currentTimeMillis();
+        String data=dataService.getNSJGByDwCode("13304319115");
+        Assert.assertNotNull(data);
+        long end=System.currentTimeMillis();
+        System.out.println("nsjg_test Spent time:"+(end-start)+"ms");
+    }
+
+    @Test
+    public void hly_test(){
+        long start=System.currentTimeMillis();
+        String data=dataService.getHlyByDwCode("13304319115");
+        Assert.assertNotNull(data);
+        long end=System.currentTimeMillis();
+        System.out.println("hly_test Spent time:"+(end-start)+"ms");
+    }
+
+    @Test
+    public void tree_test(){
+        long start=System.currentTimeMillis();
+        String data=dataService.getNSJGTreeByDwCode("13304319115");
+        Assert.assertNotNull(data);
+        long end=System.currentTimeMillis();
+        System.out.println("tree_test Spent time:"+(end-start)+"ms");
+        System.out.println("tree_test data:"+data);
+    }
 
  /*   @Autowired
     private TestRestTemplate restTemplate;

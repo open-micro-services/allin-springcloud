@@ -1,0 +1,86 @@
+# 服务器配置
+server:
+    port: 8090
+# logback日志配置
+logging:
+    config: classpath:log/logback-spring.xml
+    path: D:/log/
+    level:
+        root: INFO
+        org.springframework.web: INFO
+        org.springframework.security: INFO
+# Spring配置
+spring:
+    # 多环境配置
+    profiles:
+        # 如不指定默认application.yml节点，指定后运行指定配置文件配置
+        active:
+    # 数据源配置
+    datasource:
+        username: root
+        password: root
+        # 注意时区
+        url: jdbc:mysql://192.168.1.189:3306/test?serverTimezone=CTT&useSSL=false&useUnicode=true&characterEncoding=utf8
+        #driver-class-name: com.mysql.jdbc.Driver
+    # 模板引擎
+    thymeleaf:
+        cache: false
+        prefix: classpath:/templates/
+#    freemarker:
+#        #内容格式
+#        content-type: text/html
+#        #缓存配置
+#        cache: false
+#        #模板路径
+#        template-loader-path: classpath:/templates
+#        #编码格式
+#        charset: UTF-8
+#        #是否启用
+#        enabled: true
+#        #请求内容属性
+#        request-context-attribute: request
+#        expose-request-attributes: true
+#        expose-session-attributes: true
+#        #检查模板路径
+#        check-template-location: true
+#        #文件后缀
+#        suffix: .ftl
+    # Redis配置
+#    redis:
+#        database: 0
+#        host: 192.168.1.111
+#        port: 6379
+#        password: dlwy@2019
+#        jedis:
+#            pool:
+#                max-active: 8
+#                max-idle: 8
+#                max-wait: -1ms
+#                min-idle: 0
+#        timeout: 600
+    #security-- 添加如下配置可以快速实现用户登录认证
+#    security:
+#        oauth2:
+#            client:
+#                client-id: clientId
+#                client-secret: clientSecret
+#                scope: scope1, scope2, scope3, scope4
+#                registered-redirect-uri:  http://www.baidu.com
+#        user:
+#            name: dlwy
+#            password: dlwy
+#            roles: admin
+    # RabbitMQ消息队列 docker映射15672为管理端口 通信端口是5672
+#    rabbitmq:
+#        host: 192.168.1.111
+#        port: 5672
+#        username: dlwy
+#        password: dlwy
+#        publisher-confirms: true
+#        publisher-returns: true
+#        template:
+#            mandatory: true
+#        listener:
+#            simple:
+#                concurrency: 5
+#                max-concurrency: 50
