@@ -441,7 +441,7 @@ public class TreeManager {
 
         System.out.println("List转tree完成");
 
-        /*******************注意单个值和多个值之间存在互斥关系==下面注释就是为了不影响结果**************/
+        /*******************注意单个值计算结果会影响多个值计算结果**************/
 
         List<TreeNode> treeListSingleValue=TreeManager.listToTreeWithSingleValue(destList,1);
         System.out.println("List转tree 汇总唯一值value完成");
