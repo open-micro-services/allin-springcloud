@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 /**
  * @ClassName: TreeManager
- * @Description: TODO(树结构数据管理)
+ * @Description: TODO(树结构数据管理-实践验证)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2019-06-18 23:47
@@ -17,10 +16,10 @@ public class TreeManager {
     /**
      * 将List转成tree结构数据
      * @param list
-     * @param id 默认顶级节点ID为0
+     * @param rootId 默认顶级节点ID
      * @return
      */
-    public static List<TreeNode> listToTree(List<TreeNode> list,long id){
+    public static List<TreeNode> listToTree(List<TreeNode> list,long rootId){
         List<TreeNode> tree=new ArrayList<TreeNode>();
         Map<Long, TreeNode> map = new HashMap<Long, TreeNode>();
         // 将所有的数据，以键值对的形式装入map中
@@ -31,13 +30,15 @@ public class TreeManager {
         }
         for (TreeNode node : list) {
             // 如果id是父级的话就放入tree中
-            if (node.getPid() == id) {
+            if (node.getId() == rootId) {
                 tree.add(node);
             } else {
                 // 子级通过父id获取到父级的类型
                 TreeNode parent = map.get(node.getPid());
                 // 父级获得子级，再将子级放到对应的父级中
-                parent.getChildren().add(node);
+                if(parent!=null){
+                    parent.getChildren().add(node);
+                }
             }
         }
         return tree;
@@ -74,10 +75,10 @@ public class TreeManager {
     /**
      * 转换数据格式并设置对应节点的值汇总到根节点
      * @param list
-     * @param id
+     * @param rootId
      * @return
      */
-    public static List<TreeNode> listToTreeWithSingleValue(List<TreeNode> list,long id){
+    public static List<TreeNode> listToTreeWithSingleValue(List<TreeNode> list,long rootId){
         Map<Long, TreeNode> map = new HashMap<Long, TreeNode>();
         // 将所有的数据，以键值对的形式装入map中
         for (TreeNode node : list) {
@@ -85,14 +86,22 @@ public class TreeManager {
             node.setChildren(new ArrayList<TreeNode>());
             map.put(node.getId(), node);
         }
-        List<TreeNode> tree=listToTree(list,id);
-        // 存储最小子节点ID
+        List<TreeNode> tree=listToTree(list,rootId);
+       /* // 存储最小子节点ID
         Map<Long,Object> leafList=new  HashMap<Long,Object>();
         findMinNodes(tree.get(0),leafList,0);
         // 设置每个节点的值
         for (Long id_: leafList.keySet()) {
+            // 内部递归树的父节点层级多于2会存在重复计算
             setParentNodeValue(map,id_);
-        }
+        }*/
+
+        // 存储最小子节点ID
+        Map<Long,Object> leaf=new  HashMap<Long,Object>();
+        findMinNodes(tree.get(0),leaf);
+        // 逐级设置父节点的值
+        setValuesToParentNode(leaf, map);
+
         // 汇总所有节点的值
         double total=0;
         for (TreeNode node:map.values() ) {
@@ -107,7 +116,7 @@ public class TreeManager {
         for (TreeNode node:map.values()) {
             result.add(node);
         }
-        return listToTree(result,0);
+        return listToTree(result,rootId);
     }
 
     /**
@@ -126,13 +135,21 @@ public class TreeManager {
             node.setChildren(new ArrayList<TreeNode>());
             map.put(node.getId(), node);
         }
-        // 存储最小子节点ID
+       /* // 存储最小子节点ID
         Map<Long,Object> leafList=new  HashMap<Long,Object>();
         findMinNodes(tree,leafList,0);
         // 设置每个节点的值
         for (Long id_: leafList.keySet()) {
+            // 内部递归树的父节点层级多于2会存在重复计算
             setParentNodeValue(map,id_);
-        }
+        }*/
+
+        // 存储最小子节点ID
+        Map<Long,Object> leaf=new  HashMap<Long,Object>();
+        findMinNodes(tree,leaf);
+        // 逐级设置父节点的值
+        setValuesToParentNode(leaf, map);
+
         // 汇总所有节点的值
         double total=0;
         for (TreeNode node:map.values() ) {
@@ -153,11 +170,11 @@ public class TreeManager {
     /**
      * 转换数据格式并设置对应节点的值汇总到根节点
      * @param list
-     * @param id
+     * @param rootId
      * @param columns
      * @return
      */
-    public static List<TreeNode> listToTreeWithMultiValues(List<TreeNode> list,long id,int columns){
+    public static List<TreeNode> listToTreeWithMultiValues(List<TreeNode> list,long rootId,int columns){
         Map<Long, TreeNode> map = new HashMap<Long, TreeNode>();
         // 将所有的数据，以键值对的形式装入map中
         for (TreeNode node : list) {
@@ -165,14 +182,23 @@ public class TreeManager {
             node.setChildren(new ArrayList<TreeNode>());
             map.put(node.getId(), node);
         }
-        List<TreeNode> tree=listToTree(list,id);
-        // 存储最小子节点ID
+        List<TreeNode> tree=listToTree(list,rootId);
+
+       /* // 存储最小子节点ID
         Map<Long,Object> leafList=new  HashMap<Long,Object>();
         findMinNodes(tree.get(0),leafList,0);
         // 设置每个节点的值
         for (Long id_: leafList.keySet()) {
+            // 内部递归树的父节点层级多于2会存在重复计算
             setParentNodeMultiValues(map,id_);
-        }
+        }*/
+
+        // 存储最小子节点ID
+        Map<Long,Object> leaf=new  HashMap<Long,Object>();
+        findMinNodes(tree.get(0),leaf);
+        // 逐级追加父节点的值
+        setMultiValuesToParentNode(leaf, map);
+
         // 汇总所有节点的值
         double [] valueColumns=null;
         for (TreeNode node:map.values() ) {
@@ -189,7 +215,7 @@ public class TreeManager {
         for (TreeNode node:map.values()) {
             result.add(node);
         }
-        return listToTree(result,0);
+        return listToTree(result,rootId);
     }
 
     /**
@@ -209,13 +235,22 @@ public class TreeManager {
             node.setChildren(new ArrayList<TreeNode>());
             map.put(node.getId(), node);
         }
+        /*
         // 存储最小子节点ID
         Map<Long,Object> leafList=new  HashMap<Long,Object>();
         findMinNodes(tree,leafList,0);
         // 设置每个节点的值
         for (Long id_: leafList.keySet()) {
+             // 内部递归树的父节点层级多于2会存在重复计算
             setParentNodeMultiValues(map,id_);
-        }
+        }*/
+
+        // 存储最小子节点ID
+        Map<Long,Object> leaf=new  HashMap<Long,Object>();
+        findMinNodes(tree,leaf);
+        // 逐级追加父节点的值
+        setMultiValuesToParentNode(leaf, map);
+
         // 汇总所有节点的值
         double [] valueColumns=null;
         for (TreeNode node:map.values() ) {
@@ -236,17 +271,73 @@ public class TreeManager {
     }
 
     /**
+     * 逐级追加设置节点的值（单个值）
+     * @param leaf
+     * @param map
+     */
+    public static void setValuesToParentNode(Map<Long,Object> leaf,Map<Long, TreeNode> map){
+        Map<Long,Object> newLeaf=new  HashMap<Long,Object>();
+        // 设置每个节点的值
+        for (Long id_: leaf.keySet()) {
+            setParentNodeValue(newLeaf,map,id_);
+        }
+        if(newLeaf.size()>1){
+            setValuesToParentNode(newLeaf, map);
+        }
+    }
+
+    /**
+     * 逐级追加设置节点的值（多个值）
+     * @param leaf
+     * @param map
+     */
+    public static void setMultiValuesToParentNode( Map<Long,Object> leaf,Map<Long, TreeNode> map){
+        Map<Long,Object> newLeaf=new  HashMap<Long,Object>();
+        // 设置每个节点的值
+        for (Long id_: leaf.keySet()) {
+            setParentNodeMultiValues(newLeaf,map,id_);
+        }
+        if(newLeaf.size()>1){
+            setMultiValuesToParentNode(newLeaf, map);
+        }
+    }
+
+    /**
+     * 数学运算
+     * @param mathChar
+     * @param dest
+     * @param newValue
+     */
+    public static void mathHandle(String mathChar,double dest,double newValue){
+        switch (mathChar) {
+            case "+":
+                dest+=newValue;
+                break;
+            case "-":
+                dest-=newValue;
+                break;
+            case "*":
+                dest*=newValue;
+                break;
+            case "/":
+                dest/=newValue;
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
      * 查找最小子叶节点（没有子节点的节点）
      * @param node
      * @param leafList
-     * @param id
      */
-    private static void findMinNodes(TreeNode node,Map<Long,Object> leafList,long id){
+    private static void findMinNodes(TreeNode node,Map<Long,Object> leafList){
         if(node.getChildren().size()>0){
             TreeNode nodeTmp=null;
             for (int i = 0; i < node.getChildren().size(); i++) {
                 nodeTmp= node.getChildren().get(i);
-                findMinNodes(nodeTmp,leafList,id);
+                findMinNodes(nodeTmp,leafList);
             }
         }else{
             leafList.put(node.getId(),node.getId());
@@ -258,7 +349,7 @@ public class TreeManager {
      * @param map
      * @param id
      */
-    private static void setParentNodeValue(Map<Long, TreeNode> map,long id){
+    private static void setParentNodeValue(Map<Long,Object> newLeaf,Map<Long, TreeNode> map,long id){
         TreeNode node=map.get(id);
         // 设置自身节点的值
         if(!node.isAddSelf()){
@@ -278,7 +369,8 @@ public class TreeManager {
             }
             // 更新节点数据
             map.put(pNode.getId(),pNode);
-            setParentNodeValue(map,pNode.getId());
+            //setParentNodeValue(map,pNode.getId());
+            newLeaf.put(pNode.getId(), pNode.getId());
         }
     }
 
@@ -287,7 +379,7 @@ public class TreeManager {
      * @param map
      * @param id
      */
-    private static void setParentNodeMultiValues(Map<Long, TreeNode> map,long id){
+    private static void setParentNodeMultiValues(Map<Long,Object> newLeaf,Map<Long, TreeNode> map,long id){
         TreeNode node=map.get(id);
         // 设置自身节点的值
         if(!node.isAddSelf()){
@@ -307,45 +399,12 @@ public class TreeManager {
             }
             // 更新节点数据
             map.put(pNode.getId(),pNode);
-            setParentNodeMultiValues(map,pNode.getId());
+            //setParentNodeMultiValues(map,pNode.getId());
+            newLeaf.put(pNode.getId(), pNode.getId());
         }
     }
 
-    /**
-     * 根据ID逐级查找父节点并设置值(设置单个和多个值逐级递归--这个需求基本是伪命题)
-     * @param map
-     * @param id
-     */
-    private static void setParentNodeMixedValues(Map<Long, TreeNode> map,long id){
-        TreeNode node=map.get(id);
-        // 设置自身节点的值
-        if(!node.isAddSelf()){
-            node.setAddSelf(true);
-            // 设置单个值
-            node.getChildrenMultiValues().add(new double[]{node.getValue()});
-            // 设置多个值
-            node.getChildrenMultiValues().add(node.getMultiValues());
-            // 更新节点数据
-            map.put(node.getId(),node);
-        }
-        TreeNode pNode=map.get(node.getPid());
-        if(pNode!=null){
-            // 将子节点的值赋给父节点
-            pNode.getChildrenMultiValues().addAll(node.getChildrenMultiValues());
-            // 设置自身节点的值
-            if(!pNode.isAddSelf()){
-                pNode.setAddSelf(true);
-                // 设置单个值
-                pNode.getChildrenMultiValues().add(new double[]{pNode.getValue()});
-                // 设置多个值
-                pNode.getChildrenMultiValues().add(pNode.getMultiValues());
-            }
-            // 更新节点数据
-            map.put(pNode.getId(),pNode);
-            setParentNodeMixedValues(map,pNode.getId());
-        }
-    }
-
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         TreeNode tree=new TreeNode();
         tree.setId(1);
@@ -378,23 +437,23 @@ public class TreeManager {
         TreeManager.treeToList(tree,destList);
         System.out.println("tree转list完成");
 
-        List<TreeNode> treeList=TreeManager.listToTree(destList,0);
+        List<TreeNode> treeList=TreeManager.listToTree(destList,1);
 
         System.out.println("List转tree完成");
 
         /*******************注意单个值和多个值之间存在互斥关系==下面注释就是为了不影响结果**************/
 
-//        List<TreeNode> treeListSingleValue=TreeManager.listToTreeWithSingleValue(destList,0);
-//        System.out.println("List转tree 汇总唯一值value完成");
+        List<TreeNode> treeListSingleValue=TreeManager.listToTreeWithSingleValue(destList,1);
+        System.out.println("List转tree 汇总唯一值value完成");
+
+        List<TreeNode> treeListSingleValue2=TreeManager.treeToListWithSingleValue(tree);
+        System.out.println("tree转List 汇总唯一值value完成");
+
+//        List<TreeNode> treeListMultiValues=TreeManager.listToTreeWithMultiValues(destList,1,3);
+//        System.out.println("List转tree 汇总多个值values完成");
 //
-//        List<TreeNode> treeListSingleValue2=TreeManager.treeToListWithSingleValue(tree);
-//        System.out.println("tree转List 汇总唯一值value完成");
-
-        List<TreeNode> treeListMultiValues=TreeManager.listToTreeWithMultiValues(destList,0,3);
-        System.out.println("List转tree 汇总多个值values完成");
-
-        List<TreeNode> treeListMultiValues2=TreeManager.treeToListWithMultiValues(tree,3);
-        System.out.println("tree转List 汇总多个值values完成");
+//        List<TreeNode> treeListMultiValues2=TreeManager.treeToListWithMultiValues(tree,3);
+//        System.out.println("tree转List 汇总多个值values完成");
 
     }
 }
