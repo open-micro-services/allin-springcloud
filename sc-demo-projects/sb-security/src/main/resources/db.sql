@@ -1,4 +1,4 @@
-    -- https://liuyanzhao.com/7431.html
+    -- https://liuyanzhao.com/7431.html  默认账号密码:admin/123456
     SET NAMES utf8;
     SET FOREIGN_KEY_CHECKS = 0;
     -- ----------------------------
@@ -35,7 +35,7 @@
       UNIQUE KEY `UK_sb8bbouer5wak8vyiiy4pf2bx` (`username`)
     ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
     -- ----------------------------
-    --  Records of `user`
+    --  Records of `user` admin/123456
     -- ----------------------------
     BEGIN;
     INSERT INTO `user` VALUES ('1', 'admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '管理员', 'admin@liuyanzhao.com', null, null, null, 'normal'), ('2', 'saysky', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '言曌', '847064370@qq.com', null, null, null, 'normal'), ('3', 'lockuser', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', '锁定账号', 'locked@qq.com', null, null, null, 'locked');
