@@ -3,7 +3,6 @@ package com.boonya.springcloud.beans.base;
 import com.boonya.springcloud.beans.permission.entity.EsUser;
 import com.boonya.springcloud.utils.DateUtil;
 import com.boonya.springcloud.utils.Tools;
-
 import java.io.Serializable;
 import java.util.Date;
 

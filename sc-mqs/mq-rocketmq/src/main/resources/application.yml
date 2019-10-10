@@ -1,0 +1,42 @@
+#参考文章：https://blog.51cto.com/14230003/2405833
+rocketmq:
+    # 生产者配置
+    producer:
+        isOnOff: on
+        # 发送同一类消息的设置为同一个group，保证唯一
+        groupName: FeePlatGroup
+        # 服务地址
+        namesrvAddr: 127.0.0.1:9876
+        # 消息最大长度 默认1024*4(4M)
+        maxMessageSize: 4096
+        # 发送消息超时时间,默认3000
+        sendMsgTimeout: 3000
+        # 发送消息失败重试次数，默认2
+        retryTimesWhenSendFailed: 2
+    # 消费者配置
+    consumer:
+        isOnOff: on
+        # 官方建议：确保同一组中的每个消费者订阅相同的主题。
+        groupName: FeePlatGroup
+        # 服务地址
+        namesrvAddr: 127.0.0.1:9876
+        # 接收该 Topic 下所有 Tag
+        topics: FeePlatTopic~*;
+        consumeThreadMin: 20
+        consumeThreadMax: 64
+        # 设置一次消费消息的条数，默认为1条
+        consumeMessageBatchMaxSize: 1
+        # 主题
+        topic: mytopic
+        # 标签
+        tag: mytag
+        # 高级配置 advance
+        animal:
+            tag: panda
+            topic: animal
+
+# 配置 Group  Topic  Tag
+fee-plat:
+    fee-plat-group: FeePlatGroup
+    fee-plat-topic: FeePlatTopic
+    fee-account-tag: FeeAccountTag
