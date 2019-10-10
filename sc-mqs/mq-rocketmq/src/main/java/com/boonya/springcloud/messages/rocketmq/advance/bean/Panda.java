@@ -2,6 +2,13 @@ package com.boonya.springcloud.messages.rocketmq.advance.bean;
 
 import java.io.Serializable;
 
+/**
+ * @ClassName: Panda
+ * @Description: TODO(Panda实体)
+ * @author: pengjunlin
+ * @motto: 学习需要毅力，那就秀毅力
+ * @date 2019/10/10 0:23
+ */
 public class Panda implements Serializable {
     private static final long serialVersionUID = -470078490582001132L;
     private String name;

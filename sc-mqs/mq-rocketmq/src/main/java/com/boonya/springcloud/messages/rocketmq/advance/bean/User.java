@@ -3,7 +3,11 @@ package com.boonya.springcloud.messages.rocketmq.advance.bean;
 import java.io.Serializable;
 
 /**
- *
+ * @ClassName: User
+ * @Description: TODO(User实体)
+ * @author: pengjunlin
+ * @motto: 学习需要毅力，那就秀毅力
+ * @date 2019/10/10 0:23
  */
 public class User implements Serializable {
     public static final long serialVersionUID = -1L;
