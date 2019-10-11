@@ -1,10 +1,10 @@
 # 服务器配置
 server:
-    port: 8090
+    port: 8091
 # 配置环境配置
 spring:
     profiles:
-        active:
+        active: dev
     # 数据源配置
     datasource:
         username: root
@@ -97,7 +97,7 @@ rocketmq:
             # 标签
             tag: advance_tag
             animal:
-            # 主题
+                # 主题
                 topic: animal
                 # 标签
                 tag: panda

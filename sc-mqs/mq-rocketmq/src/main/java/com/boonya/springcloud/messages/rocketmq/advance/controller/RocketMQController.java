@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2019/10/10 0:23
- * @see  https://blog.csdn.net/soda_lw/article/details/86543636
  */
 @RestController
 public class RocketMQController {
@@ -27,20 +26,21 @@ public class RocketMQController {
     /**
      * producer和consumer的Group需要一致
      */
-    @Value("${rocketmq.consumer.groupName}")
+    @Value("${rocketmq.advance.producer.groupName}")
     private String groupName;
-    @Value("${rocketmq.consumer.topic}")
+    @Value("${rocketmq.advance.producer.topic}")
     private String topic;
-    @Value("${rocketmq.consumer.tag}")
+    @Value("${rocketmq.advance.producer.tag}")
     private String tag;
-    @Value("${rocketmq.consumer.animal.topic}")
+    @Value("${rocketmq.advance.producer.animal.topic}")
     private String animalTopic;
-    @Value("${rocketmq.consumer.animal.tag}")
+    @Value("${rocketmq.advance.producer.animal.tag}")
     private String animalTag;
 
     @RequestMapping("rocketmq/producer/common/topic")
     public String sendTopic() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         DefaultMQProducer producer=new DefaultMQProducer(groupName);
+        producer.start();
         User user  = new User("茜茜",18,"女");
         Message message = new Message(topic, tag, JSON.toJSONString(user).getBytes());
         SendResult result = producer.send(message);
@@ -51,9 +51,10 @@ public class RocketMQController {
         return "success";
     }
 
-    @RequestMapping("rocketmq/producer/animal/topic")
+    @RequestMapping("rocketmq/producer/advance/topic")
     public String send() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         DefaultMQProducer producer=new DefaultMQProducer(groupName);
+        producer.start();
         Panda panda = new Panda("汗血宝马", 5);
         Message pandaMessage = new Message(animalTopic, animalTag, JSON.toJSONString(panda).getBytes());
         SendResult animalResult =  producer.send(pandaMessage);

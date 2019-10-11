@@ -13,16 +13,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ProducerConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ProducerConfig.class) ;
-    @Value("${rocketmq.producer.groupName}")
+    @Value("${rocketmq.common.producer.groupName}")
     private String groupName;
-    @Value("${rocketmq.producer.namesrvAddr}")
+    @Value("${rocketmq.common.producer.namesrvAddr}")
     private String namesrvAddr;
-    @Value("${rocketmq.producer.maxMessageSize}")
+    @Value("${rocketmq.common.producer.maxMessageSize}")
     private Integer maxMessageSize ;
-    @Value("${rocketmq.producer.sendMsgTimeout}")
+    @Value("${rocketmq.common.producer.sendMsgTimeout}")
     private Integer sendMsgTimeout;
-    @Value("${rocketmq.producer.retryTimesWhenSendFailed}")
+    @Value("${rocketmq.common.producer.retryTimesWhenSendFailed}")
     private Integer retryTimesWhenSendFailed;
+
     @Bean
     public DefaultMQProducer getRocketMQProducer() {
         DefaultMQProducer producer;

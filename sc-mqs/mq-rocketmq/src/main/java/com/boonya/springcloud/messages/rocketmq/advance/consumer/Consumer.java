@@ -21,26 +21,32 @@ public class Consumer {
     @Autowired
     private AnimalProcessorImpl animalProcessor;
 
-    @Value("${rocketmq.consumer.namesrvAddr}")
+    @Value("${rocketmq.advance.consumer.namesrvAddr}")
     private String namesrvAddr;
-    @Value("${rocketmq.consumer.groupName}")
+    @Value("${rocketmq.advance.consumer.groupName}")
     private String groupName;
-    @Value("${rocketmq.consumer.topic}")
+    @Value("${rocketmq.advance.consumer.topic}")
     private String topic;
-    @Value("${rocketmq.consumer.tag}")
+    @Value("${rocketmq.advance.consumer.tag}")
     private String tag;
-    @Value("${rocketmq.consumer.consumeThreadMin}")
+    @Value("${rocketmq.advance.consumer.consumeThreadMin}")
     private int consumeThreadMin;
-    @Value("${rocketmq.consumer.consumeThreadMax}")
+    @Value("${rocketmq.advance.consumer.consumeThreadMax}")
     private int consumeThreadMax;
     //新增了下面两个配置
-    @Value("${rocketmq.consumer.animal.topic}")
+    @Value("${rocketmq.advance.consumer.animal.topic}")
     private String animalTopic;
-    @Value("${rocketmq.consumer.animal.tag}")
+    @Value("${rocketmq.advance.consumer.animal.tag}")
     private String animalTag;
 
+    /**
+     * 此方法名字不能与其他@Bean定义方法重复，比如
+     * @see com.boonya.springcloud.messages.rocketmq.config.ConsumerConfig
+     * @return
+     * @throws RocketMQException
+     */
     @Bean
-    public DefaultMQPushConsumer getRocketMQConsumer() throws RocketMQException {
+    public DefaultMQPushConsumer getAdvanceRocketMQConsumer() throws RocketMQException {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(groupName);
         consumer.setNamesrvAddr(namesrvAddr);
         consumer.setConsumeThreadMin(consumeThreadMin);

@@ -1,5 +1,6 @@
 package com.boonya.springcloud.messages.rocketmq.config;
 
+import com.boonya.springcloud.messages.rocketmq.advance.exception.RocketMQException;
 import com.boonya.springcloud.messages.rocketmq.listener.RocketMsgListener;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -17,20 +18,27 @@ import javax.annotation.Resource;
 @Configuration
 public class ConsumerConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ConsumerConfig.class) ;
-    @Value("${rocketmq.consumer.namesrvAddr}")
+    @Value("${rocketmq.common.consumer.namesrvAddr}")
     private String namesrvAddr;
-    @Value("${rocketmq.consumer.groupName}")
+    @Value("${rocketmq.common.consumer.groupName}")
     private String groupName;
-    @Value("${rocketmq.consumer.consumeThreadMin}")
+    @Value("${rocketmq.common.consumer.consumeThreadMin}")
     private int consumeThreadMin;
-    @Value("${rocketmq.consumer.consumeThreadMax}")
+    @Value("${rocketmq.common.consumer.consumeThreadMax}")
     private int consumeThreadMax;
-    @Value("${rocketmq.consumer.topics}")
+    @Value("${rocketmq.common.consumer.topics}")
     private String topics;
-    @Value("${rocketmq.consumer.consumeMessageBatchMaxSize}")
+    @Value("${rocketmq.common.consumer.consumeMessageBatchMaxSize}")
     private int consumeMessageBatchMaxSize;
     @Resource
     private RocketMsgListener msgListener;
+
+    /**
+     * 此方法名字不能与其他@Bean定义方法重复，比如
+     * @see com.boonya.springcloud.messages.rocketmq.advance.consumer.Consumer
+     * @return
+     * @throws RocketMQException
+     */
     @Bean
     public DefaultMQPushConsumer getRocketMQConsumer(){
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(groupName);
