@@ -123,3 +123,8 @@ rocketmq:
                 topic: animal
                 # 标签
                 tag: panda
+# 配置 Group  Topic  Tag
+fee-plat:
+    fee-plat-group: FeePlatGroup
+    fee-plat-topic: FeePlatTopic
+    fee-account-tag: FeeAccountTag
