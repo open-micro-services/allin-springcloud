@@ -83,6 +83,10 @@ mqadmin.cmd updateTopic -n 127.0.0.1:9876 -b 172.26.247.129:10911 -t mytopic
 mqadmin.cmd updateTopic -n 127.0.0.1:9876 -b 172.26.247.129:10911 -t advance
 `
 
+`
+mqadmin.cmd updateTopic -n 127.0.0.1:9876 -b 172.26.247.129:10911 -t animal
+`
+
 [172.26.247.129:10911 is start with mqbroker.cmd ]
 
 
