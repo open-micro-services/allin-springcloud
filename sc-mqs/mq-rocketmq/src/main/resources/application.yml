@@ -32,19 +32,18 @@ spring:
         check-template-location: true
         #文件后缀
         suffix: .ftl
-     # Redis配置
+    # Redis配置
     redis:
-        database: 0
-            host: 127.0.0.1
-            port: 6379
-            password: redis
-            jedis:
-                pool:
-                    max-active: 8
-                    max-idle: 8
-                    max-wait: -1ms
-                    min-idle: 0
-            timeout: 600
+        host: 127.0.0.1
+        port: 6379
+        password: redis
+        jedis:
+            pool:
+                max-active: 8
+                max-idle: 8
+                max-wait: -1ms
+                min-idle: 0
+        timeout: 600
 #参考文章：https://blog.51cto.com/14230003/2405833
 rocketmq:
     common:

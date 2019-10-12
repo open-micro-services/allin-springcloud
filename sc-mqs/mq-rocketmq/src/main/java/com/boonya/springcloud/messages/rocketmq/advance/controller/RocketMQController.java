@@ -11,6 +11,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -38,6 +39,7 @@ public class RocketMQController {
     private String animalTag;
 
     @RequestMapping("rocketmq/producer/common/topic")
+    @ResponseBody
     public String sendTopic() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         DefaultMQProducer producer=new DefaultMQProducer(groupName);
         producer.start();
@@ -52,6 +54,7 @@ public class RocketMQController {
     }
 
     @RequestMapping("rocketmq/producer/advance/topic")
+    @ResponseBody
     public String send() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         DefaultMQProducer producer=new DefaultMQProducer(groupName);
         producer.start();
