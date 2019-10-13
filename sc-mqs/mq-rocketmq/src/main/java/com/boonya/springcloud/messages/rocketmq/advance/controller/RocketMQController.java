@@ -38,7 +38,7 @@ public class RocketMQController {
     @Value("${rocketmq.advance.producer.animal.tag}")
     private String animalTag;
 
-    @RequestMapping("rocketmq/producer/common/topic")
+    @RequestMapping("/rocketmq/producer/common/topic")
     @ResponseBody
     public String sendTopic() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         DefaultMQProducer producer=new DefaultMQProducer(groupName);
@@ -53,7 +53,7 @@ public class RocketMQController {
         return "success";
     }
 
-    @RequestMapping("rocketmq/producer/advance/topic")
+    @RequestMapping("/rocketmq/producer/advance/topic")
     @ResponseBody
     public String send() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         DefaultMQProducer producer=new DefaultMQProducer(groupName);
