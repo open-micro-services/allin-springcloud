@@ -1,0 +1,18 @@
+dbFilePath: C:/yw/db
+server:
+  port: 8888
+spring:
+  profiles:
+    active: 
+  datasource:
+    name: mixtured-dbs
+    sqlite:
+      driver-class-name: org.sqlite.JDBC
+      username: sa
+      password: sa
+      jdbcurl: jdbc:sqlite:C:/Users/admin/Desktop/springboot/sb-sqlite/src/main/db/15843911112_zmn15843911112.db
+    mysql:
+      jdbcurl: jdbc:mysql://192.168.1.111:3306/xht_ywp?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: dlwy
+      password: DlwyZmn2017
+      driver-class-name: com.mysql.jdbc.Driver
