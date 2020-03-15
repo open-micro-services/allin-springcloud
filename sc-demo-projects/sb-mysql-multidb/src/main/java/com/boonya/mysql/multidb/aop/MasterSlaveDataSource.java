@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
 public class MasterSlaveDataSource {
 
     /**
-     * Mysql主库写入切面配置@Master强制使用主库
+     * Mysql主库写入切面配置@DBMaster强制使用主库
      */
-    @Pointcut("@annotation(com.boonya.mysql.multidb.annotation.Master)"
+    @Pointcut("@annotation(com.boonya.mysql.multidb.annotation.DBMaster)"
         +"&&(execution(* com.*.service..*.save*(..))"
         +"||execution(* com.*.service..*.add*(..))"
         +"||execution(* com.*.service..*.insert*(..))"
@@ -35,7 +35,7 @@ public class MasterSlaveDataSource {
     /**
      * Mysql从库库读取查询
      */
-    @Pointcut("!@annotation(com.boonya.mysql.multidb.annotation.Master)"
+    @Pointcut("!@annotation(com.boonya.mysql.multidb.annotation.DBMaster)"
         +"&&(execution(* com.*.service..*.get*(..))"
         +"||execution(* com.*.service..*.select*(..))"
         +"||execution(* com.*.service..*.find*(..))"
