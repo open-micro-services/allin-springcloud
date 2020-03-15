@@ -35,7 +35,7 @@ WR write-read databases to distinguish.
  
 ## How to ensure user thread keep or change the DataSource
 
-Web use TheadLocal to make sure the DataSource can be changed.
+We use TheadLocal to make sure the DataSource can be changed.
 
 `private static final ThreadLocal<DataSourceType> dbDataSourceHolder=new ThreadLocal<>();`
 
