@@ -18,7 +18,7 @@ public class SbZookeeperApplicationTests {
 
 
     @Test
-    public void testLock(){
+    public void testLock() {
 
     }
 }
