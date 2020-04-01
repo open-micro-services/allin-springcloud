@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 
 /**
  * @ClassName: SupplierTask
- * @Description: TODO(功能说明 ： 可回调的Supplier顺序处理线程任务)
+ * @Description: TODO(功能说明 ： Supplier顺序处理线程任务)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2020/4/1 22:41
