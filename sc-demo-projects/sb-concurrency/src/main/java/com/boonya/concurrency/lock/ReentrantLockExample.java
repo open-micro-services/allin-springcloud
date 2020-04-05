@@ -32,8 +32,8 @@ public class ReentrantLockExample {
             lockCondition.await(3, TimeUnit.SECONDS);
             // 编写业务逻辑
             System.out.println("doSomething......");
-            // 通知
-            lockCondition.signalAll();
+            // 通知,Lock的Condition不需要要唤醒所有Node，所以不推荐调用signalAll
+            lockCondition.signal();
         }catch(InterruptedException e){
             e.printStackTrace();
         }finally {
