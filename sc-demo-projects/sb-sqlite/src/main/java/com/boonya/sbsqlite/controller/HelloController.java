@@ -1,8 +1,8 @@
-package com.boonya.sbsqlite.Controller;
+package com.boonya.sbsqlite.controller;
 
-import com.boonya.sbsqlite.Model.HelloModel;
-import com.boonya.sbsqlite.Model.ReqBody;
-import com.boonya.sbsqlite.Service.HelloService;
+import com.boonya.sbsqlite.model.HelloModel;
+import com.boonya.sbsqlite.model.ReqBody;
+import com.boonya.sbsqlite.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.io.IOException;

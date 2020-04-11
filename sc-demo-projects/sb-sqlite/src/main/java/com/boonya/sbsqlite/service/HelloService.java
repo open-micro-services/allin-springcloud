@@ -1,7 +1,7 @@
-package com.boonya.sbsqlite.Service;
+package com.boonya.sbsqlite.service;
 
-import com.boonya.sbsqlite.Mapper.HelloMapper;
-import com.boonya.sbsqlite.Model.HelloModel;
+import com.boonya.sbsqlite.mapper.HelloMapper;
+import com.boonya.sbsqlite.model.HelloModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

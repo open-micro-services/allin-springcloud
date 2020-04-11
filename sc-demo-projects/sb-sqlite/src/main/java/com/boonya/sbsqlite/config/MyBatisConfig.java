@@ -1,4 +1,4 @@
-package com.boonya.sbsqlite.Config;
+package com.boonya.sbsqlite.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

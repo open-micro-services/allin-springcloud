@@ -1,6 +1,6 @@
-package com.boonya.sbsqlite.Mapper;
+package com.boonya.sbsqlite.mapper;
 
-import com.boonya.sbsqlite.Model.HelloModel;
+import com.boonya.sbsqlite.model.HelloModel;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 import java.util.List;
