@@ -1,4 +1,4 @@
-package com.boonya.sbsqlite.Model;
+package com.boonya.sbsqlite.model;
 
 public class HelloModel {
     private long Id;

@@ -1,0 +1,11 @@
+server:
+  port: 8090
+system:
+  initExportCVSFile: true
+  dbsBasePath: "E:/springcloud/sc-demo-projects/sb-sqlite/src/main/resources/db"
+spring:
+    datasource:
+     driver-class-name: org.sqlite.JDBC
+     url: jdbc:sqlite:E:/springcloud/sc-demo-projects/sb-sqlite/src/main/resources/db/MySqliteDB
+     username: root
+     password: root

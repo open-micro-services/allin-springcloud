@@ -1,4 +1,4 @@
-package com.boonya.sbsqlite.Config;
+package com.boonya.sbsqlite.config;
 
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ public class MyBatisMapperScannerConfig {
 
         //com.example.demo.dal.mapper 这个包名是所有的Mapper.java文件所在的路径，该包下面的子包里面的文件同样会扫描到。
         //此包名与具体的应用的名称相关
-        mapperScannerConfigurer.setBasePackage("com.example.demo.Mapper");
+        mapperScannerConfigurer.setBasePackage("com.boonya.sbsqlite.mapper");
 
         return mapperScannerConfigurer;
     }

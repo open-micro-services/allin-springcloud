@@ -1,4 +1,4 @@
-package com.boonya.sbsqlite.Model;
+package com.boonya.sbsqlite.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
