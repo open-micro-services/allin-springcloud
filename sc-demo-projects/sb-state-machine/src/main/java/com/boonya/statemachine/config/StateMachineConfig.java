@@ -26,13 +26,16 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<States
     @Override
     public void configure(StateMachineTransitionConfigurer<States, Events> transitions) throws Exception {
         transitions.withExternal()
+            // 草稿
             .source(States.DRAFT).target(States.PUBLISH_TODO)
             .event(Events.ONLINE)
             .and()
+            // 发布
             .withExternal()
             .source(States.PUBLISH_TODO).target(States.PUBLISH_DONE)
             .event(Events.PUBLISH)
             .and()
+            // 回滚
             .withExternal()
             .source(States.PUBLISH_DONE).target(States.DRAFT)
             .event(Events.ROLLBACK);
