@@ -1,6 +1,6 @@
 ## Zookeper应用
 
-通知服务、配置管理中心、集群微服务注册、分布式锁。
+通知服务、配置管理中心、集群微服务注册、分布式锁、分布式状态机(https://docs.spring.io/spring-statemachine/docs/2.2.0.RELEASE/reference/#statemachine-examples)。
 
 ## What's Zookeeper?
 
@@ -108,3 +108,13 @@ windows
 ### Springboot集成Zookeeper
 
  https://blog.csdn.net/u010391342/article/details/100404588
+ 
+### Zookeeper状态机
+
+https://docs.spring.io/spring-statemachine/docs/2.2.0.RELEASE/reference/#statemachine-examples
+
+https://blog.csdn.net/Revivedsun/article/details/104595219/
+
+### Curator
+
+Curator是Netflix公司开源的一套zookeeper客户端框架，解决了很多Zookeeper客户端非常底层的细节开发工作，包括连接重连、反复注册Watcher和NodeExistsException异常等等。Patrixck Hunt（Zookeeper）以一句“Guava is to Java that Curator to Zookeeper”给Curator予高度评价。

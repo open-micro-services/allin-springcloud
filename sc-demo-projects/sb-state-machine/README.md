@@ -16,16 +16,12 @@ The following guides illustrate how to use some features concretely:
 
 # State Machine
 
-## Curator
-
-Curator是Netflix公司开源的一套zookeeper客户端框架，解决了很多Zookeeper客户端非常底层的细节开发工作，包括连接重连、反复注册Watcher和NodeExistsException异常等等。Patrixck Hunt（Zookeeper）以一句“Guava is to Java that Curator to Zookeeper”给Curator予高度评价。
+*[GITHUB CODE spring-statemachine FOR ALL](https://github.com/spring-projects/spring-statemachine)
 
 ## Spring state machine
 
-* [State Machine all examples](https://docs.spring.io/spring-statemachine/docs/2.2.0.RELEASE/reference/#statemachine-examples)
+* [State Machine all examples usage](https://docs.spring.io/spring-statemachine/docs/2.2.0.RELEASE/reference/#statemachine-examples)
 
 https://spring.io/projects/spring-statemachine
 
-## Zookeeper 分布式状态机
 
-https://blog.csdn.net/Revivedsun/article/details/104595219/
