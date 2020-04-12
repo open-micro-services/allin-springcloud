@@ -37,3 +37,8 @@ For project which needs MQ services.
 # sc-permission
 
 For your applications security.
+
+
+# Spring data Examples
+
+https://github.com/spring-projects/spring-data-examples
