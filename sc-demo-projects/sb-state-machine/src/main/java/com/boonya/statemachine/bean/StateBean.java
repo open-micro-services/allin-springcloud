@@ -8,7 +8,7 @@ import org.springframework.statemachine.annotation.WithStateMachine;
 
 /**
  * @ClassName: StateBean
- * @Description: TODO(功能说明)
+ * @Description: TODO(功能说明：实体状态管理)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2020/4/12 16:46

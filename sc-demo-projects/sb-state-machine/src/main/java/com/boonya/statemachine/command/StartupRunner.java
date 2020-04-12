@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @ClassName: StartupRunner
- * @Description: TODO(功能说明)
+ * @Description: TODO(功能说明：测试状态机)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2020/4/12 15:11
