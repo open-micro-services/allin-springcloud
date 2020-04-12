@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- maven conf settings.xml service node add below content-->
+<server>
+    <id>192.168.99.224</id>
+    <username>管理镜像的账号</username>
+    <password>管理镜像的密码</password>
+</server>

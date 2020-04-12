@@ -4,12 +4,11 @@ spring:
     profiles:
         active: 
     activiti:
-        #如果不设置，则会报错：java.io.FileNotFoundException: class path resource [processes/] cannot be resolved to URL because it does not exist
-        check-process-definitions: false
-        #数据库脚本文件是否更新
+        # 自动建表
+        database-schema: ACTIVITI
         database-schema-update: true
-        #定义流程模板处理配置获取路径*.bpmn
-        process-definition-location-prefix: /processes/
+        history-level: full
+        db-history-used: true
     # 数据源配置
     datasource:
         driver: com.mysql.jdbc.Driver
