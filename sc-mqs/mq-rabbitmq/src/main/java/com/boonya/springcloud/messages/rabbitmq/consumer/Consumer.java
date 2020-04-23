@@ -1,8 +1,10 @@
 package com.boonya.springcloud.messages.rabbitmq.consumer;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import com.alibaba.fastjson.JSONObject;
+import com.boonya.springcloud.messages.rabbitmq.Bean.Order;
+import com.boonya.springcloud.messages.rabbitmq.Bean.Pay;
+import com.boonya.springcloud.messages.rabbitmq.util.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -13,20 +15,27 @@ import org.springframework.stereotype.Component;
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2018-12-28 11:50
  */
+@Slf4j
 @Component
 public class Consumer {
 
-    private final Logger logger = LoggerFactory.getLogger(Consumer.class);
-
-    @RabbitListener(queues = {"order.queue"})
-    public void receiveOrderMessage(String msg) {
-        System.out.println("received order msg: " + msg);
-        logger.info("order msg:{}", msg);
+    /**
+     * 订单消费（消息类型不匹配会报错）
+     *
+     * @param order
+     */
+    @RabbitListener(queues = {Constants.QUEUE_ORDER})
+    public void consumeOrder(Order order) {
+        log.info("consumeOrder order msg:{}", JSONObject.toJSONString(order));
     }
 
-    @RabbitListener(queues = {"pay.queue"})
-    public void receivePayMessage(String msg) {
-        System.out.println("received pay msg: " + msg);
-        logger.info("pay msg:{}", msg);
+    /**
+     * 支付消费（消息类型不匹配会报错）
+     *
+     * @param pay
+     */
+    @RabbitListener(queues = {Constants.QUEUE_PAY})
+    public void consumePay(Pay pay) {
+        log.info("consumePay pay msg:{}", JSONObject.toJSONString(pay));
     }
 }
