@@ -1,7 +1,7 @@
 package com.boonya.springcloud.messages.rabbitmq.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.boonya.springcloud.messages.rabbitmq.Bean.Pay;
+import com.boonya.springcloud.messages.rabbitmq.bean.Pay;
 import com.boonya.springcloud.messages.rabbitmq.producer.RabbitProducer;
 import com.boonya.springcloud.messages.rabbitmq.util.Constants;
 import com.boonya.springcloud.messages.rabbitmq.util.StatusCode;

@@ -1,4 +1,4 @@
-package com.boonya.springcloud.messages.rabbitmq.Bean;
+package com.boonya.springcloud.messages.rabbitmq.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

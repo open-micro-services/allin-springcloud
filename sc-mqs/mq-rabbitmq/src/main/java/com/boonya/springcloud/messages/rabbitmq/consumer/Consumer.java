@@ -1,8 +1,8 @@
 package com.boonya.springcloud.messages.rabbitmq.consumer;
 
 import com.alibaba.fastjson.JSONObject;
-import com.boonya.springcloud.messages.rabbitmq.Bean.Order;
-import com.boonya.springcloud.messages.rabbitmq.Bean.Pay;
+import com.boonya.springcloud.messages.rabbitmq.bean.Order;
+import com.boonya.springcloud.messages.rabbitmq.bean.Pay;
 import com.boonya.springcloud.messages.rabbitmq.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
