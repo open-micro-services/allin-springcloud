@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "4fdac0e8-796b-422a-9384-989d034084ea",
+		"name": "RabbitMQ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "order-topic发送订单消息【异步请求】",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.189:18080/mq/rabbitmq/amqp/topic/order.do",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"189"
+					],
+					"port": "18080",
+					"path": [
+						"mq",
+						"rabbitmq",
+						"amqp",
+						"topic",
+						"order.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-direct发送订单消息【异步请求】",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.189:18080/mq/rabbitmq/amqp/direct/order.do",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"189"
+					],
+					"port": "18080",
+					"path": [
+						"mq",
+						"rabbitmq",
+						"amqp",
+						"direct",
+						"order.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pay-topic发送支付消息【异步请求】",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.189:18080/mq/rabbitmq/rabbit/topic/pay.do",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"189"
+					],
+					"port": "18080",
+					"path": [
+						"mq",
+						"rabbitmq",
+						"rabbit",
+						"topic",
+						"pay.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pay-direct发送支付消息【异步请求】",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.189:18080/mq/rabbitmq/rabbit/direct/pay.do",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"189"
+					],
+					"port": "18080",
+					"path": [
+						"mq",
+						"rabbitmq",
+						"rabbit",
+						"direct",
+						"pay.do"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
