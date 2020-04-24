@@ -25,8 +25,8 @@ public class RedisPipelineService {
      *
      * @param list
      */
-    public void  setAdd(List<KVParam> list){
-        redisTemplate.executePipelined(new RedisCallback<Object>() {
+    public  List<Object>  setAdd(List<KVParam> list){
+        return redisTemplate.executePipelined(new RedisCallback<Object>() {
 
             @Override
             public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
@@ -47,8 +47,8 @@ public class RedisPipelineService {
      *
      * @param list
      */
-    public void  hashAdd(List<HashParam> list){
-        redisTemplate.executePipelined(new RedisCallback<Object>() {
+    public  List<Object>  hashAdd(List<HashParam> list){
+        return redisTemplate.executePipelined(new RedisCallback<Object>() {
 
             @Override
             public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
@@ -65,8 +65,8 @@ public class RedisPipelineService {
      *
      * @param list
      */
-    public void  geohashAdd(List<GeoHashParam> list){
-        redisTemplate.executePipelined(new RedisCallback<Object>() {
+    public  List<Object>  geohashAdd(List<GeoHashParam> list){
+        return redisTemplate.executePipelined(new RedisCallback<Object>() {
 
             @Override
             public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
@@ -83,8 +83,8 @@ public class RedisPipelineService {
      *
      * @param list
      */
-    public void  zsetAdd(List<ZsetParam> list){
-        redisTemplate.executePipelined(new RedisCallback<Object>() {
+    public  List<Object>  zsetAdd(List<ZsetParam> list){
+        return redisTemplate.executePipelined(new RedisCallback<Object>() {
 
             @Override
             public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
@@ -101,8 +101,8 @@ public class RedisPipelineService {
      *
      * @param list
      */
-    public void  listAdd(List<ListParam> list){
-        redisTemplate.executePipelined(new RedisCallback<Object>() {
+    public List<Object>  listAdd(List<ListParam> list){
+        return redisTemplate.executePipelined(new RedisCallback<Object>() {
 
             @Override
             public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
