@@ -32,6 +32,16 @@ public class DirectExchangeConfig {
     }
 
     /**
+     * 批量-绑定交换器和路由键对应关系
+     *
+     * @return
+     */
+    @Bean
+    public Binding bindingBatchForDirectExchange() {
+        return BindingBuilder.bind(accessQueue.queueForBatch()).to(directExchange()).with(Constants.ROUTING_KEY_BATCH_DIRECT);
+    }
+
+    /**
      * 订单-绑定交换器和路由键对应关系
      *
      * @return

@@ -2,17 +2,24 @@ package com.boonya.springcloud.messages.rabbitmq.listener;
 
 import com.boonya.springcloud.messages.rabbitmq.config.AccessQueue;
 import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Consumer;
+import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.ShutdownSignalException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.MessageHandler;
+
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +54,41 @@ public class DynamicSimpleMessageListenerContainer {
     @Bean
     public SimpleMessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory){
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+        MessageListenerAdapter adapter = new MessageListenerAdapter(new Consumer() {
+            @Override
+            public void handleConsumeOk(String s) {
+
+            }
+
+            @Override
+            public void handleCancelOk(String s) {
+
+            }
+
+            @Override
+            public void handleCancel(String s) throws IOException {
+
+            }
+
+            @Override
+            public void handleShutdownSignal(String s, ShutdownSignalException e) {
+
+            }
+
+            @Override
+            public void handleRecoverOk(String s) {
+
+            }
+
+            @Override
+            public void handleDelivery(String s, Envelope envelope, AMQP.BasicProperties basicProperties, byte[] bytes) throws IOException {
+
+            }
+        });
+        /**
+         * 设置处理器的消费消息的默认方法,如果没有设置，那么默认的处理器中的默认方式是handleMessage方法
+         */
+        adapter.setDefaultListenerMethod("onMessage");
         container.setConnectionFactory(connectionFactory);
         /**
          * 创建需要的队列

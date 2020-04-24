@@ -30,6 +30,16 @@ public class AccessQueue {
      */
 
     /**
+     * BATCH队列实例
+     *
+     * @return
+     */
+    @Bean
+    public Queue queueForBatch() {
+        return new Queue(Constants.QUEUE_BATCH, true); // true表示持久化该队列
+    }
+
+    /**
      * DEBUG队列实例
      *
      * @return

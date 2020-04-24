@@ -1,5 +1,6 @@
 package com.boonya.springcloud.messages.rabbitmq.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import java.util.Date;
  * @Date: 2020/4/23 17:17
  * @Description: 支付类
  */
-public class Pay {
+public class Pay implements Serializable {
 
     /**
      * 订单编号UUID
@@ -37,6 +38,11 @@ public class Pay {
      */
     private Date dealTime;
 
+    /**
+     * 默认构造
+     */
+    public Pay() {
+    }
 
     /**
      * 消息解析时默认需要构造函数存在

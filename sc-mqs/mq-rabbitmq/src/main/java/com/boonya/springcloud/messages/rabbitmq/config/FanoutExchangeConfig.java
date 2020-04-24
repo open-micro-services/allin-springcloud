@@ -33,6 +33,16 @@ public class FanoutExchangeConfig {
     }
 
     /**
+     * 批量-绑定交换器和路由键对应关系
+     *
+     * @return
+     */
+    @Bean
+    public Binding bindingBatchForFanoutExchange() {
+        return BindingBuilder.bind(accessQueue.queueForBatch()).to(fanoutExchange());
+    }
+
+    /**
      * 订单-绑定交换器和路由键对应关系
      *
      * @return

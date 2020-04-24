@@ -32,6 +32,16 @@ public class TopicExchangeConfig {
     }
 
     /**
+     * 批量-绑定交换器和路由键对应关系
+     *
+     * @return
+     */
+    @Bean
+    public Binding bindingBatchForTopicExchange() {
+        return BindingBuilder.bind(accessQueue.queueForBatch()).to(topicExchange()).with(Constants.ROUTING_KEY_BATCH_TOPIC);
+    }
+
+    /**
      * 订单-绑定交换器和路由键对应关系
      *
      * @return

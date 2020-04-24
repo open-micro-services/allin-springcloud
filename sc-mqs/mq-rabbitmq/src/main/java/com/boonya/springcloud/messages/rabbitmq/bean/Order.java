@@ -43,6 +43,12 @@ public class Order implements Serializable {
     private Date orderTime;
 
     /**
+     * 默认构造
+     */
+    public Order() {
+    }
+
+    /**
      * 消息解析时默认需要构造函数存在
      */
     public Order(String id, String productName, BigDecimal productPrice, String transferCode, double discount, int payStatus, Date orderTime) {

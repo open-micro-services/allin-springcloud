@@ -10,6 +10,11 @@ package com.boonya.springcloud.messages.rabbitmq.util;
 public class Constants {
 
     /**
+     * BATCH 队列---消息存储队列名
+     */
+    public static final String  QUEUE_BATCH = "batch.queue";
+
+    /**
      * DEBUG 队列---消息存储队列名
      */
     public static final String  QUEUE_DEBUG = "debug.queue";
@@ -70,6 +75,10 @@ public class Constants {
      */
     public static final String  FANOUT_EXCHANGE= "fanoutExchange";
 
+    /**
+     * 批量路由键---路由键是为了配合交换器将消息放入对应的队列
+     */
+    public static final String  ROUTING_KEY_BATCH_TOPIC = "routing.key.batch.topic";
 
     /**
      * 订单路由键---路由键是为了配合交换器将消息放入对应的队列
@@ -90,6 +99,11 @@ public class Constants {
      * 短信路由键---路由键是为了配合交换器将消息放入对应的队列
      */
     public static final String  ROUTING_KEY_SMS_TOPIC = "routing.key.sms.topic";
+
+    /**
+     * 批量路由键---路由键是为了配合交换器将消息放入对应的队列
+     */
+    public static final String  ROUTING_KEY_BATCH_DIRECT = "routing.key.batch.direct";
 
     /**
      * 订单路由键---路由键是为了配合交换器将消息放入对应的队列
