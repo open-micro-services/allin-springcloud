@@ -58,9 +58,9 @@ public class MessageProtocol {
      * @param bodyData
      * @return
      */
-    public MessageProtocol (byte msgType,String bodyData){
+    public MessageProtocol (int msgType,String bodyData){
         byte[] allMessage = new byte[9 + bodyData.length()];
-        this.msgType = msgType;
+        this.msgType = (byte)msgType;
         this.startSign = (short)0xFFFF;
         this.timeStamp = (int)(System.currentTimeMillis() / 1000L);
         this.bodyLen = (short)bodyData.length();
@@ -134,7 +134,7 @@ public class MessageProtocol {
     }
 
     public static void main(String[] args) throws IOException {
-        MessageProtocol protocol = new MessageProtocol((byte)1,"Tom is a good man.");
+        MessageProtocol protocol = new MessageProtocol(1,"Tom is a good man.");
 
         byte [] binaryData = protocol.getBinaryData();
 
