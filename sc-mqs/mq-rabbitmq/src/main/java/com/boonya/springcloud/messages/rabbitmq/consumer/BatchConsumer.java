@@ -27,7 +27,7 @@ public class BatchConsumer {
      *
      * @param channel
      */
-    @RabbitListener(queues = {Constants.QUEUE_BATCH})
+    @RabbitListener(queues = {Constants.QUEUE_BATCH},ackMode = "MANUAL")
     public void onMessage(Channel channel) {
         while (true) {
             try {
@@ -41,17 +41,18 @@ public class BatchConsumer {
                     }
                     continue;
                 }
+
                 // 数据对象反序列化
-                ByteArrayInputStream bis = new ByteArrayInputStream(response.getBody());
-                ObjectInputStream ois = new ObjectInputStream(bis);
-                try {
-                    Object object = ois.readObject();// 可强转需要的类型
-                    log.info("批量消费消息:" + object);
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                String msg = new String(response.getBody());
+                log.info("批量消费消息:" + msg);
                 // 响应确认
-                channel.basicAck(0, true);
+                /**
+                 * 确认消息【ackMode = "MANUAL"，默认ackMode = "AUTO"手动处理会抛异常或channel被关闭】
+                 *
+                 *tag: deliver tag ID(long)
+                 *multi : multi to confirm(bool) ,true means not to delete message and repeat to consume ,false means to delete the message.
+                 */
+                channel.basicAck(response.getEnvelope().getDeliveryTag(), false);
             } catch (IOException e) {
                 e.printStackTrace();
             }
