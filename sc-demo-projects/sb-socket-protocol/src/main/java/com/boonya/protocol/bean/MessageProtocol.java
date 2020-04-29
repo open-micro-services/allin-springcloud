@@ -100,9 +100,9 @@ public class MessageProtocol {
     public byte[]  getBinaryData(){
         String body = new String(bodyData);
         byte[] allMessage = new byte[9 + body.length()];
-        short startSign = (short)0xFFFF;
+       /* short startSign = (short)0xFFFF;
         int timeStamp = (int)(System.currentTimeMillis() / 1000L);
-        short bodyLen = (short)body.length();
+        short bodyLen = (short)body.length();*/
         // header
         System.arraycopy(BinaryUtils.shortToBytes2(startSign), 0, allMessage, 0, 2);
         System.arraycopy(BinaryUtils.byteToBytes2(msgType), 0, allMessage, 2, 1);
