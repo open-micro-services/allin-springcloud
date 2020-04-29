@@ -52,7 +52,7 @@ public class MessageProtocol {
     byte [] bodyData;
 
     /**
-     * 将消息封装为二进制数据
+     * 构造方法
      *
      * @param msgType
      * @param bodyData
