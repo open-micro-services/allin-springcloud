@@ -61,7 +61,7 @@ public class MessageProtocol {
     public MessageProtocol (byte msgType,String bodyData){
         byte[] allMessage = new byte[9 + bodyData.length()];
         this.msgType = msgType;
-        this.startSign = -1;
+        this.startSign = (short)0xFFFF;
         this.timeStamp = (int)(System.currentTimeMillis() / 1000L);
         this.bodyLen = (short)bodyData.length();
         this.bodyData=bodyData.getBytes();
@@ -100,7 +100,7 @@ public class MessageProtocol {
     public byte[]  getBinaryData(){
         String body = new String(bodyData);
         byte[] allMessage = new byte[9 + body.length()];
-        short startSign = -1;
+        short startSign = (short)0xFFFF;
         int timeStamp = (int)(System.currentTimeMillis() / 1000L);
         short bodyLen = (short)body.length();
         // header
@@ -125,12 +125,12 @@ public class MessageProtocol {
         byte msgTypeParser = BinaryUtils.bytesToByte(binaryData, 2);
         int timeStampParser = BinaryUtils.bytesToInt2(binaryData, 3);
         short bodyLenParser = BinaryUtils.bytesToShort2(binaryData, 7);
-        byte[] bodyParser = new byte[bodyLenParser];
-        System.arraycopy(binaryData, 9, bodyParser, 0, bodyLenParser);
-        String bodyParserStr = new String(bodyParser);
+        byte[] bodyDataParser = new byte[bodyLenParser];
+        System.arraycopy(binaryData, 9, bodyDataParser, 0, bodyLenParser);
+        String bodyDtaParserStr = new String(bodyDataParser);
 
-        System.out.println("startSignParser=" + startSignParser + ",msgTypeParser=" + msgTypeParser + ",timeStampParser=" + timeStampParser + ",bodyLenParser=" + bodyLenParser + ",bodyParserStr=" + bodyParserStr);
-        return new MessageProtocol( startSign,  msgType,  timeStamp,  bodyLen,  bodyParser);
+        System.out.println("startSignParser=" + startSignParser + ",msgTypeParser=" + msgTypeParser + ",timeStampParser=" + timeStampParser + ",bodyLenParser=" + bodyLenParser + ",bodyDataParser=" + bodyDtaParserStr);
+        return new MessageProtocol( startSign,  msgType,  timeStamp,  bodyLen,  bodyDataParser);
     }
 
     public static void main(String[] args) throws IOException {
