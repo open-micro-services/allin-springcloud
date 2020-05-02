@@ -41,7 +41,7 @@ spring:
             pool:
                 max-active: 10
                 max-idle: 10
-                max-wait: -1ms
+                max-wait: -1
                 min-idle: 0
                 time-between-eviction-runs: 30
         # 是否支持ssl协议
