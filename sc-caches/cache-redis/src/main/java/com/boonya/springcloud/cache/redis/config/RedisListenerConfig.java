@@ -3,7 +3,6 @@ package com.boonya.springcloud.cache.redis.config;
 import com.boonya.springcloud.cache.redis.condition.RedisEnableCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisJedisCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisLettuceCondition;
-import com.boonya.springcloud.cache.redis.condition.RedisSingleCondition;
 import com.boonya.springcloud.cache.redis.listener.RedisMessageListener;
 import com.boonya.springcloud.cache.redis.utils.Constants;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +15,7 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 
 /**
  * @ClassName: RedisListenerConfig
- * @Description: TODO(功能说明)
+ * @Description: TODO(功能说明：REDIS消息监听配置)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2020/5/2 21:30
