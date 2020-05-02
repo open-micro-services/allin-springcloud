@@ -1,6 +1,5 @@
 package com.boonya.springcloud.cache.redis.utils;
 
-import com.boonya.springcloud.cache.redis.config.RedisLettuceClientConfiguration;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,6 +7,7 @@ import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisSentinelConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -16,7 +16,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * @ClassName: RedisUtil
- * @Description: TODO(功能说明)
+ * @Description: TODO(功能说明：REDIS工具类)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2020/5/2 21:44
@@ -43,7 +43,7 @@ public class RedisUtil {
      * @param lettuceClientConfiguration
      * @return
      */
-    public static RedisTemplate<String, Object> getRedisTemplate(RedisSentinelConfiguration redisSentinelConfiguration, RedisLettuceClientConfiguration lettuceClientConfiguration){
+    public static RedisTemplate<String, Object> getRedisTemplate(RedisSentinelConfiguration redisSentinelConfiguration, LettuceClientConfiguration lettuceClientConfiguration){
         LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisSentinelConfiguration, lettuceClientConfiguration);
         return getRedisTemplate(lettuceConnectionFactory);
     }
@@ -67,7 +67,7 @@ public class RedisUtil {
      * @param lettuceClientConfiguration
      * @return
      */
-    public static RedisTemplate<String, Object> getRedisTemplate(RedisClusterConfiguration redisClusterConfiguration, RedisLettuceClientConfiguration lettuceClientConfiguration){
+    public static RedisTemplate<String, Object> getRedisTemplate(RedisClusterConfiguration redisClusterConfiguration, LettuceClientConfiguration lettuceClientConfiguration){
         LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisClusterConfiguration, lettuceClientConfiguration);
         return getRedisTemplate(lettuceConnectionFactory);
     }
