@@ -1,7 +1,9 @@
 package com.boonya.springcloud.cache.redis.listener;
 
+import com.boonya.springcloud.cache.redis.condition.RedisEnableCondition;
 import com.boonya.springcloud.cache.redis.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.listener.KeyExpirationEventMessageListener;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
+@Conditional(value = {RedisEnableCondition.class})
 public class RedisKeyExpiredListener extends KeyExpirationEventMessageListener {
 
     public RedisKeyExpiredListener(RedisMessageListenerContainer listenerContainer) {

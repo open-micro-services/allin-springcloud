@@ -1,6 +1,7 @@
 package com.boonya.springcloud.cache.redis.config;
 
 import com.boonya.springcloud.cache.redis.condition.RedisClusterCondition;
+import com.boonya.springcloud.cache.redis.condition.RedisEnableCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisJedisCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisLettuceCondition;
 import com.boonya.springcloud.cache.redis.listener.RedisMessageListener;
@@ -42,7 +43,7 @@ import java.util.Set;
  * @date 2018-12-28 17:28
  */
 @Configuration
-@Conditional(RedisClusterCondition.class)
+@Conditional(value = {RedisEnableCondition.class,RedisClusterCondition.class})
 @Primary
 public class RedisConfigForCluster {
 

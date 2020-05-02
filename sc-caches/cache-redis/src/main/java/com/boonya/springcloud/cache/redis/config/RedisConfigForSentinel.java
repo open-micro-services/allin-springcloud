@@ -1,5 +1,6 @@
 package com.boonya.springcloud.cache.redis.config;
 
+import com.boonya.springcloud.cache.redis.condition.RedisEnableCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisJedisCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisLettuceCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisSentinelCondition;
@@ -40,7 +41,7 @@ import java.util.Set;
  * @date 2018-12-28 17:39
  */
 @Configuration
-@Conditional(RedisSentinelCondition.class)
+@Conditional(value = {RedisEnableCondition.class,RedisSentinelCondition.class})
 @Primary
 public class RedisConfigForSentinel {
 

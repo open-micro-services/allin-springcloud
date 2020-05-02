@@ -1,5 +1,6 @@
 package com.boonya.springcloud.cache.redis.config;
 
+import com.boonya.springcloud.cache.redis.condition.RedisEnableCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisJedisCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisLettuceCondition;
 import com.boonya.springcloud.cache.redis.condition.RedisSingleCondition;
@@ -28,7 +29,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @date 2018-12-28 17:26
  */
 @Configuration
-@Conditional(RedisSingleCondition.class)
+@Conditional(value = {RedisEnableCondition.class,RedisSingleCondition.class})
 @Primary
 public class RedisConfigForSingle {
 
