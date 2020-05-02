@@ -1,0 +1,56 @@
+#server配置
+server:
+    port: 18090
+    servlet:
+        application-display-name: /cache-redis # 项目名称
+        context-path: /cache-redis # 项目路径
+
+#system系统配置
+system:
+    redis-enable: true # 是否开启redis缓存
+    redis-mode: single  # redis使用模式(single|cluster|sentinel)
+    redis-pool: lettuce # redis连接池(jedis|lettuce)
+
+#Spring 配置
+spring:
+    http:
+      #encoding
+      encoding:
+        force: true
+        charset: UTF-8
+        enabled: true
+    redis:
+        host: 127.0.0.1
+        port: 6379
+        password: redis@boonya
+        timeout: 10000 #超时时间
+        # jedis连接池====直连操作(原始client连接)===连接并非越多越好
+        jedis:
+            pool:
+                max-active: 10
+                max-idle: 10
+                min-idle: 10
+                max-wait: -1
+                time-between-eviction-runs: 30
+                testWhileIdle: true #在显示测试连接可用性
+                testOnBorrow: false # 获取连接的时候是否测试可用性
+                minEvictableIdleTimeMillis: 10000 # 最可回收空闲时间
+                numTestsPerEvictionRun: 10 #每次测试逐出的数量
+        # lettuce连接池====Netty Nio高性能连接池可复用共享连接===连接并非越多越好[推荐使用lettuce]
+        lettuce:
+            pool:
+                max-active: 10
+                max-idle: 10
+                max-wait: -1ms
+                min-idle: 0
+                time-between-eviction-runs: 30
+        # 是否支持ssl协议
+        ssl: false
+        # cluster集群配置
+        cluster:
+            max-redirects: 6 #最多分发的节点数量
+            nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005,127.0.0.1:7006 # 集群节点配置
+        # sentinel哨兵配置
+        sentinel:
+            master: 127.0.0.1:7001 # 主节点
+            nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005,127.0.0.1:7006 # 集群节点配置

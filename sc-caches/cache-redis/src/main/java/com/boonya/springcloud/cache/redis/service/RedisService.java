@@ -1,6 +1,8 @@
-package com.boonya.springcloud.cache.redis.utils;
+package com.boonya.springcloud.cache.redis.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -10,18 +12,18 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName: RedisUtils
- * @Description: TODO(Redis客户端操作工具类)
+ * @Description: TODO(功能说明：Redis客户端操作服务类)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2018-12-28 17:21
  */
-public class RedisUtil {
-    private RedisTemplate<String, Object> redisTemplate;
+@Service
+public class RedisService {
 
-    public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
-    //=============================common============================
+    @Autowired
+    RedisTemplate<String, Object> redisTemplate;
+
+    //============================Common=============================
 
     /**
      * 指定缓存失效时间
@@ -136,7 +138,7 @@ public class RedisUtil {
     }
 
     /**
-     * 递增
+     * 原子递增
      *
      * @param key   键
      * @param delta 要增加几(大于0)
@@ -150,7 +152,7 @@ public class RedisUtil {
     }
 
     /**
-     * 递减
+     * 原子递减
      *
      * @param key   键
      * @param delta 要减少几(小于0)

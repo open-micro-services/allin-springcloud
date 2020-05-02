@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @ClassName: Message
- * @Description: TODO(消息实体类)
+ * @Description: TODO(功能说明：消息实体类)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2018-12-28 17:57
