@@ -2,7 +2,7 @@ package com.boonya.springcloud.cache.redis.bean;
 
 /**
  * @ClassName: ListParam
- * @Description: TODO(功能说明)
+ * @Description: TODO(功能说明：LIST类型)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
  * @date 2020/4/25 0:49
