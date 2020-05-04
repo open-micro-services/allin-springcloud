@@ -1,0 +1,50 @@
+# ****************************请慎重使用Windows版本的REDIS服务【KEY过期监听异常问题,如确定不需要监听请不要注入过期监听】*************************************
+# 单节点模式配置参考：org.redisson.config.Config,org.redisson.config.SingleServerConfig;
+# https://github.com/redisson/redisson/wiki/2.-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95#26-%E5%8D%95redis%E8%8A%82%E7%82%B9%E6%A8%A1%E5%BC%8F
+singleServerConfig:
+    # 连接空闲超时，单位：毫秒
+    idleConnectionTimeout: 10000
+    # --------最新版本没有pingTimeout字段----------------
+    #pingTimeout: 1000
+    # 连接超时，单位：毫秒
+    connectTimeout: 10000
+    # 命令等待超时，单位：毫秒
+    timeout: 3000
+    # 命令失败重试次数,如果尝试达到 retryAttempts（命令失败重试次数） 仍然不能将命令发送至某个指定的节点时，将抛出错误。
+    # 如果尝试在此限制之内发送成功，则开始启用 timeout（命令等待超时） 计时。
+    retryAttempts: 3
+    # 命令重试发送时间间隔，单位：毫秒
+    retryInterval: 1500
+    # --------最新版本没有reconnectionTimeout字段:重新连接时间间隔，单位：毫秒------------------
+    #reconnectionTimeout: 3000
+    # --------最新版本没有failedAttempts字段:执行失败最大次数----------------
+    #failedAttempts: 3
+    # AUTH密码
+    password: redis@boonya
+    # 单个连接最大订阅数量
+    subscriptionsPerConnection: 5
+    # 客户端名称
+    clientName: null
+    # 节点地址
+    address: redis://127.0.0.1:6379
+    # 发布和订阅连接的最小空闲连接数
+    subscriptionConnectionMinimumIdleSize: 1
+    # 发布和订阅连接池大小
+    subscriptionConnectionPoolSize: 50
+    # 最小空闲连接数
+    connectionMinimumIdleSize: 32
+    # 连接池大小
+    connectionPoolSize: 64
+    # 数据库编号
+    database: 0
+    # DNS监测时间间隔，单位：毫秒
+    dnsMonitoringInterval: 5000
+# 线程池数量,默认值: 当前处理核数量 * 2
+threads: 16
+# Netty线程池数量,默认值: 当前处理核数量 * 2
+nettyThreads: 32
+# 编码
+codec:
+    class: org.redisson.codec.JsonJacksonCodec
+# 传输模式
+transportMode: "NIO"

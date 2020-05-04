@@ -8,8 +8,10 @@ server:
 #system系统配置
 system:
     redis-enable: true # 是否开启redis缓存
-    redis-mode: single  # redis使用模式(single|cluster|sentinel)
+    redis-mode: sentinel  # redis使用模式(single|cluster|sentinel)【******************与redisson有共通之处】
     redis-pool: lettuce # redis连接池(jedis|lettuce)
+    redis-redisson-enable: true # 是否开启redis-redisson分布式管理框架
+    redis-redisson-mode: sentinel # redisson使用模式(single|replicated|master-salve|cluster|sentinel)【******************与redis有共通之处】
 
 #Spring 配置
 spring:
@@ -19,6 +21,7 @@ spring:
         force: true
         charset: UTF-8
         enabled: true
+    # ****************************请慎重使用Windows版本的REDIS服务【KEY过期监听异常问题,如确定不需要监听请不要注入过期监听】*************************************
     redis:
         host: 127.0.0.1
         port: 6379
@@ -46,11 +49,18 @@ spring:
                 time-between-eviction-runs: 30
         # 是否支持ssl协议
         ssl: false
-        # cluster集群配置
+        # cluster集群配置(如引入了redisson则是默认的redisson集群模式)
         cluster:
             max-redirects: 6 #最多分发的节点数量
             nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005,127.0.0.1:7006 # 集群节点配置
-        # sentinel哨兵配置
+        # sentinel哨兵配置(如引入了redisson则是默认的redisson哨兵模式)
         sentinel:
             master: 127.0.0.1:7001 # 主节点
-            nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005,127.0.0.1:7006 # 集群节点配置
+            nodes: 127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005,127.0.0.1:7006 # 集群节点配置
+        # ****************************请注意【redisson是在spring.redis的配置上实现的并不与spring.redis的配置冲突】*************************************
+        # redisson分布式框架配置在redis的基础上实现，可以参见https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter 或 https://gitee.com/xsxgit/redis-spring-boot-starter
+        # 更多功能参考： https://github.com/redisson/redisson
+        # 使用工具类：RedissonClient 、 RedisTemplate/ReactiveRedisTemplate
+        # 配置方法：https://github.com/redisson/redisson/wiki/2.-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95
+        redisson:
+            config: classpath:redisson-sentinel.yml  #【与system.redis-redisson-mode对应】可根据需要配置云托管、单点、集群、主从、哨兵https://www.oschina.net/p/redisson-spring-boot-starter
