@@ -42,3 +42,21 @@ For your applications security.
 # Spring data Examples
 
 https://github.com/spring-projects/spring-data-examples
+
+*******************************************
+
+
+# Distribute database solutions
+
+###### Mycat   
+http://www.mycat.org.cn/ 
+
+https://github.com/MyCATApache/Mycat-Server
+
+###### Sharding-jdbc
+
+https://shardingsphere.apache.org/document/current/cn/quick-start/sharding-jdbc-quick-start/
+
+https://github.com/apache/shardingsphere
+
+https://www.cnblogs.com/yixinjishu/p/10876071.html
