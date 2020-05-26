@@ -59,4 +59,3 @@ https://shardingsphere.apache.org/document/current/cn/quick-start/sharding-jdbc-
 
 https://github.com/apache/shardingsphere
 
-https://www.cnblogs.com/yixinjishu/p/10876071.html
