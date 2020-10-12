@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
- * @ClassName: StartMainApplication
+ * @ClassName: EurekaServerApplication
  * @Description: TODO(用来指定该项目为Eureka的服务注册中心)
  * @author: pengjunlin
  * @motto: 学习需要毅力，那就秀毅力
@@ -13,7 +13,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  */
 @EnableEurekaServer
 @SpringBootApplication
-public class EurekaApplication {
+public class EurekaServerApplication {
 
     /**
      * 函数入口
@@ -21,6 +21,6 @@ public class EurekaApplication {
      * @param args
      */
     public static void main(String[] args) {
-        SpringApplication.run(EurekaApplication.class, args);
+        SpringApplication.run(EurekaServerApplication.class, args);
     }
 }
