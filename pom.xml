@@ -15,7 +15,8 @@
         <module>sc-business</module>
         <module>sc-permission</module>
         <module>sc-api-gateway</module>
-        <module>sc-eureka</module>
+        <module>sc-eureka-server</module>
+        <module>sc-eureka-client</module>
         <module>sc-hystrix</module>
         <module>sc-caches</module>
         <module>sc-mqs</module>

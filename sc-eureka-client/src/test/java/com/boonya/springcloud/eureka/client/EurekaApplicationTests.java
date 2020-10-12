@@ -1,4 +1,4 @@
-package com.boonya.springcloud.main;
+package com.boonya.springcloud.eureka.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

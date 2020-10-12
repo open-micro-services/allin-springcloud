@@ -4,7 +4,7 @@ server:
 #设置服务名称
 spring:
     application:
-        name: eureka-service
+        name:  eureka-server
 #设置服务端主机地址
 eureka:
     instance:

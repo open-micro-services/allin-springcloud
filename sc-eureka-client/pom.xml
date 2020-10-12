@@ -8,10 +8,10 @@
         <version>2.1.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.boonya.springcloud.eureka.server</groupId>
-    <artifactId>sc-eureka-server</artifactId>
+    <groupId>com.boonya.springcloud.eureka.client</groupId>
+    <artifactId>sc-eureka-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sc-eureka-server</name>
+    <name>sc-eureka-client</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -29,10 +29,10 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
         </dependency>
-        <!-- Eureka服务注册发现服务端-->
+        <!-- Eureka服务注册发现客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-netflix-eureka-client</artifactId>
         </dependency>
 
         <dependency>
