@@ -8,7 +8,7 @@ spring:
 #设置服务端主机地址
 eureka:
     instance:
-        hostname: 10.16.168.16
+        hostname: localhost
     #设置服务注册中心的URL
     client:
         serviceUrl:

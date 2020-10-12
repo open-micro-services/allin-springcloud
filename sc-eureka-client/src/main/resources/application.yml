@@ -3,7 +3,7 @@ eureka:
     #设置服务注册中心的URL
     client:
         serviceUrl:
-            defaultZone: http://10.16.168.16:1111/eureka
+            defaultZone: http://localhost:1111/eureka
         #注册中心不需要注册自己
         register-with-eureka: false
         #注册中心不需要去发现服务
