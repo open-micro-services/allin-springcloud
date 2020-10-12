@@ -7,9 +7,22 @@ spring:
     profiles:
         # 如不指定默认application.yml节点，指定后运行指定配置文件配置
         active:
-    #数据源配置
+    #MySQL数据源配置
     datasource:
-        username: dlwy
-        password: DlwyZmn2017
-        url: jdbc:mysql://192.168.1.111:3306/xht_ywp
+        username: root
+        password: 123456
+        url: jdbc:mysql://192.168.1.111:3306/test
         #driver-class-name: com.mysql.jdbc.Driver
+    # redis缓存配置RedisTemplate
+    redis:
+        host: 127.0.0.1
+        port: 6379
+        password: redis
+        database: 0
+        timeout: 10000
+        jedis:
+            pool:
+                max-active: 500
+                max-idle: 10
+                min-idle: 10
+                max-wait: 20000

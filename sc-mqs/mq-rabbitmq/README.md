@@ -34,3 +34,5 @@ http://localhost:15672
 # Reference
 
 https://www.cnblogs.com/ericli-ericli/p/5902270.html
+
+https://github.com/hmilyos/rabbitmqdemo

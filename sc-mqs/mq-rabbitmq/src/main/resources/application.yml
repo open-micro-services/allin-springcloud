@@ -1,0 +1,37 @@
+#server
+server:
+  port: 18080
+  servlet:
+    application-display-name: mq-rabbitmq
+    # 项目访问路径
+    context-path: /mq
+#日志控制
+logging:
+    level:
+        org.springframework.jdbc.core.JdbcTemplate: warn
+#Spring
+spring:
+   profiles:
+       active:
+   http:
+     #encoding
+     encoding:
+       force: true
+       charset: UTF-8
+       enabled: true
+   # rabbitmq消息队列(5672是服务端口，15672是管理端口)----->https://www.rabbitmq.com/download.html
+   # Spring AMQP 推荐实现容器部署服务:
+   # docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+   rabbitmq:
+       host: 192.168.1.111
+       port: 5672
+       username: guest
+       password: guest
+       publisher-confirms: false #开启发送消息确认机制，消息发送完成触发回调
+       publisher-returns: true
+       template:
+         mandatory: true
+       listener:
+         concurrency: 10 #最小消息监听线程数
+         max-concurrency: 20 #最大消息监听线程数
+       virtual-host: / #虚拟机路径,用于隔离用户权限

@@ -10,6 +10,8 @@ spring:
         database-schema-update: true
         #定义流程模板处理配置获取路径*.bpmn
         process-definition-location-prefix: /processes/
+        history-level: full
+        db-history-used: true
     # 数据源配置
     datasource:
         driver: com.mysql.jdbc.Driver

@@ -1,0 +1,9 @@
+server:
+    port: 8090
+spring:
+    zookeeper:
+        address: "localhost:2181"
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/test
+        username: root
+        password: 123456

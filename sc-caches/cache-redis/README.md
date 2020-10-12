@@ -8,7 +8,7 @@ Unzip to C:/DEVELOPERS/Redis .
 
 # Windows install redis
 
-## Redis by default
+## Redis by default standalone mode
 
 **install redis service:**
 
@@ -28,9 +28,9 @@ C:/DEVELOPERS/Redis/redis-server.exe --service-start  --service-name redis-defau
 C:/DEVELOPERS/Redis/redis-server.exe --service-uninstall  --service-name redis-default-6379
 ```
 
-## Redis by cluster
+## Redis by cluster mode
 
-cluster nodes must has 3 nodes at least.Here are 7 nodes for cluster.
+cluster nodes must has 3 nodes at least.Here are 6 nodes for cluster.
 
 template: redis.*.conf, for example:
 
@@ -84,7 +84,7 @@ C:/DEVELOPERS/Redis/redis-server.exe --service-uninstall  --service-name redis70
 C:/DEVELOPERS/Redis/redis-server.exe --service-uninstall  --service-name redis7006
 ```
 
-# Settings about  Ruby for cluster
+# Settings about  Ruby for cluster mode
 
 ## Download and install Ruby 
 

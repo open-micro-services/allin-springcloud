@@ -1,0 +1,51 @@
+# ****************************请慎重使用Windows版本的REDIS服务【KEY过期监听异常问题,如确定不需要监听请不要注入过期监听】*************************************
+# 主从模式配置参考：org.redisson.config.Config,org.redisson.config.MasterSlaveServersConfig;
+# https://github.com/redisson/redisson/wiki/2.-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95#26-%E5%8D%95redis%E8%8A%82%E7%82%B9%E6%A8%A1%E5%BC%8F
+masterSlaveServersConfig:
+    # 主节点地址
+    masterAddress: "redis://127.0.0.1:7001"
+    # 从节点地址
+    slaveAddresses:
+        - "redis://127.0.0.1:7002"
+        - "redis://127.0.0.1:7003"
+        - "redis://127.0.0.1:7004"
+        - "redis://127.0.0.1:7005"
+        - "redis://127.0.0.1:7006"
+    # AUTH密码
+    password: redis@boonya
+    # 数据库编号
+    database: 0
+    # 负载均衡器配置
+    loadBalancer:
+        class: org.redisson.connection.balancer.RoundRobinLoadBalancer
+    # 订阅连接最小空闲个数
+    subscriptionConnectionMinimumIdleSize: 1
+    # 订阅连接池初始化个数
+    subscriptionConnectionPoolSize: 50
+    # 从节点连接最小空闲个数
+    slaveConnectionMinimumIdleSize: 32
+    # 从节点连接池初始化个数
+    slaveConnectionPoolSize: 64
+    # 从节点失败重连间隔，单位：毫秒
+    failedSlaveReconnectionInterval: 3000
+    # 从节点失败检测间隔，单位：毫秒
+    failedSlaveCheckInterval: 180000
+    # 主节点连接最小空闲个数
+    masterConnectionMinimumIdleSize: 32
+    # 主节点连接初始化个数
+    masterConnectionPoolSize: 64
+    # 订阅模式配置
+    subscriptionMode: "MASTER"
+    # 读模式配置
+    readMode: "SLAVE"
+    # DNS监测时间间隔，单位：毫秒
+    dnsMonitoringInterval: 5000
+# 线程池数量,默认值: 当前处理核数量 * 2
+threads: 16
+# Netty线程池数量,默认值: 当前处理核数量 * 2
+nettyThreads: 32
+# 编码
+codec:
+    class: org.redisson.codec.JsonJacksonCodec
+# 传输模式
+transportMode: "NIO"

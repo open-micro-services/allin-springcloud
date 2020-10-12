@@ -1,0 +1,15 @@
+server:
+    port: 8090
+spring:
+    #DataSource主从配置
+    datasource:
+        master:
+            jdbcurl: jdbc:mysql://192.168.1.111:3306/xht_ywp?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+            username: dlwy
+            password: DlwyZmn2017
+            driver-class-name: com.mysql.jdbc.Driver
+        slave:
+            jdbcurl: jdbc:mysql://192.168.1.111:3307/xht_ywp?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+            username: dlwy
+            password: DlwyZmn2017
+            driver-class-name: com.mysql.jdbc.Driver

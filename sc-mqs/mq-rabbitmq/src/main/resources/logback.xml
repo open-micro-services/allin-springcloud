@@ -1,0 +1,35 @@
+<configuration>
+	<!--设置日志目录-->
+	<property name="LOG_HOME" value="./applog" />
+	<!--这里需要将value改成项目名称-->
+	<property name="LOG_NAME" value="mq-rabbitmq" />
+	<!--控制台日志格式-->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} | %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!-- 文件日志策略：每天生成一个日志文件，保存30天的日志文件-->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${LOG_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+　　　　<encoder>
+　　　　　　<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} | %msg%n</pattern>
+　　　　</encoder>
+		<!--日志文件最大限制-->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>100MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	<!--默认日志级别-->
+	<root level="info">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+	<!--特定日志级别,其中xxx为项目名称-->
+	<logger name="com.boonya.springcloud.messages.rabbitmq.controller" level="info" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+</configuration>
