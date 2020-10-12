@@ -1,0 +1,25 @@
+#设置tomcat服务端口号
+server:
+    port: 2002
+#设置服务名称
+spring:
+    application:
+        name: eureka-service
+#设置服务端主机地址
+eureka:
+    instance:
+        hostname: peer2
+    #========解决Eureka Server不踢出已关停的节点的问题====开始
+    server:
+        #为了能够迅速有效地踢出已关停的节点设为false，关闭自我保护模式(默认开启保护模式true)
+        enable-self-preservation: true
+        # 清理间隔（单位毫秒，默认是0表示立即清除）
+        eviction-interval-timer-in-ms: 0
+    #========解决Eureka Server不踢出已关停的节点的问题====结束
+    client:
+        #设置服务注册中心的URL
+        defaultZone: http://peer1:2001/eureka
+        #注册中心不需要注册自己
+        register-with-eureka: false
+        #注册中心不需要去发现服务
+        fetch-registry: false
