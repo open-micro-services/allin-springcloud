@@ -1,0 +1,20 @@
+server:
+  port: 2002 #服务注册中心端口号
+eureka:
+  instance:
+    hostname: peer2 #服务注册中心IP地址
+    lease-renewal-interval-in-seconds: 30 # 租期更新时间间隔（默认30秒）
+    lease-expiration-duration-in-seconds: 60 #租期到期时间（默认90秒）不怕出错的话，时间可以更短
+  client:
+    registerWithEureka: false #是否向服务注册中心注册自己
+    fetchRegistry: false #是否检索服务
+    serviceUrl: #服务注册中心的配置内容，指定服务注册中心的位置
+      defaultZone: http://peer1:2001/eureka/
+    healthcheck:
+      enabled: true # 开启监控检查
+  server:
+    enable-self-preservation: false # 自我保护设置
+    eviction-interval-timer-in-ms: 10000 #清理失效服务时间间隔
+spring:
+  application:
+    name: sc-eureka-server

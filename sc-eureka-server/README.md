@@ -13,7 +13,7 @@ C:\Windows\System32\drivers\etc 编辑hosts
 ```
 # Eureka运行多个服务注册发现示例
 ```
-java -jar sc-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer1 --server.port=2001
-java -jar sc-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2 --server.port=2002
+java -jar sc-eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer1 --server.port=2001
+java -jar sc-eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2 --server.port=2002
 ```
 
