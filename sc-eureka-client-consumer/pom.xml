@@ -8,10 +8,10 @@
 		<version>2.3.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.boonya.springcloud.eureka.server</groupId>
-	<artifactId>sc-eureka-server</artifactId>
+	<groupId>com.boonya.springcloud.eureka.client.consumer</groupId>
+	<artifactId>sc-eureka-client-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sc-eureka-server</name>
+	<name>sc-eureka-client-consumer</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -32,6 +32,10 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-ribbon</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

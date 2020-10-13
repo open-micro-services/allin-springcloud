@@ -9,6 +9,11 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
     <modules>
         <module>sc-common-utils</module>
         <module>sc-beans</module>
@@ -16,7 +21,8 @@
         <module>sc-permission</module>
         <module>sc-api-gateway</module>
         <module>sc-eureka-server</module>
-        <module>sc-eureka-client</module>
+        <module>sc-eureka-client-provider</module>
+        <module>sc-eureka-client-consumer</module>
         <module>sc-hystrix</module>
         <module>sc-caches</module>
         <module>sc-mqs</module>

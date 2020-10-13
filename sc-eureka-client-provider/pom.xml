@@ -8,10 +8,10 @@
 		<version>2.3.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.boonya.springcloud.eureka.server</groupId>
-	<artifactId>sc-eureka-server</artifactId>
+	<groupId>com.boonya.springcloud.eureka.client.provider</groupId>
+	<artifactId>sc-eureka-client-provider</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sc-eureka-server</name>
+	<name>sc-eureka-client-provider</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
