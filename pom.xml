@@ -17,13 +17,10 @@
     <modules>
         <module>sc-common-utils</module>
         <module>sc-beans</module>
-        <module>sc-business</module>
         <module>sc-permission</module>
-        <module>sc-api-gateway</module>
         <module>sc-eureka-server</module>
         <module>sc-eureka-client-provider</module>
         <module>sc-eureka-client-consumer</module>
-        <module>sc-hystrix</module>
         <module>sc-caches</module>
         <module>sc-mqs</module>
         <module>sc-demo-projects</module>
