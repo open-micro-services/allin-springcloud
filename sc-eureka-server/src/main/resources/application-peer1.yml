@@ -14,7 +14,7 @@ eureka:
             enabled: true # 开启监控检查
     server:
         enable-self-preservation: false # 自我保护设置
-        eviction-interval-timer-in-ms: 0 #清理失效服务时间间隔（0立即清除）
+        eviction-interval-timer-in-ms: 10000 #清理失效服务时间间隔（0立即清除）
 spring:
     application:
         name: sc-eureka-server

@@ -2,12 +2,12 @@ package com.boonya.springcloud.eureka.client.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * Eureka注册服务消费者sc-eureka-client-consumer
  */
-@EnableEurekaClient
+@EnableDiscoveryClient
 @SpringBootApplication
 public class EurekaClientConsumerApplication {
 
