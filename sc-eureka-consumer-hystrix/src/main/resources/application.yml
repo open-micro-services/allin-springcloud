@@ -8,17 +8,7 @@ eureka:
     lease-renewal-interval-in-seconds: 30 # 租期更新时间间隔（默认30秒）
     lease-expiration-duration-in-seconds: 60 #租期到期时间（默认90秒）
 server:
-  port: 2224
+  port: 2226
 spring:
   application:
-    name: sc-eureka-consumer-feign
-#feign的配置，连接超时及读取超时配置
-feign:
-    client:
-        config:
-            default:
-                connectTimeout: 5000
-                readTimeout: 5000
-                loggerLevel: basic
-    hystrix:
-        enabled: true # 开启断路器
+    name: sc-eureka-consumer-hystrix

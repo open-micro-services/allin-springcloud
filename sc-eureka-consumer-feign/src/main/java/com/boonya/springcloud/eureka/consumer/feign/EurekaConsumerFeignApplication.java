@@ -3,6 +3,8 @@ package com.boonya.springcloud.eureka.consumer.feign;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
@@ -10,6 +12,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * 它具有可插拔的注解特性，可使用Feign 注解和JAX-RS注解。Feign支持可插拔的编码器和解码器。
  * Feign默认集成了Ribbon，并和Eureka结合，默认实现了负载均衡的效果。
  */
+@EnableHystrix
+@EnableHystrixDashboard
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication

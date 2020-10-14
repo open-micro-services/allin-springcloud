@@ -1,5 +1,6 @@
 package com.boonya.springcloud.eureka.consumer.feign.service;
 
+import com.boonya.springcloud.eureka.consumer.feign.service.feedback.SystemFeedBackService;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Date: 2020/10/13 13:37
  * @Description: 系统服务接口
  */
-@FeignClient(value = "systemService")
+@FeignClient(value = "sc-eureka-consumer-feign",fallback = SystemFeedBackService.class)
 public interface SystemService {
 
     /**
