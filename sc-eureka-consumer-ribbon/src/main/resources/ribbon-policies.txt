@@ -1,0 +1,15 @@
+==策略名称==        ==策略对应的类名==          ==实现原理===
+
+1、轮询策略（默认） RoundRobinRule              轮询策略表示每次都顺序取下一个 provider，比如一共有 5 个provider，第 1 次取第 1 个，第 2次取第 2 个，第 3 次取第 3 个，以此类推
+
+2、权重轮询策略     WeightedResponseTimeRule    根据每个 provider 的响应时间分配一个权重，响应时间越长，权重越小，被选中的可能性越低。2.原理：一开始为轮询策略，并开启一个计时器，每 30 秒收集一次每个 provider 的平均响应时间，当信息足够时，给每个 provider附上一个权重，并按权重随机选择provider，高权越重的 provider会被高概率选中。
+
+3、随机策略         RandomRule                  从 provider 列表中随机选择一个provider
+
+4、最少并发数策略   BestAvailableRule           选择正在请求中的并发数最小的 provider，除非这个provider 在熔断中。
+
+5、在“选定的负载均衡策略”基础上进行重试机制    RetryRule      “选定的负载均衡策略”这个策略是轮询策略RoundRobinRule2.该重试策略先设定一个阈值时间段，如果在这个阈值时间段内当选择 provider 不成功，则一直尝试采用“选定的负载均衡策略：轮询策略”最后选择一个可用的provider
+
+6、可用性敏感策略   AvailabilityFilteringRule   过滤性能差的 provider,有 2种：第一种：过滤掉在 eureka 中处于一直连接失败 provider 第二种：过滤掉高并发的 provider
+
+7、区域敏感性策略   ZoneAvoidanceRule           以一个区域为单位考察可用性，对于不可用的区域整个丢弃，从剩下区域中选可用的provider2.如果这个 ip 区域内有一个或多个实例不可达或响应变慢，都会降低该 ip 区域内其他 ip 被选中的权重。
