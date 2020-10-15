@@ -3,10 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!--确定springboot依赖版本全局修改-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
     <groupId>com.boonya.springcloud</groupId>
     <artifactId>springcloud</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -15,16 +22,18 @@
     </properties>
 
     <modules>
-        <module>sc-common-utils</module>
-        <module>sc-beans</module>
-        <module>sc-permission</module>
-        <module>sc-eureka-server</module>
-        <module>sc-eureka-client-provider</module>
-        <module>sc-eureka-client-consumer</module>
-        <module>sc-eureka-consumer-feign</module>
-        <module>sc-caches</module>
-        <module>sc-mqs</module>
-        <module>sc-demo-projects</module>
+        <module>common-utils</module>
+        <module>beans</module>
+        <module>eureka-server</module>
+        <module>eureka-provider</module>
+        <module>eureka-consumer</module>
+        <module>eureka-consumer-feign</module>
+        <module>eureka-consumer-hystrix</module>
+        <module>eureka-consumer-ribbon</module>
+        <module>eureka-consumer-zuul</module>
+        <module>caches</module>
+        <module>amqps</module>
+        <module>demo-projects</module>
     </modules>
 
     <dependencies>

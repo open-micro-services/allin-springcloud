@@ -1,0 +1,35 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://127.0.0.1:1111/eureka/
+        healthcheck:
+            enabled: true # 开启监控检查（需要spring-boot-starter-actuator依赖）
+    instance:
+        lease-renewal-interval-in-seconds: 30 # 租期更新时间间隔（默认30秒）
+        lease-expiration-duration-in-seconds: 60 #租期到期时间（默认90秒）
+        prefer-ip-address: true # 开启IP地址引用
+# 关闭eureka负载路由
+ribbon:
+    ReadTimeout: 12000
+    ConnectTimeout: 12000
+    eureka:
+        enabled: false
+# Zuul构建路由地址
+zuul:
+    host:
+        socket-timeout-millis: 12000
+        connect-timeout-millis: 12000
+    routes:
+        # 这里可以自定义
+        service:
+            # 匹配的路由规则
+            path: /**
+            # 路由的目标服务名
+            serviceId:  eureka-provider
+#    prefix: /api #配置路径前缀
+#    strip-prefix: true
+server:
+    port: 2227
+spring:
+    application:
+        name: eureka-consumer-zuul

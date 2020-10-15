@@ -1,0 +1,22 @@
+# Eureka 客户端配置
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://127.0.0.1:1111/eureka/
+        healthcheck:
+            enabled: true # 开启监控检查（需要spring-boot-starter-actuator依赖）
+    instance:
+        lease-renewal-interval-in-seconds: 30 # 租期更新时间间隔（默认30秒）
+        lease-expiration-duration-in-seconds: 60 #租期到期时间（默认90秒）
+# Ribbon点对点直连====不使用Eureka注册关联服务
+ribbon:
+    eureka:
+        enabled: false #禁用 eureka
+eureka-ribbon-provider:
+    ribbon:
+        listOfServers: 127.0.0.1:2222 # provider服务配置
+server:
+    port: 2225
+spring:
+    application:
+        name: eureka-consumer-ribbon
