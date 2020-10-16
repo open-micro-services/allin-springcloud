@@ -39,7 +39,7 @@ public class SystemController {
     @RequestMapping("/getVersion")
     @ResponseBody
     public String getVersion(){
-        return restTemplate.getForObject("http://sc-eureka-client-provider/getVersion",String.class);
+        return restTemplate.getForObject("http://eureka-provider/getVersion",String.class);
     }
 
     /**
@@ -50,6 +50,6 @@ public class SystemController {
     @RequestMapping("/getOsInfo")
     @ResponseBody
     public String getOsInfo(){
-        return restTemplate.getForObject("http://sc-eureka-client-provider/getOsInfo",String.class);
+        return restTemplate.getForObject("http://eureka-provider/getOsInfo",String.class);
     }
 }

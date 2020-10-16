@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Date: 2020/10/13 13:37
  * @Description: 系统服务接口
  */
-@FeignClient(value = "eureka-consumer-feign",fallback = SystemFeedBackService.class)
+@FeignClient(value = "eureka-provider",fallback = SystemFeedBackService.class)
 @Service
 public interface SystemService {
 
