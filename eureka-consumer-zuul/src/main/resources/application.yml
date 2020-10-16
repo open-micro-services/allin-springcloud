@@ -8,12 +8,6 @@ eureka:
         lease-renewal-interval-in-seconds: 30 # 租期更新时间间隔（默认30秒）
         lease-expiration-duration-in-seconds: 60 #租期到期时间（默认90秒）
         prefer-ip-address: true # 开启IP地址引用
-# 关闭eureka负载路由
-ribbon:
-    ReadTimeout: 12000
-    ConnectTimeout: 12000
-    eureka:
-        enabled: false
 # Zuul构建路由地址
 zuul:
     host:
