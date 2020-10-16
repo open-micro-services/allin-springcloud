@@ -20,8 +20,8 @@ zuul:
             path: /**
             # 路由的目标服务名
             serviceId:  eureka-provider
-#    prefix: /api #配置路径前缀
-#    strip-prefix: true
+    prefix: /api #配置路径前缀
+    strip-prefix: true
 server:
     port: 2227
 spring:
