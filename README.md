@@ -2,41 +2,37 @@
 
 spring cloud is aim to support micro-services practice.
 
-# sc-api-gateway
+# eureka-consumer-gateway
 
 For applications API gateway.
 
-# sc-beans
+# beans
 
 For entities of projects.
 
-# sc-caches
+# caches
 
 For cache applications ,such as memcached,redis,MongoDB.
 
-# sc-common-utils
+# common-utils
 
 For utils in common.
 
-# sc-demo-projects
+# demo-projects
 
 For demo projects to fast to test your environment.
 
-# sc-eureaka
+# eureka-server
 
-For  micro-services discovery!
+For  micro-services register discovery!
 
-# sc-hystrix
+# eureka-consumer--hystrix
 
 For  micro-services to cut network request risky of your applications.
 
-# sc-mqs
+# amqps
 
 For project which needs MQ services.
-
-# sc-permission
-
-For your applications security.
 
 
 # Spring data Examples
