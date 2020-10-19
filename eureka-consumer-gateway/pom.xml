@@ -84,12 +84,78 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
+   <!-- <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+        </plugins>
+    </build>-->
+
+    <build>
+        <plugins>
+            <!-- JRebel热部署插件-->
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <version>1.1.10</version>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--传统打包-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--此配置可打出两个JAR包：a.可依赖的jar包，b.可执行*-exe.jar -->
+                    <classifier>exe</classifier>
+                    <!--本地热部署重要配置-->
+                    <fork>true</fork>
+                    <!--本地热部署远程部署插件配置-->
+                    <excludeDevtools>false</excludeDevtools>
+                    <!--本地maven依赖jar包打包时包含设置 -->
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+            <!--Docker打包镜像发布-->
+            <!-- <plugin>
+                 <groupId>com.spotify</groupId>
+                 <artifactId>docker-maven-plugin</artifactId>
+                 <version>1.2.0</version>
+                 <executions>
+                     <execution>
+                         <id>build-image</id>
+                         <phase>package</phase>
+                         <goals>
+                             <goal>build</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+                 <configuration>
+                     <dockerHost>http://192.168.1.111:2375</dockerHost>
+                     <imageName>eureka-consumer-gateway/${project.artifactId}</imageName>
+                     <imageTags>
+                         <imageTag>${project.version}</imageTag>
+                     </imageTags>
+                     <forceTags>true</forceTags>
+                     <dockerDirectory>${project.basedir}</dockerDirectory>
+                     <resources>
+                         <resource>
+                             <targetPath>/</targetPath>
+                             <directory>${project.build.directory}</directory>
+                             <include>${project.build.finalName}.jar</include>
+                         </resource>
+                     </resources>
+                 </configuration>
+             </plugin>-->
         </plugins>
     </build>
 
