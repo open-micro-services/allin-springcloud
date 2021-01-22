@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 不使用 spring boot web，启动 netty server 进行监听
  *
- * @author lw https://github.com/lw1243925457/JAVA-000/tree/main/homework/rpc/rpc-demo
+ * 参考学习: https://github.com/lw1243925457/JAVA-000/tree/main/homework/rpc/rpc-demo
  */
 @SpringBootApplication
 @Slf4j
