@@ -22,12 +22,12 @@ public class BeanConfig {
         return new RpcNettyServer(context);
     }
 
-    @Bean("com.example.demo.service.UserService")
+    @Bean("com.boonya.netty.rpc.business.service.UserService")
     public UserService userService() {
         return new UserServiceImpl();
     }
 
-    @Bean("com.example.demo.service.OrderService")
+    @Bean("com.boonya.netty.rpc.business.service.OrderService")
     public OrderService orderService() {
         return new OrderServiceImpl();
     }

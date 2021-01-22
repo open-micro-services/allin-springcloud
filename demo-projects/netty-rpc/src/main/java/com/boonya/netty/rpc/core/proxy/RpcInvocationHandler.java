@@ -95,6 +95,9 @@ public class RpcInvocationHandler implements InvocationHandler, MethodIntercepto
 
         // 序列化成对象返回
         log.info("Response:: " + rpcResponse.getResult());
-        return JSON.parse(rpcResponse.getResult().toString());
+        // JSON允许autoType支持设置并设置白名单
+        ParserConfig.getGlobalInstance().addAccept("com.boonya.netty.rpc.business.model");
+        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+        return JSON.parse(rpcResponse.getResult().toString(),ParserConfig.getGlobalInstance());
     }
 }
