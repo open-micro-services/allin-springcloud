@@ -19,9 +19,6 @@ package com.boonya.netty.rpc.core.proxy;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @author lw1243925457
- */
 class RpcProxy {
 
     private ConcurrentHashMap<String, Object> proxyCache = new ConcurrentHashMap<>();

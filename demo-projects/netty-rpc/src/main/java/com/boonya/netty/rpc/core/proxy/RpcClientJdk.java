@@ -2,9 +2,6 @@ package com.boonya.netty.rpc.core.proxy;
 
 import java.lang.reflect.Proxy;
 
-/**
- * @author lw
- */
 public class RpcClientJdk extends RpcProxy implements RpcClient {
 
     @Override

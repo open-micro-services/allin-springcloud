@@ -35,9 +35,6 @@ import java.net.URISyntaxException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
-/**
- * @author lw1243925457
- */
 @Slf4j
 public class RpcNettyClientSync {
 

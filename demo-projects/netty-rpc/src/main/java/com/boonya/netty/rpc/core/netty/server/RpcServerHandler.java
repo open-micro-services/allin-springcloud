@@ -32,9 +32,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-/**
- * @author lw1243925457
- */
 @Slf4j
 public class RpcServerHandler extends SimpleChannelInboundHandler<RpcProtocol> {
 

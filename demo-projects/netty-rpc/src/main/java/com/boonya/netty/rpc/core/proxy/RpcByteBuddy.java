@@ -21,9 +21,6 @@ import lombok.SneakyThrows;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.implementation.InvocationHandlerAdapter;
 
-/**
- * @author lw1243925457
- */
 public class RpcByteBuddy extends RpcProxy implements RpcClient {
 
     @Override

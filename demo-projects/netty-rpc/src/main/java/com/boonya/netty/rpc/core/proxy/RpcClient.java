@@ -17,9 +17,6 @@
 
 package com.boonya.netty.rpc.core.proxy;
 
-/**
- * @author lw1243925457
- */
 public interface RpcClient {
 
     /**

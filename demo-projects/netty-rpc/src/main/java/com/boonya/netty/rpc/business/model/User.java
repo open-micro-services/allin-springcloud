@@ -2,9 +2,6 @@ package com.boonya.netty.rpc.business.model;
 
 import lombok.Data;
 
-/**
- * @author lw
- */
 @Data
 public class User {
 

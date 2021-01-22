@@ -17,9 +17,9 @@
 
 package com.boonya.netty.rpc.business.model;
 
-/**
- * @author lw1243925457
- */
+import lombok.Data;
+
+@Data
 public class Error {
 
     private Integer status;

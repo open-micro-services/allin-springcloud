@@ -6,9 +6,7 @@ import com.boonya.netty.rpc.core.netty.common.RpcEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-/**
- * @author lw
- */
+
 public class RpcClientInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override

@@ -16,18 +16,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @Slf4j
-public class ServerApplication implements ApplicationRunner {
+public class NettyServerApplication implements ApplicationRunner {
 
     @Qualifier("rpcNettyServerInstance")
     @Autowired
     private final RpcNettyServer rpcNettyServer;
 
-    public ServerApplication(RpcNettyServer rpcNettyServer) {
+    public NettyServerApplication(RpcNettyServer rpcNettyServer) {
         this.rpcNettyServer = rpcNettyServer;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
+        SpringApplication.run(NettyServerApplication.class, args);
     }
 
     @Override

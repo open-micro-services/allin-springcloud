@@ -23,8 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 自定义模拟异常
- *
- * @author lw1243925457
  */
 @Slf4j
 @Data

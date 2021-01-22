@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
  * Rpc 自定义编码器
  * RpcProtocol -> bytes
  *
- * @author lw1243925457
  */
 @Slf4j
 public class RpcEncoder extends MessageToByteEncoder<RpcProtocol> {

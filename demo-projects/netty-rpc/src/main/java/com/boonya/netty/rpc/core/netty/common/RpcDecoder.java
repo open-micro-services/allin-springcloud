@@ -27,8 +27,6 @@ import java.util.List;
 /**
  * Rpc framework 自定义解码器
  * bytes -> rpcProtocol
- *
- * @author lw1243925457
  */
 @Slf4j
 public class RpcDecoder extends ByteToMessageDecoder {
