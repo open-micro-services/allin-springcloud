@@ -1,0 +1,16 @@
+#Hadoop
+hadoop:
+    name-node: hdfs://127.0.0.1:9000
+    namespace: /mydata
+
+#端口
+server:
+    port: 8999
+
+#log日志
+logging:
+    level:
+        com:
+            hadoop:
+                demo:
+                    dao: debug
