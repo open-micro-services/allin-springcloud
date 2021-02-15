@@ -1,0 +1,12 @@
+# ====服务端设置配置====
+server:
+    port: 8090
+
+# ====Spark 数据解析流引擎配置==https://my.oschina.net/woter/blog/1843755==
+# ====Spark SQL 方式HiveSql https://www.cnblogs.com/cord/p/9530404.html
+spark:
+    spark-home: .
+    # appName 参数是一个在集群 UI 上展示应用程序的名称
+    app-name: sparkTest
+    # master 是一个 Spark，Mesos 或 YARN 的 cluster URL，或者指定为在 local mode（本地模式）中运行的 “local” 字符串
+    master: local[4]
