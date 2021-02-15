@@ -3,7 +3,7 @@
 利用spark-submit指令运行(在spark安装目录bin下)：
    
        spark-submit \
-           --class com.patrol.spark.PatrolSparkServiceApplication  \
+           --class com.boonya.spark.SbSparkApplication  \
            --executor-memory 4G \
            --num-executors 8 \
            --master yarn-client \
