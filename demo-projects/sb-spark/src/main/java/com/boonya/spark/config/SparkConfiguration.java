@@ -1,13 +1,16 @@
 package com.boonya.spark.config;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.sql.SparkSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+
 /**
  * @Copyright: 2019-2021
  * @FileName: SparkConfiguration.java
@@ -15,29 +18,53 @@ import org.springframework.stereotype.Component;
  * @Date: 2020/9/1 16:56
  * @Description: Spark配置
  */
-@Component
+@Getter
+@Setter
 @Configuration
-@ConfigurationProperties(prefix = "spark")
-@EnableConfigurationProperties
 public class SparkConfiguration {
 
-    private String sparkHome = ".";
-
-    /**
-     * appName 参数是一个在集群 UI 上展示应用程序的名称
-     */
-    private String appName = "sparkPatrol";
-
-    /**
-     * master 是一个 Spark，Mesos 或 YARN 的 cluster URL，或者指定为在 local mode（本地模式）中运行的 “local” 字符串
-     */
-    private String master = "local";
+    @Value("${spark.app.name}")
+    private String appName;
+    @Value("${spark.home}")
+    private String sparkHome;
+    @Value("${spark.master.uri}")
+    private String sparkMasterUri;
+    @Value("${spark.driver.memory}")
+    private String sparkDriverMemory;
+    @Value("${spark.worker.memory}")
+    private String sparkWorkerMemory;
+    @Value("${spark.executor.memory}")
+    private String sparkExecutorMemory;
+    @Value("${spark.executor.cores}")
+    private String sparkExecutorCores;
+    @Value("${spark.num.executors}")
+    private String sparkExecutorsNum;
+    @Value("${spark.network.timeout}")
+    private String networkTimeout;
+    @Value("${spark.executor.heartbeatInterval}")
+    private String heartbeatIntervalTime;
+    @Value("${spark.driver.maxResultSize}")
+    private String maxResultSize;
+    @Value("${spark.rpc.message.maxSize}")
+    private String sparkRpcMessageMaxSize;
 
     @Bean
-    @ConditionalOnMissingBean(SparkConf.class)
+    //@ConditionalOnMissingBean(SparkConf.class)
     public SparkConf sparkConf()  {
-        SparkConf conf = new SparkConf().setAppName(appName).setMaster(master);
-        return conf;
+        SparkConf sparkConf = new SparkConf()
+            .setAppName(appName)
+            .setMaster(sparkMasterUri)
+            .set("spark.driver.memory",sparkDriverMemory)
+            .set("spark.driver.maxResultSize",maxResultSize)
+            .set("spark.worker.memory",sparkWorkerMemory)
+            .set("spark.executor.memory",sparkExecutorMemory)
+            .set("spark.executor.cores",sparkExecutorCores)
+            .set("spark.executor.heartbeatInterval",heartbeatIntervalTime)
+            .set("spark.num.executors",sparkExecutorsNum)
+            .set("spark.network.timeout",networkTimeout)
+            .set("spark.rpc.message.maxSize",sparkRpcMessageMaxSize);
+        //                .set("spark.shuffle.memoryFraction","0") //默认0.2
+        return sparkConf;
     }
 
     @Bean
@@ -46,27 +73,16 @@ public class SparkConfiguration {
         return new JavaSparkContext(sparkConf());
     }
 
-    public String getSparkHome() {
-        return sparkHome;
+    @Bean
+    public SparkSession sparkSession(){
+        return SparkSession
+            .builder()
+            .sparkContext(javaSparkContext().sc())
+            .appName(appName)
+            .getOrCreate();
     }
-
-    public void setSparkHome(String sparkHome) {
-        this.sparkHome = sparkHome;
-    }
-
-    public String getAppName() {
-        return appName;
-    }
-
-    public void setAppName(String appName) {
-        this.appName = appName;
-    }
-
-    public String getMaster() {
-        return master;
-    }
-
-    public void setMaster(String master) {
-        this.master = master;
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(){
+        return new PropertySourcesPlaceholderConfigurer();
     }
 }

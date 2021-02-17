@@ -1,12 +1,34 @@
-# ====服务端设置配置====
+## ====服务端设置配置====
 server:
     port: 8090
+#
+## ====Spark 数据解析流引擎配置==https://my.oschina.net/woter/blog/1843755==
+## ====Spark SQL 方式HiveSql https://www.cnblogs.com/cord/p/9530404.html
 
-# ====Spark 数据解析流引擎配置==https://my.oschina.net/woter/blog/1843755==
-# ====Spark SQL 方式HiveSql https://www.cnblogs.com/cord/p/9530404.html
+# 打成jar包放到centos中执行
+#https://blog.csdn.net/qq_41587243/article/details/112918052
 spark:
-    spark-home: .
-    # appName 参数是一个在集群 UI 上展示应用程序的名称
-    app-name: sparkTest
-    # master 是一个 Spark，Mesos 或 YARN 的 cluster URL，或者指定为在 local mode（本地模式）中运行的 “local” 字符串
-    master: local[4]
+    app:
+        name:
+    home: 192.168.0.105
+    master:
+        uri: spark://localhost:7077
+    driver:
+        memory: 1g
+        maxResultSize: 2g
+    worker:
+        memory: 1g
+    #cores 5  、num 8 、memory 5g  才是最完美的，报错，加参数限制
+    executor:
+        cores: 10
+        memory: 1g
+        heartbeatInterval: 1000000
+    num:
+        executors: 4
+    network:
+        timeout: 1474830
+    rpc:
+        message:
+            maxSize: 1024   #默认值是128MB,最大2047MB
+            #输序列化数据应该是有大小的限制，此错误消息意味着将一些较大的对象从driver端发送到executors
+            #Job aborted due to stage failure: Serialized task 5829:0 was 354127887 bytes, which exceeds max allowed:spark.rpc.message.maxSize (134217728 bytes)
