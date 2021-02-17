@@ -1,6 +1,6 @@
 package com.boonya.spark.service;
 
-import com.patrol.spark.receiver.CustomStreamingReceiver;
+import com.boonya.spark.threads.CustomStreamingReceiver;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
