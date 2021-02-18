@@ -9,18 +9,17 @@ server:
 #https://blog.csdn.net/qq_41587243/article/details/112918052
 spark:
     app:
-        name:
+        name: spark
     home: 192.168.0.105
     master:
-        uri: spark://localhost:7077
+        uri: spark://localhost:7077 #//local 本地开发模式
     driver:
         memory: 1g
         maxResultSize: 2g
     worker:
         memory: 1g
-    #cores 5  、num 8 、memory 5g  才是最完美的，报错，加参数限制
     executor:
-        cores: 10
+        cores: 2
         memory: 1g
         # java.lang.IllegalArgumentException: requirement failed: spark.executor.heartbeatInterval should be less than or equal to spark.storage.blockManagerSlaveTimeoutMs
         heartbeatInterval: 1000000
@@ -36,3 +35,4 @@ spark:
     storage:
         # java.lang.IllegalArgumentException: requirement failed: spark.executor.heartbeatInterval should be less than or equal to spark.storage.blockManagerSlaveTimeoutMs
         blockManagerSlaveTimeoutMs: 1000000
+    jars: /usr/local/spark-3.0.0-bin-hadoop3.2/sbin/sb-spark-0.0.1-SNAPSHOT.jar #Spark SerializedLambda错误解决方案

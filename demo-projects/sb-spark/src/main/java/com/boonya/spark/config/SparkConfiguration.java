@@ -49,13 +49,16 @@ public class SparkConfiguration {
     private String sparkRpcMessageMaxSize;
     @Value("${spark.storage.blockManagerSlaveTimeoutMs}")
     private String blockManagerSlaveTimeoutMs;
+    @Value("${spark.jars}")
+    private String jars;
 
     @Bean
-    //@ConditionalOnMissingBean(SparkConf.class)
+    @ConditionalOnMissingBean(SparkConf.class)
     public SparkConf sparkConf()  {
         SparkConf sparkConf = new SparkConf()
             .setAppName(appName)
             .setMaster(sparkMasterUri)
+            .setJars(new String[]{jars})
             .set("spark.driver.memory",sparkDriverMemory)
             .set("spark.driver.maxResultSize",maxResultSize)
             .set("spark.worker.memory",sparkWorkerMemory)
@@ -66,7 +69,6 @@ public class SparkConfiguration {
             .set("spark.network.timeout",networkTimeout)
             .set("spark.rpc.message.maxSize",sparkRpcMessageMaxSize)
             .set("spark.storage.blockManagerSlaveTimeoutMs",blockManagerSlaveTimeoutMs);
-        //                .set("spark.shuffle.memoryFraction","0") //默认0.2
         return sparkConf;
     }
 

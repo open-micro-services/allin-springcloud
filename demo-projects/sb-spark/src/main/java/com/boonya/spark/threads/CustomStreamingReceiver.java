@@ -15,12 +15,6 @@ import org.apache.spark.streaming.receiver.Receiver;
 @Slf4j
 public class CustomStreamingReceiver extends Receiver<String> {
 
-    /**
-     *
-     * @author	hz15041240
-     * @date	2018年1月18日 下午4:37:22
-     * @version
-     */
     private static final long serialVersionUID = 5817531198342629801L;
 
     public CustomStreamingReceiver(StorageLevel storageLevel) {
@@ -29,9 +23,10 @@ public class CustomStreamingReceiver extends Receiver<String> {
 
     @Override
     public void onStart() {
-        new Thread(this::doStart).start();
+        new Thread(()->{
+            doStart();
+        }).start();
         log.info("开始启动Receiver...");
-        //doStart();
     }
 
     public void doStart() {

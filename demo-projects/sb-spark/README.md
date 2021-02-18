@@ -48,3 +48,14 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
        /data/test/sb-spark-0.0.1-SNAPSHOT.jar
        
 阅读代码说明：https://blog.csdn.net/boonya/article/details/108367451
+
+## 常见问题
+
+### 分配内存不足
+
+Initial job has not accepted any resources; check your cluster UI to ensure that workers are registered and have sufficient resources
+
+### 不支持Lambda
+
+java.lang.ClassCastException: cannot assign instance of java.lang.invoke.SerializedLambda to field
+
