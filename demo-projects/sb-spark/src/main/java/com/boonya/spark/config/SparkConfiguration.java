@@ -47,6 +47,8 @@ public class SparkConfiguration {
     private String maxResultSize;
     @Value("${spark.rpc.message.maxSize}")
     private String sparkRpcMessageMaxSize;
+    @Value("${spark.storage.blockManagerSlaveTimeoutMs}")
+    private String blockManagerSlaveTimeoutMs;
 
     @Bean
     //@ConditionalOnMissingBean(SparkConf.class)
@@ -62,7 +64,8 @@ public class SparkConfiguration {
             .set("spark.executor.heartbeatInterval",heartbeatIntervalTime)
             .set("spark.num.executors",sparkExecutorsNum)
             .set("spark.network.timeout",networkTimeout)
-            .set("spark.rpc.message.maxSize",sparkRpcMessageMaxSize);
+            .set("spark.rpc.message.maxSize",sparkRpcMessageMaxSize)
+            .set("spark.storage.blockManagerSlaveTimeoutMs",blockManagerSlaveTimeoutMs);
         //                .set("spark.shuffle.memoryFraction","0") //默认0.2
         return sparkConf;
     }

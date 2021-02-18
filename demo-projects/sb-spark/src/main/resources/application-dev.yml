@@ -22,6 +22,7 @@ spark:
     executor:
         cores: 10
         memory: 1g
+        # java.lang.IllegalArgumentException: requirement failed: spark.executor.heartbeatInterval should be less than or equal to spark.storage.blockManagerSlaveTimeoutMs
         heartbeatInterval: 1000000
     num:
         executors: 4
@@ -32,3 +33,6 @@ spark:
             maxSize: 1024   #默认值是128MB,最大2047MB
             #输序列化数据应该是有大小的限制，此错误消息意味着将一些较大的对象从driver端发送到executors
             #Job aborted due to stage failure: Serialized task 5829:0 was 354127887 bytes, which exceeds max allowed:spark.rpc.message.maxSize (134217728 bytes)
+    storage:
+        # java.lang.IllegalArgumentException: requirement failed: spark.executor.heartbeatInterval should be less than or equal to spark.storage.blockManagerSlaveTimeoutMs
+        blockManagerSlaveTimeoutMs: 1000000
