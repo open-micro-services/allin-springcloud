@@ -1,4 +1,4 @@
-package com.boonya.springboot.activiti.sbactiviti;
+package com.boonya.springboot.watcher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

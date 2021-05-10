@@ -18,6 +18,7 @@
 
     <modules>
         <module>sb-activiti</module>
+        <module>sb-file-watcher</module>
     <!--    <module>sb-elasticsearch</module>
         <module>sb-jdbc</module>
         <module>sb-jms-activemq</module>
