@@ -11,6 +11,7 @@ import static com.sun.jmx.mbeanserver.Util.cast;
 
 /**
  *文件监控修改 类似看门狗
+ * @see https://blog.csdn.net/chinabestchina/article/details/101173766
  */
 @Component
 public class FileWatcher implements InitializingBean {
