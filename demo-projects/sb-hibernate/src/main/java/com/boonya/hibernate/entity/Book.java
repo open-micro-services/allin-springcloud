@@ -18,8 +18,8 @@ public class Book implements Serializable {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
    /* @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "book-id")
     @GenericGenerator(name = "book-id", strategy = "com.boonya.hibernate.util.DBIdentifyGenerator")*/
-    @Column(name = "book_id")
-    private String bookId;
+    @Column(name = "id",nullable = false)
+    protected String id;
 
     @Column(name = "title")
     private String title;

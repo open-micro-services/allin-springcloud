@@ -16,13 +16,13 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> getAllBooks() {
-        String sql = "FROM Book as book ORDER BY book.bookId";
+        String sql = "FROM Book as book ORDER BY book.id";
         return (List<Book>) entityManager.createQuery(sql).getResultList();
     }
 
     @Override
-    public Book getBookById(String bookId) {
-        return entityManager.find(Book.class, bookId);
+    public Book getBookById(String id) {
+        return entityManager.find(Book.class, id);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public void updateBook(Book book) {
-        Book book1 = getBookById(book.getBookId());
+        Book book1 = getBookById(book.getId());
         book1.setTitle(book.getTitle());
         book1.setCategory(book.getCategory());
         entityManager.flush();
@@ -41,8 +41,8 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public void deleteBook(String bookId) {
-        entityManager.remove(getBookById(bookId));
+    public void deleteBook(String id) {
+        entityManager.remove(getBookById(id));
     }
 
     @Override

@@ -27,18 +27,18 @@ class SbHibernateApplicationTests {
         b = bookService.addBook(b);
 
         // select
-        Book book = bookService.getBookById(b.getBookId());
+        Book book = bookService.getBookById(b.getId());
         List<Book> list = bookService.getAllBooks();
         System.out.println(list);
 
         // update
         book.setTitle("Jenkins权威指南");
         bookService.updateBook(book);
-        Book b2 = bookService.getBookById(b.getBookId());
+        Book b2 = bookService.getBookById(b.getId());
         System.out.println(b2);
 
         // delete
-        bookService.deleteBook(b.getBookId());
+        bookService.deleteBook(b.getId());
     }
 
 }

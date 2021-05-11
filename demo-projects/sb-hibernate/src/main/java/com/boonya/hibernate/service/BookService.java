@@ -13,8 +13,8 @@ public class BookService {
     @Autowired
     private BookDao bookDao;
 
-    public Book getBookById(String bookId){
-        Book book= bookDao.getBookById(bookId);
+    public Book getBookById(String id){
+        Book book= bookDao.getBookById(id);
         return book;
     }
 
@@ -34,7 +34,7 @@ public class BookService {
         bookDao.updateBook(book);
     }
 
-    public void deleteBook(String bookId){
-        bookDao.deleteBook(bookId);
+    public void deleteBook(String id){
+        bookDao.deleteBook(id);
     }
 }
