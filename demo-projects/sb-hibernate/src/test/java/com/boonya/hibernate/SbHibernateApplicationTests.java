@@ -1,7 +1,9 @@
 package com.boonya.hibernate;
 
 import com.boonya.hibernate.entity.Book;
+import com.boonya.hibernate.entity.Sequence;
 import com.boonya.hibernate.service.BookService;
+import com.boonya.hibernate.service.SequenceService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,11 @@ class SbHibernateApplicationTests {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private SequenceService sequenceService;
+
     @Test
-    public void contextLoads() {
+    public void crud() {
         // insert
         Book b =new Book();
         b.setTitle("Jenkins");
@@ -39,6 +44,15 @@ class SbHibernateApplicationTests {
 
         // delete
         bookService.deleteBook(b.getId());
+    }
+
+    @Test
+    public void selfDefinedId() {
+        // insert
+        Sequence sequence = new Sequence();
+        sequence.setTimestamp(System.currentTimeMillis());
+        sequenceService.add(sequence);
+        System.out.println(sequence);
     }
 
 }

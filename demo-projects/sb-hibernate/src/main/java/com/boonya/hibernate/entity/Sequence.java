@@ -4,14 +4,11 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "books")
+@Table(name = "sequence")
 @Data
-public class Book implements Serializable {
-
-    private static final long serialVersionUID = 4055235145107081639L;
+public class Sequence {
 
     /**
      * 自定义ID生成规则
@@ -32,14 +29,11 @@ public class Book implements Serializable {
      * AUTO：主键由程序控制。
      */
     @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "DBIdentifyGenerator")
+    @GenericGenerator(name = "DBIdentifyGenerator", strategy = "com.boonya.hibernate.util.DBIdentifyGenerator")
     @Column(name = "id",nullable = false)
-    protected String id;
+    private Long id;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "category")
-    private String category;
+    @Column(name = "timestamp")
+    private Long timestamp;
 }
