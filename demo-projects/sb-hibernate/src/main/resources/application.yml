@@ -1,0 +1,11 @@
+spring:
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+                new_generator_mappings: false
+                format_sql: true
+    datasource:
+        url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
