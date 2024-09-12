@@ -1,6 +1,5 @@
 package com.boonya.springcloud.beans.base;
 
-import java.util.List;
 
 /**
  * mybatis基础mapper接口类

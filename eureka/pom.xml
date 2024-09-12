@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.boonya.springcloud</groupId>
+        <artifactId>allin-springcloud</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.boonya.springcloud</groupId>
+    <artifactId>eureka</artifactId>
+    <name>Archetype - eureka</name>
+    <url>http://maven.apache.org</url>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>eureka-server</module>
+        <module>eureka-provider</module>
+        <module>eureka-consumer</module>
+        <module>eureka-consumer-feign</module>
+        <module>eureka-consumer-hystrix</module>
+        <module>eureka-consumer-ribbon</module>
+        <module>eureka-consumer-zuul</module>
+    </modules>
+</project>

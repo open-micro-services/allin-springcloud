@@ -8,7 +8,7 @@
         <version>2.2.11.BUILD-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.boonya.springcloud.nacos.provider</groupId>
+    <groupId>com.boonya.springcloud</groupId>
     <artifactId>nacos-provider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>nacos-provider</name>

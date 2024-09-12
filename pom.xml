@@ -12,28 +12,24 @@
     </parent>
 
     <groupId>com.boonya.springcloud</groupId>
-    <artifactId>springcloud</artifactId>
+    <artifactId>allin-springcloud</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
         <java.version>1.8</java.version>
         <maven.test.skip>true</maven.test.skip>
+        <jacoco.version>0.8.3</jacoco.version>
     </properties>
 
     <modules>
         <module>common-utils</module>
         <module>beans</module>
-        <module>eureka-server</module>
-        <module>eureka-provider</module>
-        <module>eureka-consumer</module>
-        <module>eureka-consumer-feign</module>
-        <module>eureka-consumer-hystrix</module>
-        <module>eureka-consumer-ribbon</module>
-        <module>eureka-consumer-zuul</module>
         <module>caches</module>
         <module>amqps</module>
         <module>demo-projects</module>
+        <module>eureka</module>
+        <module>nacos</module>
     </modules>
 
     <dependencies>
@@ -59,5 +55,73 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+    <!--配置maven阿里云仓库开始,不用去改maven的setting -->
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>local private nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>local private nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <!--指定生成.exec文件的存放位置-->
+                    <destFile>target/coverage-reports/jacoco-unit.exec</destFile>
+                    <!--Jacoco是根据.exec文件生成最终的报告，所以需指定.exec的存放路径-->
+                    <dataFile>target/coverage-reports/jacoco-unit.exec</dataFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

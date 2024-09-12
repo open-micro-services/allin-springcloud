@@ -4,20 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.boonya.springcloud</groupId>
-        <artifactId>springcloud</artifactId>
+        <artifactId>allin-springcloud</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.boonya.springcloud.eureka.consumer.ribbon</groupId>
-    <artifactId>eureka-consumer-ribbon</artifactId>
+    <groupId>com.boonya.springcloud.eureka.consumer.zuul</groupId>
+    <artifactId>eureka-consumer-zuul</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eureka-consumer-ribbon</name>
+    <name>eureka-consumer-zuul</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <docker-image-authentication>i-chengdu-spring-cloud</docker-image-authentication>
         <java.version>1.8</java.version>
-        <maven.test.skip>true</maven.test.skip>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
     </properties>
 
@@ -36,7 +35,15 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
